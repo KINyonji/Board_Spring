@@ -1,0 +1,80 @@
+/* 게시판 js */
+
+$(document).ready(function() {
+	
+	/* 게시판 목록 DataTable & 체크박스 */
+	var table = $('#boardList').DataTable({
+		"aaSorting": [], /*초기화 시 정렬 비활성화시키기*/
+		'columnDefs': [
+			{/*0번째 컬럼 옵션 설정*/
+				targets: 0,
+				width: '5%',
+				searchable: false, //검색
+				orderable: false, //컬럼정렬
+				className: 'dt-body-center',//칼럼에 클래스네임추가
+				render: function(data, type, full, meta) {
+					return '<input type="checkbox" name="seqs" value="' + $('<div/>').text(data).html() + '">';
+				}
+			},
+			/* width: 컬럼에따라 크기 조정/ hidden-xs:좁아지면 숨기기 */
+			{ targets: [1], width: '5%', },
+			{ targets: [2], width: '50%', },
+			{ targets: [3], width: '20%', className: 'hidden-xs'},
+			{ targets: [4], width: '10%', },
+			{ targets: [5], width: '10%', className: 'hidden-xs'}
+		]
+	});
+
+	// 전체체크 Handle click on "Select all" control
+	// id가 select-all을 클릭했을 때, checkbox type의 input의 속성을 checked가 되게 한다.
+	$('#select-all').on('click', function() {
+		// Check/uncheck all checkboxes in the table
+		/* search: 'applied' 라고 설정하면 필터링된 데이터만 사용하구요. 
+		page: 'current' 라고 설정하면 현재 페이지의 데이터만 사용하는 등의 옵션 */
+		var rows = table.rows({ 'search': 'applied' }).nodes();
+		/*	.prop()는 지정한 선택자를 가진 첫번째 요소의 속성값을 가져오거나 속성값을 추가합니다. 
+			주의할 점은 HTML 입장에서의 속성(attribute)이 아닌 JavaScript 입장에서의 속성(property)이라는 것입니다. */
+		$('input[type="checkbox"]', rows).prop('checked', this.checked);
+	});
+
+	// Handle click on checkbox to set state of "Select all" control
+	$('#boardList tbody').on('change', 'input[type="checkbox"]', function() {
+		// If checkbox is not checked
+		if (!this.checked) {
+			var el = $('#-select-all').get(1);
+			// If "Select all" control is checked and has 'indeterminate' property
+			if (el && el.checked && ('indeterminate' in el)) {
+				// Set visual state of "Select all" control 
+				// as 'indeterminate'
+				el.indeterminate = true;
+			}
+		}
+	});
+
+	$('#frm-example').on('submit', function(e) {
+		var form = this;
+
+		// Iterate over all checkboxes in the table
+		table.$('input[type="checkbox"]').each(function() {
+			// If checkbox doesn't exist in DOM
+			if (!$.contains(document, this)) {
+				// If checkbox is checked
+				if (this.checked) {
+					// Create a hidden element 
+					$(form).append(
+						$('<input>')
+							.attr('type', 'hidden')
+							.attr('name', this.name)
+							.val(this.value)
+					);
+				}
+			}
+		});
+
+
+		// Prevent actual form submission
+		e.preventDefault();
+	});
+	/* 게시판 목록 DataTable & 체크박스 END */
+	
+});

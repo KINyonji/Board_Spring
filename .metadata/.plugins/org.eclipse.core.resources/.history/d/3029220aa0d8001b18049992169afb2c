@@ -1,0 +1,5 @@
+package com.myway.yon.dao;
+
+public class BoardDaoImpl implements BoardDao {
+
+}

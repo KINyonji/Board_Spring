@@ -1,0 +1,81 @@
+package com.myway.yon.service;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.myway.yon.domain.BoardDAO;
+import com.myway.yon.domain.BoardDTO;
+
+@Service
+public class BoardService {
+	
+	BoardDAO dao;
+	
+	//Mybatis
+	private SqlSession sqlSession;
+	
+	@Autowired
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	public BoardService() {
+		super();
+		System.out.println("BoardService() 생성");
+	}
+	
+	//게시판 리스트
+	public List<BoardDTO> listAll() {
+		dao = sqlSession.getMapper(BoardDAO.class);
+		return dao.listAll();
+		
+	};
+
+	//글 작성
+	public int insert(BoardDTO dto) { 
+		System.out.println("insert 들어옴");
+		dao = sqlSession.getMapper(BoardDAO.class);
+		int result = dao.insert(dto);
+	
+		System.out.println("생성된 Bid 는 "+ dto.getB_id());
+		
+		return result;
+	};
+	
+	//글 상세보기
+	public List<BoardDTO> viewByBid(int b_id) {
+		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
+		dao.incViewCnt(b_id);
+		return dao.selectByBid(b_id);
+	}
+	
+	//b_id에 해당하는
+	public List<BoardDTO> selectByBid(int b_id) {
+		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
+		return dao.selectByBid(b_id);  // 1개짜리 List
+	}
+	
+	//글 수정
+	public int update(BoardDTO dto) {
+		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
+		//return dao.update(dto);
+		int result = dao.update(dto.getB_id(),dto);
+		System.out.println(result);
+		return result;
+	};
+
+	//글 삭제
+	public int deleteByBid(int b_id) {
+		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
+		return dao.deleteByBid(b_id);
+	}
+
+}
+
+

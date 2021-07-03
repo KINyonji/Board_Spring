@@ -1,0 +1,19 @@
+package com.myway.yon.dao;
+
+import java.util.List;
+
+import com.myway.yon.dto.Board;
+
+public interface BoardDao{
+
+	public List<Board> listAll();
+
+	public void insert(Board board);
+
+	public Board read(int B_ID);
+
+	public void modify(Board board);
+
+	public void delete(int B_ID);
+	
+}

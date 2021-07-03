@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myway.yon.domain.BoardDAO">
+
+	<select id="listAll" resultType="com.myway.yon.domain.BoardDTO">
+		SELECT
+			B_ID B_ID,
+			B_TITLE B_TITLE,
+			U_REGNAME U_REGNAME,
+			U_MODIFYNAME U_MODIFYNAME,
+			B_REGDATE B_REGDATE,
+			B_MODIFYDATE B_MODIFYDATE,
+			B_VIEWCNT B_VIEWCNT,
+			B_DELETECH B_DELETECH
+		FROM
+			BOARD
+		ORDER BY
+			B_REGDATE DESC
+	</select>
+
+</mapper>    
+
+

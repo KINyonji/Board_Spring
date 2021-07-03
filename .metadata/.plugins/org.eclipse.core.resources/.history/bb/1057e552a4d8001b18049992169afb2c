@@ -1,0 +1,39 @@
+package com.myway.yon.dao;
+
+import java.util.List;
+
+import com.myway.yon.dto.Board;
+
+public class BoardDaoImpl implements BoardDao {
+
+	@Override
+	public List<Board> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insert(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Board read(int B_ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void modify(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int B_ID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

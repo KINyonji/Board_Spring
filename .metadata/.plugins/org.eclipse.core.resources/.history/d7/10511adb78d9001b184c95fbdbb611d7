@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myway.yon.domain.BoardDAO">
+	<!-- 게시판 목록 -->
+	<select id="listAll" resultType="com.myway.yon.domain.BoardDTO">
+		SELECT
+			B_ID B_ID,
+			B_TITLE B_TITLE,
+			U_REGNAME U_REGNAME,
+			U_MODIFYNAME U_MODIFYNAME,
+			B_REGDATE B_REGDATE,
+			B_MODIFYDATE B_MODIFYDATE,
+			B_VIEWCNT B_VIEWCNT,
+			B_DELETECH B_DELETECH
+		FROM
+			BOARD
+		ORDER BY
+			B_REGDATE DESC
+	</select>
+	
+	<!-- 글작성 insert(DTO) 메소드 -->
+	<insert id="insert" flushCache="true" parameterType="com.myway.yon.domain.BoardDTO">
+		<!-- 오라클은 Auto_Increment 기능이 없다. 그렇기에 자동으로 인덱스값을 증가시켜주기 위해서는 시퀀스를 생성해서 사용해야한다. -->
+		<!-- Sequence SELECT NVL(MAX(no)+1,1) FROM databoard을 먼저 수행한 후에 결과값을 no에 받아서 INSERT 문장에 추가
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+    		  SELECT B_ID_SEQ(MAX(no)+1,1) FROM BOARD
+   		 </selectKey>
+		 -->
+		<selectKey keyProperty="b_id" resultType="int" order="BEFORE"> 
+			SELECT B_ID_SEQ.NEXTVAL AS customerSeq FROM SYS.DUAL 
+		</selectKey>
+
+		INSERT INTO BOARD
+			(B_ID, B_TITLE, b_content, U_REGNAME, B_REGDATE)
+		VALUES
+			(#{b_id}, #{b_title}, #{b_content}, #{u_regname}, NOW())
+	</insert>
+	
+
+</mapper>    
+
+

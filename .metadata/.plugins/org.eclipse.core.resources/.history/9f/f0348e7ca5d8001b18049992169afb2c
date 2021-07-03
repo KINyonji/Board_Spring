@@ -1,0 +1,63 @@
+package com.myway.yon.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.myway.yon.dao.BoardMapper;
+import com.myway.yon.dto.Board;
+
+@Service
+public class BoardServiceImpl implements BoardService {
+	
+
+	@Override
+	public List<Board> listAll() {
+		return boardMapper.listAll();
+	}
+
+	@Override
+	public void insert(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Board read(int bno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void modify(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int bno) {
+		// TODO Auto-generated method stub
+		
+	}
+
+//	@Override
+//	public void insert(Board board) {
+//		BoardDao.getInstance().insert(board);
+//	}
+//
+//	@Override public Board read(int bno) { 
+//		// 조회 시 조회수 증가 
+//		BoardDao dao = BoardDao.getInstance(); 
+//		dao.updateHit(bno); 
+//		return dao.selectOne(bno); } 
+//	
+//	@Override public void modify(Board board) { 
+//		BoardDao.getInstance().update(board); 
+//		} 
+//	
+//	@Override public void delete(int bno) { 
+//		BoardDao.getInstance().delete(bno); 
+//		}
+	}
+
+}

@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<<<<<<< HEAD
+    <nav class="nav-menu">
+      <ul>
+      	<!-- class="active"을 통해 메뉴를 눌렀을때 해당 구간으로 이동 + 색 변화 -->
+        <li class="active"><a href="<%=request.getContextPath()%>/index"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <!-- request.getContextPath()로  프로젝트 Path만 가져온다. -->
+        <li><a href="<%=request.getContextPath()%>/board"><i class="bx bx-conversation"></i> <span>QnA</span></a></li>
+        <li><a href="#user"><i class="bx bx-user"></i> <span>User</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
+=======
+</body>
+</html>
+>>>>>>> e0a750e48bcf55a8164a464ac9ed0ef2402b2735

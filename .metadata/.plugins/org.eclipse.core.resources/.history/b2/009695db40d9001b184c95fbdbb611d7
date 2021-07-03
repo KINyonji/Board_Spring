@@ -1,0 +1,12 @@
+//package com.myway.yon.dao;
+//
+//import java.util.List;
+//
+//import org.apache.ibatis.annotations.Mapper;
+//
+//import com.myway.yon.dto.Board;
+//
+//@Mapper
+//public interface BoardMapper {
+//	public List<Board> listAll();
+//}

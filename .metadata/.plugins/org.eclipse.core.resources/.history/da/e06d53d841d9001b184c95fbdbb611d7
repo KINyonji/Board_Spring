@@ -1,0 +1,35 @@
+package com.myway.yon.service;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.myway.yon.domain.BoardDAO;
+
+@Service
+public class BoardService {
+	
+	BoardDAO dao;
+	
+	//Mybatis
+	private SqlSession sqlSession;
+	
+	@Autowired
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	public BoardService() {
+		super();
+		System.out.println("BoardService() 생성");
+	}
+	
+	
+
+}
+
+

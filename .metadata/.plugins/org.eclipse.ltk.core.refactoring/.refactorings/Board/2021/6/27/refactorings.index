@@ -1,0 +1,32 @@
+1624845825941	Delete element
+1624846696346	Rename resource 'modile-nav-toggle.jsp'
+1624857170363	Delete element
+1624868635320	Delete element
+1624926993329	Rename resource 'modile-nav-toggle.jsp'
+1624942083381	Move compilation unit
+1624942111765	Move compilation unit
+1624942212563	Move compilation unit
+1624942216082	Move compilation unit
+1624946591900	Rename type 'BoardImpl'
+1624948584211	Delete element
+1624948641692	Delete element
+1624951503815	Rename resource 'BoardDAO.xml'
+1624952137346	Delete element
+1624952984018	Rename package 'mapper'
+1624953028051	Move file
+1624953032598	Delete element
+1624953045500	Move file
+1624956379687	Delete element
+1624956603211	Copy file
+1624956610593	Copy file
+1624957315119	Delete element
+1624957346945	Delete element
+1625014816246	Copy file
+1625015179717	Delete element
+1625015745067	Rename type 'Board'
+1625015815021	Delete element
+1625015834635	Delete element
+1625015853940	Rename package 'com.myway.yon.dto'
+1625015900534	Rename type 'BoardService'
+1625015904962	Move compilation unit
+1625016017467	Rename compilation unit 'BoardServiceImpl.java'

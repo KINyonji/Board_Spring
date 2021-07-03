@@ -1,0 +1,24 @@
+package com.myway.yon.domain;
+
+import java.sql.Timestamp;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class BoardDTO {
+	
+	private int B_ID;
+	private String B_TITLE;
+	private String B_CONTENT;
+	private String U_REGNAME;
+	private String U_MODIFYNAME;
+	private Timestamp B_REGDATE;
+	private Timestamp B_MODIFYDATE;
+	private int B_VIEWCNT;
+	private char B_DELETCH;
+
+}
