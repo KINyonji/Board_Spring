@@ -2,7 +2,10 @@ package com.myway.yon;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myway.yon.domain.BoardDTO;
 import com.myway.yon.service.BoardService;
@@ -76,10 +81,24 @@ public class BoardController {
 	}
 	
 	//글 삭제하기
-	@GetMapping(value = "/delete")
-	public String boardDelete(int b_id, Model model) {
-		model.addAttribute("result", boardService.deleteByBid(b_id));
-		return "board/boardDeleteOk";
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public Object boardDelete( @RequestParam(value="checkboxList[]") List<String> checkboxList) {
+		
+		System.out.println("=checkboxList=");
+        for(String CL : checkboxList) {
+            System.out.println(CL);
+        }
+		
+//		model.addAttribute("result", boardService.deleteByBid(b_id));
+		//리턴값
+        Map<String, Object> result = new HashMap<String, Object>();
+        
+        //성공했다고 처리
+        result.put("code", "OK");
+        result.put("message", "삭제에 성공 하였습니다.");
+        
+        return result;
 	}
 
 }

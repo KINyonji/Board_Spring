@@ -35,7 +35,7 @@
 					</div>
 					
 					<%-- <form id="frm-example" action="delete" method="get"> --%>
-					<form id="frm-example" action="delete" method="POST">
+					
 					<!-- DataTales -->
 					<table id="boardList" class="table table-bordered table-hover"  style='width:100%; display:inline-block'>
 						<thead>
@@ -62,11 +62,11 @@
 						</tbody>
 					</table>
 					<!-- 전체/선텍 삭제하기 버튼 -->
-					<p><button>Submit</button></p>
+					
 					<div>
-						<button type=submit class="btn btn-outline-danger" >삭제하기</button>
+						<button type=button class="btn btn-outline-danger" onclick="checkDel()">삭제하기</button>
 					</div>
-					</form>
+					
 		    	</div>
 			</div>
 		</div>
@@ -93,6 +93,50 @@
 				location.href = 'delete?b_id=' + b_id;
 			}
 		} */
+		
+		function checkDel() {
+			
+			console.log("뭐 삭제할거야?");
+			
+			 var checkboxArray = new Array(); //체크박스값을 넣을 배열생성
+             
+             $('input[name="b_id"]:checked').each(function(i){//체크된 리스트 배열에 넣기
+            	 checkboxArray.push($(this).val());
+             });
+             
+             var objParams = {
+                     "checkboxList" : checkboxArray        //체크된 배열 저장
+                 };
+             
+             console.log("checkboxArray? " +checkboxArray);
+             
+             if(checkboxArray.length == 0){
+            	 alert("선택된 글이 없습니다.");
+             }else{
+	             //ajax 호출
+	             $.ajax({
+	                 url         :   "/board/delete",
+	                 type        :   'post',
+	                 data        :   objParams,
+	                 success     :   function(result){
+	
+	                     if(result.code == "OK") {
+	                         alert(retVal.message);
+	                         location.href = "/board/List";
+	                     } else {
+	                         alert(retVal.message);
+	                     }
+	                      
+	                 }
+	                 ,error:function(request,status,error){
+	                	    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
+
+	             
+	             });
+             }
+			
+		}
+		
 	</script>
 	
 	<!-- DataTable -->
