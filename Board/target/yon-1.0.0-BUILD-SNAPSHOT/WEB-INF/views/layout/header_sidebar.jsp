@@ -6,7 +6,7 @@
       <ul>
       	<!-- class="active"을 통해 메뉴를 눌렀을때 해당 구간으로 이동 + 색 변화 -->
         <li class="active"><a href="<%=request.getContextPath()%>/index"><i class="bx bx-home"></i> <span>Home</span></a></li>
-        <li><a href="<%=request.getContextPath()%>/board"><i class="bx bx-conversation"></i> <span>QnA</span></a></li>
+        <li><a href="<%=request.getContextPath()%>/board/list"><i class="bx bx-conversation"></i> <span>QnA</span></a></li>
         <li><a href="#user"><i class="bx bx-user"></i> <span>User</span></a></li>
       </ul>
     </nav><!-- .nav-menu -->

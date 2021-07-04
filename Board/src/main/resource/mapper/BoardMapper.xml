@@ -28,6 +28,7 @@
 		<selectKey keyProperty="b_id" resultType="int" order="BEFORE">
     		  SELECT MAX(b_id)+1 FROM BOARD
    		 </selectKey>
+		
 		INSERT INTO BOARD
 			(B_ID, B_TITLE, b_content, u_regname, B_REGDATE)
 		VALUES
