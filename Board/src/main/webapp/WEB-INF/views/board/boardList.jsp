@@ -52,17 +52,34 @@
 							<c:forEach items="${list}" var="l">
 								<tr>
 									<td class="text-center">${l.b_id }</td>
-									<td class="text-center" onclick="selectByB_ID(${l.b_id })" >${l.b_id }</td>
-									<td onclick="selectByB_ID(${l.b_id })" >${l.b_title }</td>
-									<td onclick="selectByB_ID(${l.b_id })" ><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${l.b_regdate }"/></td>
-									<td onclick="selectByB_ID(${l.b_id })" >${l.u_regname }</td>
-									<th onclick="selectByB_ID(${l.b_id })" >${l.b_delete_ny }</th>
+									<td class="text-center" onclick="selectByB_ID(${l.b_id })"  style="cursor:pointer">${l.b_id }</td>
+									<td onclick="selectByB_ID(${l.b_id })" style="cursor:pointer" >${l.b_title }</td>
+									<!-- 수정날짜 -->
+									<c:choose>
+										<c:when test="${empty l.b_modifydate }">
+											<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${l.b_regdate }"/></td>
+										</c:when>
+										<c:otherwise>
+											<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${l.b_modifydate }"/></td>
+										</c:otherwise>
+									</c:choose>
+									<!-- 수정자 -->
+									<c:choose>									
+										<c:when test="${empty l.u_modifyname }"> 
+											<td>${l.u_regname }</td>
+										</c:when>										
+										<c:otherwise>
+											<td>${l.u_modifyname }</td>
+										</c:otherwise>
+									</c:choose>
+									
+									<th>${l.b_delete_ny }</th>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					<!-- 전체/선텍 삭제하기 버튼 -->
 					
+					<!-- 전체/선택 삭제하기 버튼 -->
 					<div>
 						<button type=button class="btn btn-outline-danger" onclick="checkDel()">삭제하기</button>
 					</div>

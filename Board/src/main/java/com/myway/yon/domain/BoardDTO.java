@@ -21,7 +21,5 @@ public class BoardDTO {
 	private Timestamp b_modifydate;
 	private int b_viewcnt;
 	private char b_delete_ny;
-	
-	private List<String> checkList;
 
 }

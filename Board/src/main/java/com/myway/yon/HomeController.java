@@ -1,7 +1,9 @@
 package com.myway.yon;
 
 import java.text.DateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -29,6 +31,12 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 
 		model.addAttribute("serverTime", formattedDate);
+		
+		String[] arr = { "A", "B", "C" };
+		// 배열 -> List로 변환
+		List<String> list = Arrays.asList(arr);
+
+		System.out.println(list);
 
 		return "index";
 	}

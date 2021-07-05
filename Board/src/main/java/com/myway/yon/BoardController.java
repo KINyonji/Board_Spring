@@ -1,8 +1,11 @@
 package com.myway.yon;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -83,16 +86,38 @@ public class BoardController {
 	//글 삭제하기
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
-	public Object boardDelete( @RequestParam(value="checkboxList[]") List<String> checkboxList, Model model, BoardDTO dto) {
+	public Object boardDelete( @RequestParam(value="checkboxList[]") List<Integer> checkboxList, Model model, BoardDTO dto) {
 		
 		System.out.println("=checkboxList=");
-        for(String CL : checkboxList) {
-            System.out.println(CL);
+		System.out.println(checkboxList);
+        for(Integer CL : checkboxList) {
+        	
+        	System.out.println(CL);
+//        	System.out.println(CL.length());
+            
         }
+        
+//        //List<String>에서 String [] 으로 변황
+//        String[] arry = checkboxList.toArray(new String[checkboxList.size()]);
+//        System.out.println("=arry="+arry);
+//        
+//        //String[]에서 Int[]로 변환
+//        int[] nums = Arrays.stream(arry).mapToInt(Integer::parseInt).toArray();        
+//        System.out.println("=nums="+Arrays.toString(nums));
+       
+        
+        
 //		dto.setCheckList(checkboxList);
 //		model.addAttribute("result", boardService.deleteByBid(checkboxList));
 		//리턴값
         Map<String, Object> result = new HashMap<String, Object>();
+        
+//        List<Integer> idList = new ArrayList<>();
+//        for (int i = 0; i < checkboxList.lenght; i++) {
+//			idList.add(Integer.parseInt(checkboxList[i]));
+//		}
+
+        
         result.put("checkboxList", checkboxList);
         
         return boardService.deleteByBid(result);
