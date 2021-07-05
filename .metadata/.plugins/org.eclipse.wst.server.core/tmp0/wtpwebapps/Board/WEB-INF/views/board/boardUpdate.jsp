@@ -20,7 +20,7 @@
 <html lang="kr">
 <head>
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
-	
+	<link href="/resources/board/boardStyle.css" rel="stylesheet">
 	<!-- 네이버 스마트 에디터 smarteditor2 -->
 	<script type="text/javascript" src="/resources/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 	
@@ -32,7 +32,7 @@
   <%@ include file = "/WEB-INF/views/layout/mobile-nav-toggle.jsp"%>
  
   <!-- ======= Header ======= 왼쪽 정렬해 놓은 메뉴들 -->
-  <%@ include file = "/WEB-INF/views/layout/header_sidebar.jsp"%>
+  <%@ include file = "/WEB-INF/views/layout/header_sidebar2.jsp"%>
 
   <!-- ======= content Section ======= -->
 	<main id="main">
@@ -49,7 +49,7 @@
 								<h5 class="card-title mb-0">WRITE</h5>
 							</div>
 							<div style="float: right">
-								<button type="button" onclick="historyBack()">←</button>
+								<button type="button" class="btn btn-outline-success btn-xs btn-radius" onclick="history.back()">←</button>
 							</div>
 						</div>
 						<div class="card-body">
@@ -79,7 +79,9 @@
 									</div>
 								</div>
 								<input type="hidden" name="b_id" value="${list[0].b_id}">
-								<button type="submit" class="btn btn-primary" onclick="submitContents()">수정하기</button>
+								<div class="btnDivCenter">
+									<button type="submit" class="btn btn-outline-warning btn-sm btn-radius" onclick="submitContents()">수정하기</button>
+								</div>
 							</form>
 						</div>
 					</div>

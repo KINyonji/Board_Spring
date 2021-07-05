@@ -8,7 +8,7 @@
 <html lang="kr">
 <head>
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
-	
+	<link href="/resources/board/boardStyle.css" rel="stylesheet">
 	<!-- 네이버 스마트 에디터 smarteditor2 -->
 	<script type="text/javascript" src="/resources/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 	
@@ -20,7 +20,7 @@
   <%@ include file = "/WEB-INF/views/layout/mobile-nav-toggle.jsp"%>
  
   <!-- ======= Header ======= 왼쪽 정렬해 놓은 메뉴들 -->
-  <%@ include file = "/WEB-INF/views/layout/header_sidebar.jsp"%>
+  <%@ include file = "/WEB-INF/views/layout/header_sidebar2.jsp"%>
 
   <!-- ======= content Section ======= -->
 	<main id="main">
@@ -37,42 +37,38 @@
 								<h5 class="card-title mb-0">WRITE</h5>
 							</div>
 							<div style="float: right">
-								<button type="button" onclick="location.href='list'">←</button>
+								<button type="button" class="btn btn-outline-success btn-xs btn-radius" onclick="history.back()">←</button>
 							</div>
 						</div>
 						<div class="card-body">
-							<form name="frm" action="writeOk" method="post" onsubmit="">
+							<form name="frm" id="writeForm" action="writeOk" method="post" onsubmit="">
 								<div class="row">
 									<div class="col-md-12">
 										<!-- 글제목 -->
 										<div class="mb-3">
 											<label class="form-label" for="inputTitle">제목</label>
 											<input type="text" name="b_title" class="form-control" id="inputTitle"
-												placeholder="제목">
+												placeholder="제목" required>
 										</div>
 										<!-- 작성자 -->
 										<div class="mb-3">
 											<label class="form-label" for="inputrRegname">작성자</label>
 											<input type="text" name="u_regname" class="form-control" id="inputrRegname"
-												placeholder="작성자">
+												placeholder="작성자" required>
 										</div>
 										<!-- 글내용 -->
 										<div class="mb-3">
 											<label class="form-label" for="inputContent">내용</label>
 											
 											<!-- 네이버 스마트 에디터 smarteditor2 -->	
-											<textarea name="b_content" id="ir1" rows="10" cols="100" style="width:100%; min-width:260px; display:none;" ></textarea>
-											<!-- <p>
-												<input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />
-												<input type="button" onclick="showHTML();" value="본문 내용 가져오기" />
-												<input type="button" onclick="submitContents(this);" value="서버로 내용 전송" />
-												<input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" />
-											</p> -->
+											<textarea name="b_content" id="ir1" rows="10" cols="100" style="width:100%; min-width:260px; display:none;" required></textarea>
 											
 										</div>
 									</div>
 								</div>
-								<button type="submit" class="btn btn-primary" onclick="submitContents()">등록하기</button>
+								<div class="btnDivCenter">
+									<button type="submit" class="btn btn-outline-primary btn-sm btn-radius" onclick="submitContents()">등록하기</button>
+								</div>
 							</form>
 						</div>
 					</div>
@@ -148,6 +144,7 @@
 			var nFontSize = 24;
 			oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
 		}
+		<!-- 네이버 스마트 에디터 smarteditor2 END-->	
 	</script>
 
 

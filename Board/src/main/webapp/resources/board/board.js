@@ -1,38 +1,45 @@
 /* 게시판 js */
 
+var lang_kor = {
+        "decimal" : "",
+        "emptyTable" : "데이터가 없습니다.",
+        "info" : "_START_ - _END_ (총 _TOTAL_ 개)",
+        "infoEmpty" : "0개",
+        "infoFiltered" : "(전체 _MAX_ 개 중 검색결과)",
+        "infoPostFix" : "",
+        "thousands" : ",",
+        "lengthMenu" : "_MENU_ 개씩 보기",
+        "loadingRecords" : "로딩중...",
+        "processing" : "처리중...",
+        "search" : "검색 : ",
+        "zeroRecords" : "검색된 데이터가 없습니다.",
+        "paginate" : {
+            "first" : "첫 페이지",
+            "last" : "마지막 페이지",
+            "next" : "다음",
+            "previous" : "이전"
+        },
+        "aria" : {
+            "sortAscending" : " :  오름차순 정렬",
+            "sortDescending" : " :  내림차순 정렬"
+        }
+    };
+
 $(document).ready(function() {
-	console.log("el 나와라 ");
+
 	/* 게시판 목록 DataTable & 체크박스 */
 	var table = $('#boardList').DataTable({
 		aaSorting : [], /*초기화 시 정렬 비활성화시키기*/
 		
-		/*  ----ajax를 쓰는 이유----
-			HTML 에 tbody를 c:forEach 등을 이용해서 table 리스트를 만들면 DataTable의 페이징 기능을 사용하기가 어려워진다.
-			또한 c:forEach의 경우 row 수가 많아지면 브라우저가 DataTables.js 를 이용해 랜더링 하는 시간이 길어져서
-			CSS가 적용되기 이전의 못생긴 table이 화면에 남아있다가 뒤늦게 디자인이 적용되는 모습을종종 볼 수 있다.
-			그래서 ajax 통신을 이용해 serverside에서 Data만 쏙쏙 빼오는 기능이 필수다.
-		
-		ajax: {
- 			type : "POST",
-    		url : "/list",
-        	dataType : "JSON",
-        	dataSrc :''
-         },
-		columns : [
-                { data: "b_id" },
-                { data: "b_id" },
-                { data: "b_title" },
-                { data: "b_regdate" },
-                { data: "u_regname" },
-                { data: "b_delete_ny" },
-        ],*/
+		language : lang_kor, /*글씨 바꾸기*/
+		/*stateSave: true, 상태 저장하기 */
 		columnDefs : [
 			{/*0번째 컬럼 옵션 설정*/
 				targets: 0,
 				width: '5%',
 				searchable: false, //검색
 				orderable: false, //컬럼정렬
-				className: 'dt-body-center',//칼럼에 클래스네임추가
+				className: 'dt-body-center',//dt-body-center: 가운데로 정렬하기
 				render: function(data, type, full, meta) {
 					return '<input type="checkbox" name="b_id" value="' + $('<div/>').text(data).html() + '" style="cursor:pointer">';
 				}
@@ -49,25 +56,23 @@ $(document).ready(function() {
 	// 전체체크
 	// id가 select-all을 클릭했을 때, checkbox type의 input의 속성을 checked가 되게 한다.
 	$('#select-all').on('click', function() {
-		console.log("---#select-all').on('click'---");
+
 		// Check/uncheck all checkboxes in the table
 		/* search: 'applied' 라고 설정하면 필터링된 데이터만 사용하구요. 
 		page: 'current' 라고 설정하면 현재 페이지의 데이터만 사용하는 등의 옵션 */
 		var rows = table.rows({ 'search': 'applied' }).nodes();
-		console.log("rows : "+rows)
+
 		/*	.prop()는 지정한 선택자를 가진 첫번째 요소의 속성값을 가져오거나 속성값을 추가합니다. 
 			주의할 점은 HTML 입장에서의 속성(attribute)이 아닌 JavaScript 입장에서의 속성(property)이라는 것입니다. */
 		$('input[type="checkbox"]', rows).prop('checked', this.checked);
 	});
 
-	// Handle click on checkbox to set state of "Select all" control
+	//부분체크
 	$('#boardList tbody').on('change', 'input[type="checkbox"]', function() {
-		console.log("---$('#boardList tbody').on('change', 'input[type=---");
 		// If checkbox is not checked 만약 체크박스가 체크가 안되어 있으면
 		if (!this.checked) {
-			//한개의 체크박스 해제 el이 불러와짐
+			//한개의 체크박스 해제시 el이 불러와짐
 			var el = $('#select-all').get(0);
-			console.log("el : "+el);
 			// If "Select all" control is checked and has 'indeterminate' property
 			if (el && el.checked && ('indeterminate' in el)) {
 				// Set visual state of "Select all" control 
@@ -77,74 +82,60 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#frm-example').on('submit', function(e) {
-		var form = this;
-console.log("form: "+form);
-		// Iterate over all checkboxes in the table
-		table.$('input[type="checkbox"]').each(function() {
-			// If checkbox doesn't exist in DOM
-			if (!$.contains(document, this)) {
-				// If checkbox is checked
-				if (this.checked) {
-					// Create a hidden element 
-					$(form).append(
-						$('<input>')
-							.attr('type', 'visible')
-							.attr('name', this.name)
-							.val(this.value)
-							
-					);
-				}
-			}
-		});
-console.log("table: "+table);
-
-		// Prevent actual form submission
-		e.preventDefault();
-	});
-	
-	
-	 /* function checkDel() {
-		
-		alert("뭐 삭제할거야?");
-                //배열 선언
-               var fruitArray = [];
-                
-                $('input[name="fruit"]:checked').each(function(i){//체크된 리스트 저장
-                    fruitArray.push($(this).val());
-                });
-                
-                var objParams = {
-                        "user"      : $("#user").val(), //유저 저장
-                        "fruitList" : fruitArray        //과일배열 저장
-                    };
-                
-                //ajax 호출
-                $.ajax({
-                    url         :   "/checkTest/save",
-                    dataType    :   "json",
-                    contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
-                    type        :   "post",
-                    data        :   objParams,
-                    success     :   function(retVal){
- 
-                        if(retVal.code == "OK") {
-                            alert(retVal.message);
-                        } else {
-                            alert(retVal.message);
-                        }
-                         
-                    },
-                    error       :   function(request, status, error){
-                        console.log("AJAX_ERROR");
-                    }
-                });
-                
-            }*/
-	
-	
-	
-	
 	/* 게시판 목록 DataTable & 체크박스 END */
 	
 });
+
+
+/* 유효성검사 jquery validation */
+
+$(function(){
+    $("#writeForm").validate({
+        
+        // 체크할 항목들의 룰 설정
+        rules: {
+            b_title: {
+                required : true,
+                rangelength : [2,30]
+            },
+            u_regname: {
+                required : true,
+                rangelength : [2,30]
+            },
+            b_content: {
+                required : true,
+            }
+        },
+        //규칙체크 실패시 출력될 메시지
+        messages : {
+            b_title: {
+                required : "제목을 입력해주세요",
+                rangelength : "제목은 {0}글자에서 {1}자까지 입력 가능합니다",
+            },
+            u_regname: {
+                required : "작성자를 입력해주세요",
+                rangelength : "작성자는 {0}글자에서 {1}자까지 입력 가능합니다"
+            },
+            b_content: {
+                required : "내용을 입력해주세요",
+            }
+        }
+    });
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
