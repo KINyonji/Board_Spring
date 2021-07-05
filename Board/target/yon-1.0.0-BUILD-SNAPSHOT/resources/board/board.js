@@ -34,7 +34,7 @@ $(document).ready(function() {
 				orderable: false, //컬럼정렬
 				className: 'dt-body-center',//칼럼에 클래스네임추가
 				render: function(data, type, full, meta) {
-					return '<input type="checkbox" name="seqs" value="' + $('<div/>').text(data).html() + '">';
+					return '<input type="checkbox" name="b_id" value="' + $('<div/>').text(data).html() + '">';
 				}
 			},
 			/* width: 컬럼에따라 크기 조정/ hidden-xs:좁아지면 숨기기 */
@@ -46,7 +46,7 @@ $(document).ready(function() {
 		]
 	});
 
-	// 전체체크 Handle click on "Select all" control
+	// 전체체크
 	// id가 select-all을 클릭했을 때, checkbox type의 input의 속성을 checked가 되게 한다.
 	$('#select-all').on('click', function() {
 		console.log("---#select-all').on('click'---");
@@ -102,6 +102,49 @@ console.log("table: "+table);
 		// Prevent actual form submission
 		e.preventDefault();
 	});
+	
+	
+	 /* function checkDel() {
+		
+		alert("뭐 삭제할거야?");
+                //배열 선언
+               var fruitArray = [];
+                
+                $('input[name="fruit"]:checked').each(function(i){//체크된 리스트 저장
+                    fruitArray.push($(this).val());
+                });
+                
+                var objParams = {
+                        "user"      : $("#user").val(), //유저 저장
+                        "fruitList" : fruitArray        //과일배열 저장
+                    };
+                
+                //ajax 호출
+                $.ajax({
+                    url         :   "/checkTest/save",
+                    dataType    :   "json",
+                    contentType :   "application/x-www-form-urlencoded; charset=UTF-8",
+                    type        :   "post",
+                    data        :   objParams,
+                    success     :   function(retVal){
+ 
+                        if(retVal.code == "OK") {
+                            alert(retVal.message);
+                        } else {
+                            alert(retVal.message);
+                        }
+                         
+                    },
+                    error       :   function(request, status, error){
+                        console.log("AJAX_ERROR");
+                    }
+                });
+                
+            }*/
+	
+	
+	
+	
 	/* 게시판 목록 DataTable & 체크박스 END */
 	
 });

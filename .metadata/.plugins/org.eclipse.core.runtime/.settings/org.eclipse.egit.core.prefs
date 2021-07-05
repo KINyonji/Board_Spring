@@ -1,5 +1,5 @@
-GitRepositoriesView.GitDirectories=C\:\\Users\\KimYeonJi\\Documents\\github\\Board_Spring\\.git;
-GitRepositoriesView.GitDirectories.relative=.git;
+GitRepositoriesView.GitDirectories=C\:\\Study\\SpringBoardProj\\.git;C\:\\Study\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;C\:\\Study\\.git;
 RepositoryGroups.uuids=
 RepositorySearchDialogSearchPath=C\:\\Study\\SpringBoardProj
 core_autoIgnoreDerivedResources=false

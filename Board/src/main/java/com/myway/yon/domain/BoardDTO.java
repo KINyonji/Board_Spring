@@ -1,6 +1,7 @@
 package com.myway.yon.domain;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,5 +21,7 @@ public class BoardDTO {
 	private Timestamp b_modifydate;
 	private int b_viewcnt;
 	private char b_delete_ny;
+	
+	private List<String> checkList;
 
 }

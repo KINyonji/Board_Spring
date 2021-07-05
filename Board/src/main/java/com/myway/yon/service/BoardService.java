@@ -1,6 +1,7 @@
 package com.myway.yon.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -63,11 +64,18 @@ public class BoardService {
 		return dao.update(dto.getB_id(),dto);
 	};
 
-	//글 삭제
-	public int deleteByBid(int b_id) {
-		System.out.println("deleteByBid() 들어옴");
-		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
-		return dao.deleteByBid(b_id);
+//	//글 삭제
+//	public int deleteByBid(int b_id) {
+//		System.out.println("deleteByBid() 들어옴");
+//		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
+//		return dao.deleteByBid(b_id);
+//	}
+	
+	public List<BoardDTO> deleteByBid(Map<String, Object> result){
+		System.out.println("==deleteByBid() 들어옴==");
+		System.out.println("checkboxList result :"+ result);
+		dao = sqlSession.getMapper(BoardDAO.class);
+		return dao.deleteByBid(result);
 	}
 
 }

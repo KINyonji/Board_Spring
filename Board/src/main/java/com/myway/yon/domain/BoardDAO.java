@@ -1,6 +1,7 @@
 package com.myway.yon.domain;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
@@ -24,6 +25,7 @@ public interface BoardDAO {
 	int update(int b_id, @Param("a")BoardDTO dto);
 
 	//글 삭제
-	int deleteByBid(int b_id);
+//	int deleteByBid(int b_id);
+	List<BoardDTO> deleteByBid(Map<String, Object> result);
 
 }
