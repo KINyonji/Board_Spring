@@ -89,7 +89,7 @@
 								</div>
 								<input type="hidden" name="b_id" value="${list[0].b_id}">
 								<div class="btnDivCenter">
-									<button type="submit" class="btn btn-outline-warning btn-sm btn-radius" onclick="submitContents()">수정하기</button>
+									<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="submitContents()">수정하기</button>
 								</div>
 							</form>
 						</div>
@@ -150,26 +150,23 @@
 			alert(sHTML);
 		}
 
-		function submitContents(elClickedObj) {
+		//내용 submit이 될때
+		function submitContents() {
+			var elClickedObj = $("#writeForm");
+			
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
-	/* 		document.getElementById("ir1").submit(); */
-			// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-
-			try {
-				elClickedObj.form.submit();
-			} catch (e) {
+			
+			var content = document.getElementById("ir1").value;
+			// 에디터의 내용에 대한 유효성 검증
+			if(content == "" || content == null || content == '&nbsp;' || content == '<br>' || content == '<br/>' || content == '<p>&nbsp;</p>' || content == '<p><br></p>') { 
+					alert("글 내용을 작성해주세요."); 
+					oEditors.getById["ir1"].exec("FOCUS"); //포커싱 
+					return false; 				
 			}
+			try {
+	            elClickedObj.submit();
+	        } catch(e) {}
 		}
-
-		function setDefaultFont() {
-			var sDefaultFont = '궁서';
-			var nFontSize = 24;
-			oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
-		}
-		
-		 function historyBack() {
-			 history.back();
-		} 
 		 <!-- 네이버 스마트 에디터 smarteditor2 END-->	
 	</script>
 	

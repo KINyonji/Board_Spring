@@ -92,7 +92,9 @@ public class BoardController {
 
         result.put("checkboxList", checkboxList);
         
-        return boardService.deleteByBid(result);
+        boardService.deleteByBid(result);
+        
+        return null;
 	}
 
 }

@@ -102,55 +102,42 @@
 			location.href = "view?b_id=" + b_id;
 		}
 		
-		/* function chkDelete(b_id){
-			// 삭제 여부, 다시 확인하고 진행하기
-			var r = confirm("삭제하시겠습니까?");
-			
-			if(r){
-				location.href = 'delete?b_id=' + b_id;
-			}
-		} */
-		
 		function checkDel() {
-			
-			console.log("뭐 삭제할거야?");
-			
-			 var checkboxArray = new Array(); //체크박스값을 넣을 배열생성
-             
-             $('input[name="b_id"]:checked').each(function(i){//체크된 리스트 배열에 넣기
-            	 checkboxArray.push($(this).val());
-             });
-             
-             var objParams = {
-                     "checkboxList" : checkboxArray        //체크된 배열 저장
-                 };
-             
-             console.log("checkboxArray? " +checkboxArray);
-             
-             if(checkboxArray.length == 0){
-            	 alert("선택된 글이 없습니다.");
-             }else{
-	             //ajax 호출
-	             $.ajax({
-	                 url         :   "/board/delete",
-	                 type        :   'post',
-	                 data        :   objParams,
-	                 success     :   function(result){
-	
-	                     if(result=1) {
-	                         location.href = "/board/List";
-	                     } else {
-	                         alert(retVal.message);
-	                     }
-	                      
-	                 }
-	                 ,error:function(request,status,error){
-	                	    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
 
-	             
-	             });
-             }
+			var deleteCk = confirm("정맣 삭제하시겠습니까?");
 			
+			if(deleteCk){
+				 var checkboxArray = new Array(); //체크박스값을 넣을 배열생성
+	             
+	             $('input[name="b_id"]:checked').each(function(i){//체크된 리스트 배열에 넣기
+	            	 checkboxArray.push($(this).val());
+	             });
+	             
+	             var objParams = {
+	                     "checkboxList" : checkboxArray        //체크된 배열 저장
+	                 };
+	
+	             if(checkboxArray.length == 0){
+	            	 alert("선택된 글이 없습니다.");
+	             }else{
+		             //ajax 호출
+		             $.ajax({
+		                 url         :   "/board/delete",
+		                 type        :   'post',
+		                 data        :   objParams,
+		                 success     :   function(res){
+								location.href = "list";
+		                 }
+		                 ,error:function(request,status,error){
+		                	 	alert("삭제 실패");
+		                	 	console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			                	history.back();
+			              }
+		             });
+	             }
+			}else{
+				  return;
+			}
 		}
 		
 	</script>

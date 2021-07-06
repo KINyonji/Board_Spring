@@ -61,13 +61,13 @@
 											<label class="form-label" for="inputContent">내용</label>
 											
 											<!-- 네이버 스마트 에디터 smarteditor2 -->	
-											<textarea name="b_content" id="ir1" rows="10" cols="50" style="width:100%; min-width:260px; display:none;"></textarea>
+											<textarea name="b_content" id="ir1" rows="10" cols="50" style="width:100%; min-width:260px; display:none;" required></textarea>
 											
 										</div>
 									</div>
 								</div>
 								<div class="btnDivCenter">
-									<button type="submit" class="btn btn-outline-primary btn-sm btn-radius" onclick="submitContents()">등록하기</button>
+									<button type="button" class="btn btn-outline-primary btn-sm btn-radius" onclick="submitContents()">등록하기</button>
 								</div>
 							</form>
 						</div>
@@ -92,10 +92,7 @@
 		var oEditors = [];
 
 		var sLang = "ko_KR"; // 언어 (ko_KR/ en_US/ ja_JP/ zh_CN/ zh_TW), default = ko_KR
-
-		// 추가 글꼴 목록
-		//var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
-
+		
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef : oEditors,
 			elPlaceHolder : "ir1",
@@ -106,11 +103,8 @@
 				bUseModeChanger : false, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
 				//bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
 				//aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
-				fOnBeforeUnload : function() {
-					//alert("완료!");
-				},
 				I18N_LOCALE : sLang
-			}, //boolean
+			}, 
 			fOnAppLoad : function() {
 				//예제 코드
 				//oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
@@ -118,31 +112,22 @@
 			fCreator : "createSEditor2"
 		});
 
-		function pasteHTML() {
-			var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
-			oEditors.getById["ir1"].exec("PASTE_HTML", [ sHTML ]);
-		}
-
-		function showHTML() {
-			var sHTML = oEditors.getById["ir1"].getIR();
-			alert(sHTML);
-		}
-
-		function submitContents(elClickedObj) {
+		//내용 submit이 될때
+		function submitContents() {
+			var elClickedObj = $("#writeForm");
+			
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
-	/* 		document.getElementById("ir1").submit(); */
-			// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-
-			try {
-				elClickedObj.form.submit();
-			} catch (e) {
+			
+			var content = document.getElementById("ir1").value;
+			// 에디터의 내용에 대한 유효성 검증
+			if(content == "" || content == null || content == '&nbsp;' || content == '<br>' || content == '<br/>' || content == '<p>&nbsp;</p>' || content == '<p><br></p>') { 
+					alert("글 내용을 작성해주세요."); 
+					oEditors.getById["ir1"].exec("FOCUS"); //포커싱 
+					return false; 				
 			}
-		}
-
-		function setDefaultFont() {
-			var sDefaultFont = '궁서';
-			var nFontSize = 24;
-			oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
+			try {
+	            elClickedObj.submit();
+	        } catch(e) {}
 		}
 		<!-- 네이버 스마트 에디터 smarteditor2 END-->	
 	</script>
