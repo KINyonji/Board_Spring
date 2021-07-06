@@ -42,10 +42,11 @@
           scrollTop: scrollto
         }, 1500, 'easeInOutExpo');
 
+        /* 스크롤에 따라 메뉴바 active와 색 변하기
         if ($(this).parents('.nav-menu, .mobile-nav').length) {
           $('.nav-menu .active, .mobile-nav .active').removeClass('active');
           $(this).closest('li').addClass('active');
-        }
+        }*/
 
         if ($('body').hasClass('mobile-nav-active')) {
           $('body').removeClass('mobile-nav-active');
@@ -54,6 +55,11 @@
         return false;
       }
     }
+  });
+  
+  $(document).on('click', '.nav-board', function(e) {
+     $('.nav-menu .active, .mobile-nav .active').removeClass('active');
+     $(this).closest('li').addClass('active');
   });
 
   // Activate smooth scroll on page load with hash links in the url
@@ -69,11 +75,14 @@
     }
   });
 
+
   $(document).on('click', '.mobile-nav-toggle', function(e) {
     $('body').toggleClass('mobile-nav-active');
     $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
   });
 
+
+//모바일 메뉴 토글
   $(document).click(function(e) {
     var container = $(".mobile-nav-toggle");
     if (!container.is(e.target) && container.has(e.target).length === 0) {

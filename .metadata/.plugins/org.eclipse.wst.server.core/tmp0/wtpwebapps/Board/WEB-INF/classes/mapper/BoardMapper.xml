@@ -79,6 +79,16 @@
 	</update>
 	
 	<!-- 글 삭제하기 → B_DELETE_NY를 Y로 수정하기 -->
+	<update id="deleteByBid" flushCache="true">
+		UPDATE 
+			BOARD 
+		SET 
+			B_DELETE_NY = 'Y'
+		WHERE 
+			B_ID = #{param1}
+	</update>
+	
+	<!-- 체크박스 글 삭제하기 -->
 	<!-- 
 		collection : 전달받은 인자값 
 		item : 전달받은 인자값을 다른이름으로 대체
@@ -87,7 +97,7 @@
 		index : 항목의 인덱스 값을 꺼낼 때 사용할 변수 이름을 지정 
 		separator : 구분자. 한번 이상 반복할 때 반복되는 사이에 해당 문을 넣어줌
 	 -->
-	<update id="deleteByBid" flushCache="true" parameterType="java.util.List">
+	<update id="deleteByBidCk" flushCache="true" parameterType="java.util.List">
 		UPDATE 
 			BOARD 
 		SET 

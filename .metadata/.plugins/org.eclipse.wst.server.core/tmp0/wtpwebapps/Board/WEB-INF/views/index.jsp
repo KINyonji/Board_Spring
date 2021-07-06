@@ -8,6 +8,7 @@
 <html lang="ko">
 <head>
 	<%@ include file="layout/head.jsp"%>
+
 </head>
 <body>
 

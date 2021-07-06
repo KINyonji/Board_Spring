@@ -84,17 +84,28 @@ public class BoardController {
 	}
 	
 	//글 삭제하기
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/deleteOk")
+	public String boardDelete( int b_id, Model model) {    
+		System.out.println(b_id);
+		model.addAttribute("result", boardService.deleteByBid(b_id));
+		return "board/boardDeleteOk";
+	}
+	
+	//체크박스 글 삭제하기
+	@PostMapping(value = "/delete")
 	@ResponseBody
-	public Object boardDelete( @RequestParam(value="checkboxList[]") List<Integer> checkboxList, Model model, BoardDTO dto) {
+	public Object boardDeleteCk( @RequestParam(value="checkboxList[]") List<Integer> checkboxList, Model model, BoardDTO dto) {
         
         Map<String, Object> result = new HashMap<String, Object>();
-
-        result.put("checkboxList", checkboxList);
-        
-        boardService.deleteByBid(result);
-        
+        result.put("checkboxList", checkboxList);      
+        boardService.deleteByBid(result);        
         return null;
+	}
+	
+	//메인화면 검색 
+	@GetMapping(value = "/list")
+	public String keyword(Model model) {
+		return "board/boardList";
 	}
 
 }

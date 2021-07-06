@@ -65,16 +65,15 @@ public class BoardService {
 	};
 
 
-//	public int deleteByBid(int b_id) {
-//		System.out.println("deleteByBid() 들어옴");
-//		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
-//		return dao.deleteByBid(b_id);
-//	}
+	public int deleteByBid(int b_id) {
+		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
+		return dao.deleteByBid(b_id);
+	}
 	
 	//체크박스 글 삭제
 	public int deleteByBid(Map<String, Object> result){
 		dao = sqlSession.getMapper(BoardDAO.class);
-		return dao.deleteByBid(result);
+		return dao.deleteByBidCk(result);
 	}
 
 }

@@ -104,7 +104,7 @@
 					<br>
 					<div class="btnDivCenter">
 						<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="location.href='update?b_id=${list[0].b_id}'">수정하기</button>
-						<button type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="chkDelete(${list[0].b_id})">삭제하기</button>
+						<%-- <button type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="chkDelete(${list[0].b_id})">삭제하기</button> --%>
 					</div>
 			</div>
 		</div>

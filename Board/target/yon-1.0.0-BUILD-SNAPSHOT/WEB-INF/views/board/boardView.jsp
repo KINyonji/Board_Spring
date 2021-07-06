@@ -9,7 +9,7 @@
 <c:choose>
 	<c:when test="${empty list || fn:length(list) == 0 }">
 		<script>
-			alert("해당 정보가 삭제되거나 없습니다");
+			alert("해당 정보가 삭제되거나 없습니다.");
 			history.back();
 		</script>
 	</c:when>
@@ -21,6 +21,8 @@
 <head>
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
 
+	<link href="/resources/board/boardStyle.css" rel="stylesheet">
+	
 	<script>
 		function chkDelete(b_id){
 			// 삭제 여부, 다시 확인하고 진행하기
@@ -39,7 +41,7 @@
   <%@ include file = "/WEB-INF/views/layout/mobile-nav-toggle.jsp"%>
  
   <!-- ======= Header ======= 왼쪽 정렬해 놓은 메뉴들 -->
-  <%@ include file = "/WEB-INF/views/layout/header_sidebar.jsp"%>
+  <%@ include file = "/WEB-INF/views/layout/header_sidebar2.jsp"%>
 
   <!-- ======= content Section ======= -->
 	<main id="main">
@@ -56,7 +58,7 @@
 								<h5 class="card-title mb-0">READ</h5>
 							</div>
 							<div style="float: right">
-								<button type="button" onclick="location.href='list'">←</button>
+								<button type="button" class="btn btn-outline-success btn-xs btn-radius" onclick="history.back()">←</button>
 							</div>
 						</div>
 						<div class="card-body">
@@ -65,19 +67,33 @@
 									<div class="col-md-12">
 										<!-- 글제목 -->
 										<div class="mb-3">
-											<label class="form-label" for="inputTitle">제목</label>
-											<c:out value='${list[0].b_title }' />
+											<div class="row">
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputTitle">제목</div>
+												<div id="minCenter" class="col-md-10 minCenterc">${list[0].b_title }</div>
+											</div>
 										</div>
 										<!-- 작성자 -->
 										<div class="mb-3">
-											<label class="form-label" for="inputrRegname">작성자</label>
-											<c:out value='${list[0].u_regname }' />
+											<div class="row">
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">작성자</div>
+												<!-- 수정자 유무 -->
+												<c:choose>									
+													<c:when test="${empty list[0].u_modifyname }"> 
+														<div id="minCenter" class="col-md-10">${list[0].u_regname }</div>
+													</c:when>										
+													<c:otherwise>
+														<div id="minCenter" class="col-md-10">${list[0].u_modifyname }</div>
+													</c:otherwise>
+												</c:choose>
+											</div>
 										</div>
 										<!-- 글내용 -->
 										<div class="mb-3">
-											<label class="form-label" for="inputContent">내용</label>
-											<div>${list[0].b_content }</div>
-											<c:out value='${list[0].b_content }' />
+											
+												<div class="form-label pl-0 col-md-2 col-2 text-center font-weight-bold" for="inputContent">내용</div>
+												<br>
+												<div class="m-3 p-3" style="border:1px dashed rgba(0,0,0,.125)">${list[0].b_content }</div>
+											
 										</div>
 									</div>
 								</div>
@@ -86,10 +102,10 @@
 						</div>
 					</div>
 					<br>
-					<button onclick="location.href='update?b_id=${list[0].b_id}'">수정하기</button>
-					<button onclick="chkDelete(${list[0].b_id})">삭제하기</button>
-				</div>
-
+					<div class="btnDivCenter">
+						<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="location.href='update?b_id=${list[0].b_id}'">수정하기</button>
+						<button type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="chkDelete(${list[0].b_id})">삭제하기</button>
+					</div>
 			</div>
 		</div>
 		</div>

@@ -16,19 +16,14 @@
 		   <div class="row-vh d-flex flex-column">
 			   	<div class="container" data-aos="zoom-in" data-aos-delay="200">
 			     <div class="subscribe">
-			        <form action="forms/notify.php" method="Get" role="form" class="	">
+			        
 			          <div class="subscribe-form">
-			            <input type="text" name="search-bar"><input type="submit" value="Subscribe">
+			            <input type="text" name="search-bar" id="search-bar"><input type="submit" value="Search" name="btnSearch" id="btnSearch">
 			          </div>
-			        </form>
+			        
 			      </div>
 			    </div>
 		   </div>
 	   </div> 
   </section><!-- End home -->
   
-  <!-- 오른쪽하단에 ↑ 화살표-->
-  <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
-  
-  <!-- 페이징 로딩 -->
-  <div id="preloader"></div>

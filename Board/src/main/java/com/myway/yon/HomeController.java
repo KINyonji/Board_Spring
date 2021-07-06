@@ -22,21 +22,7 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		model.addAttribute("serverTime", formattedDate);
-		
-		String[] arr = { "A", "B", "C" };
-		// 배열 -> List로 변환
-		List<String> list = Arrays.asList(arr);
-
-		System.out.println(list);
+	public String index(Model model) {
 
 		return "index";
 	}

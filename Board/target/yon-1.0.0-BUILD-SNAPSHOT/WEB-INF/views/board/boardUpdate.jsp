@@ -20,7 +20,7 @@
 <html lang="kr">
 <head>
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
-	
+	<link href="/resources/board/boardStyle.css" rel="stylesheet">
 	<!-- 네이버 스마트 에디터 smarteditor2 -->
 	<script type="text/javascript" src="/resources/board/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 	
@@ -32,7 +32,7 @@
   <%@ include file = "/WEB-INF/views/layout/mobile-nav-toggle.jsp"%>
  
   <!-- ======= Header ======= 왼쪽 정렬해 놓은 메뉴들 -->
-  <%@ include file = "/WEB-INF/views/layout/header_sidebar.jsp"%>
+  <%@ include file = "/WEB-INF/views/layout/header_sidebar2.jsp"%>
 
   <!-- ======= content Section ======= -->
 	<main id="main">
@@ -49,11 +49,11 @@
 								<h5 class="card-title mb-0">WRITE</h5>
 							</div>
 							<div style="float: right">
-								<button type="button" onclick="historyBack()">←</button>
+								<button type="button" class="btn btn-outline-success btn-xs btn-radius" onclick="history.back()">←</button>
 							</div>
 						</div>
 						<div class="card-body">
-							<form name="frm" action="updateOk" method="post" onsubmit="">
+							<form name="frm" id="writeForm" action="updateOk" method="post" onsubmit="">
 								<div class="row">
 									<div class="col-md-12">
 										<!-- 글제목 -->
@@ -65,8 +65,17 @@
 										<!-- 작성자 -->
 										<div class="mb-3">
 											<label class="form-label" for="inputrRegname">작성자</label>
-											<input type="text" name="u_modifyname" class="form-control" id="inputrRegname"
+											<!-- 수정자 유무 -->
+												<c:choose>									
+													<c:when test="${empty list[0].u_modifyname }"> 
+														<input type="text" name="u_modifyname" class="form-control" id="inputrRegname"
 												placeholder="작성자" value="${list[0].u_regname}">
+													</c:when>										
+													<c:otherwise>
+														<input type="text" name="u_modifyname" class="form-control" id="inputrRegname"
+												placeholder="작성자" value="${list[0].u_modifyname}">
+													</c:otherwise>
+												</c:choose>
 										</div>
 										<!-- 글내용 -->
 										<div class="mb-3">
@@ -79,7 +88,9 @@
 									</div>
 								</div>
 								<input type="hidden" name="b_id" value="${list[0].b_id}">
-								<button type="submit" class="btn btn-primary" onclick="submitContents()">수정하기</button>
+								<div class="btnDivCenter">
+									<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="submitContents()">수정하기</button>
+								</div>
 							</form>
 						</div>
 					</div>
@@ -139,28 +150,27 @@
 			alert(sHTML);
 		}
 
-		function submitContents(elClickedObj) {
+		//내용 submit이 될때
+		function submitContents() {
+			var elClickedObj = $("#writeForm");
+			
 			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
-	/* 		document.getElementById("ir1").submit(); */
-			// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-
-			try {
-				elClickedObj.form.submit();
-			} catch (e) {
+			
+			var content = document.getElementById("ir1").value;
+			// 에디터의 내용에 대한 유효성 검증
+			if(content == "" || content == null || content == '&nbsp;' || content == '<br>' || content == '<br/>' || content == '<p>&nbsp;</p>' || content == '<p><br></p>') { 
+					alert("글 내용을 작성해주세요."); 
+					oEditors.getById["ir1"].exec("FOCUS"); //포커싱 
+					return false; 				
 			}
+			try {
+	            elClickedObj.submit();
+	        } catch(e) {}
 		}
-
-		function setDefaultFont() {
-			var sDefaultFont = '궁서';
-			var nFontSize = 24;
-			oEditors.getById["ir1"].setDefaultFont(sDefaultFont, nFontSize);
-		}
-		
-		 function historyBack() {
-			 history.back();
-		} 
+		 <!-- 네이버 스마트 에디터 smarteditor2 END-->	
 	</script>
-
+	
+	<script  src="/resources/js/validator.js"></script> 
 
 </body>
 
