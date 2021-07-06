@@ -94,7 +94,7 @@
 			B_DELETE_NY = 'Y'
 		WHERE 
 			B_ID 
-		IM
+		IN
 			<foreach collection="checkboxList" item="b_id" index="index" separator="," open="(" close=")">
 			 #{b_id}
 			</foreach>

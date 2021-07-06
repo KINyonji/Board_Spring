@@ -51,7 +51,7 @@
 										<td class="text-center">${l.b_id }</td>
 										<td class="text-center pointer" onclick="selectByB_ID(${l.b_id })" style="">${l.b_id }</td>
 										<td class="pointer" onclick="selectByB_ID(${l.b_id })" >${l.b_title }</td>
-										<!-- 수정날짜 -->
+										<!-- 수정날짜 유무 -->
 										<c:choose>
 											<c:when test="${empty l.b_modifydate }">
 												<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${l.b_regdate }"/></td>
@@ -60,7 +60,7 @@
 												<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${l.b_modifydate }"/></td>
 											</c:otherwise>
 										</c:choose>
-										<!-- 수정자 -->
+										<!-- 수정자 유무 -->
 										<c:choose>									
 											<c:when test="${empty l.u_modifyname }"> 
 												<td>${l.u_regname }</td>
@@ -76,7 +76,7 @@
 							</tbody>
 						</table>
 					</div>
-					
+					<br>
 					<div class="btnDivRight">
 						<!-- 새글쓰기 버튼 -->
 						<button  type="button" class="btn btn-outline-success btn-sm btn-radius writeBtn" onclick="location.href = 'write'">새글쓰기</button>
@@ -137,8 +137,7 @@
 	                 data        :   objParams,
 	                 success     :   function(result){
 	
-	                     if(result.code == "OK") {
-	                         alert(retVal.message);
+	                     if(result=1) {
 	                         location.href = "/board/List";
 	                     } else {
 	                         alert(retVal.message);
@@ -156,9 +155,6 @@
 		
 	</script>
 	
-	<!-- DataTable -->
-	<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css" />
-	<script  src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>
 	
 	<link href="/resources/board/boardStyle.css" rel="stylesheet">
  	<script  src="/resources/board/board.js"></script> 

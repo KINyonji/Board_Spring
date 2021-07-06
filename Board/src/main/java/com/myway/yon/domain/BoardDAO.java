@@ -26,6 +26,6 @@ public interface BoardDAO {
 
 	//글 삭제
 //	int deleteByBid(int b_id);
-	List<BoardDTO> deleteByBid(Map<String, Object> result);
+	int deleteByBid(Map<String, Object> result);
 
 }

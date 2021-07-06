@@ -1,5 +1,5 @@
 INDEX VERSION 1.131
-C:\Users\KimYeonJi\Documents\github\Board_Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2101932366.index
+C:\Study\SpringBoardProj\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2101932366.index
 \Board\src\main\java
-C:\Users\KimYeonJi\Documents\github\Board_Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1136905628.index
+C:\Study\SpringBoardProj\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1136905628.index
 \Board\src\main\java

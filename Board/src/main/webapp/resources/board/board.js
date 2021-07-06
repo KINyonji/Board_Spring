@@ -27,7 +27,10 @@ var lang_kor = {
 
 $(document).ready(function() {
 
-	/* 게시판 목록 DataTable & 체크박스 */
+
+/*--------------------------------------------------------------
+					게시판 목록 DataTable & 체크박스
+--------------------------------------------------------------*/
 	var table = $('#boardList').DataTable({
 		aaSorting : [], /*초기화 시 정렬 비활성화시키기*/
 		
@@ -53,7 +56,9 @@ $(document).ready(function() {
 		]
 	});
 
-	// 전체체크
+
+	/*----------------------- 전체체크 ------------------------------*/
+	
 	// id가 select-all을 클릭했을 때, checkbox type의 input의 속성을 checked가 되게 한다.
 	$('#select-all').on('click', function() {
 
@@ -83,47 +88,16 @@ $(document).ready(function() {
 	});
 
 	/* 게시판 목록 DataTable & 체크박스 END */
-	
+		
+   
+/*--------------------------------------------------------------
+					? 
+--------------------------------------------------------------*/
+
+
 });
 
-
-/* 유효성검사 jquery validation */
-
-$(function(){
-    $("#writeForm").validate({
-        
-        // 체크할 항목들의 룰 설정
-        rules: {
-            b_title: {
-                required : true,
-                rangelength : [2,30]
-            },
-            u_regname: {
-                required : true,
-                rangelength : [2,30]
-            },
-            b_content: {
-                required : true,
-            }
-        },
-        //규칙체크 실패시 출력될 메시지
-        messages : {
-            b_title: {
-                required : "제목을 입력해주세요",
-                rangelength : "제목은 {0}글자에서 {1}자까지 입력 가능합니다",
-            },
-            u_regname: {
-                required : "작성자를 입력해주세요",
-                rangelength : "작성자는 {0}글자에서 {1}자까지 입력 가능합니다"
-            },
-            b_content: {
-                required : "내용을 입력해주세요",
-            }
-        }
-    });
-})
-
-
+ 
 
 
 

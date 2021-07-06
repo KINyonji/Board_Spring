@@ -53,7 +53,7 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<form name="frm" action="updateOk" method="post" onsubmit="">
+							<form name="frm" id="writeForm" action="updateOk" method="post" onsubmit="">
 								<div class="row">
 									<div class="col-md-12">
 										<!-- 글제목 -->
@@ -65,8 +65,17 @@
 										<!-- 작성자 -->
 										<div class="mb-3">
 											<label class="form-label" for="inputrRegname">작성자</label>
-											<input type="text" name="u_modifyname" class="form-control" id="inputrRegname"
+											<!-- 수정자 유무 -->
+												<c:choose>									
+													<c:when test="${empty list[0].u_modifyname }"> 
+														<input type="text" name="u_modifyname" class="form-control" id="inputrRegname"
 												placeholder="작성자" value="${list[0].u_regname}">
+													</c:when>										
+													<c:otherwise>
+														<input type="text" name="u_modifyname" class="form-control" id="inputrRegname"
+												placeholder="작성자" value="${list[0].u_modifyname}">
+													</c:otherwise>
+												</c:choose>
 										</div>
 										<!-- 글내용 -->
 										<div class="mb-3">
@@ -161,8 +170,10 @@
 		 function historyBack() {
 			 history.back();
 		} 
+		 <!-- 네이버 스마트 에디터 smarteditor2 END-->	
 	</script>
-
+	
+	<script  src="/resources/js/validator.js"></script> 
 
 </body>
 

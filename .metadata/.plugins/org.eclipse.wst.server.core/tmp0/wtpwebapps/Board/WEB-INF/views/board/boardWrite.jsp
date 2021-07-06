@@ -61,7 +61,7 @@
 											<label class="form-label" for="inputContent">내용</label>
 											
 											<!-- 네이버 스마트 에디터 smarteditor2 -->	
-											<textarea name="b_content" id="ir1" rows="10" cols="100" style="width:100%; min-width:260px; display:none;" required></textarea>
+											<textarea name="b_content" id="ir1" rows="10" cols="50" style="width:100%; min-width:260px; display:none;"></textarea>
 											
 										</div>
 									</div>
@@ -103,7 +103,7 @@
 			htParams : {
 				bUseToolbar : true, // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 				bUseVerticalResizer : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-				bUseModeChanger : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+				bUseModeChanger : false, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
 				//bSkipXssFilter : true,		// client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
 				//aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
 				fOnBeforeUnload : function() {
@@ -147,7 +147,8 @@
 		<!-- 네이버 스마트 에디터 smarteditor2 END-->	
 	</script>
 
-
+	<script  src="/resources/js/validator.js"></script> 
+	
 </body>
 
 </html>

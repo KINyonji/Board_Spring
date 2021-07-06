@@ -32,7 +32,5 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-	<!--  jquery validate를 사용하기 위해서는 jquery library가 있어야 함 --> 
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="jquery.validate.min.js"></script>
-	<script type="text/javascript" src="additional-methods.min.js"></script>
+  
+

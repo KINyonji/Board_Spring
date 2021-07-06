@@ -20,7 +20,9 @@
 <html lang="kr">
 <head>
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
-<link href="/resources/board/boardStyle.css" rel="stylesheet">
+
+	<link href="/resources/board/boardStyle.css" rel="stylesheet">
+	
 	<script>
 		function chkDelete(b_id){
 			// 삭제 여부, 다시 확인하고 진행하기
@@ -66,21 +68,30 @@
 										<!-- 글제목 -->
 										<div class="mb-3">
 											<div class="row">
-												<div class="form-label col-md-2 text-center" for="inputTitle">제목</div>
-												<div class="col-md-10">${list[0].b_title }</div>
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputTitle">제목</div>
+												<div id="minCenter" class="col-md-10 minCenterc">${list[0].b_title }</div>
 											</div>
 										</div>
 										<!-- 작성자 -->
 										<div class="mb-3">
 											<div class="row">
-												<div class="form-label col-md-2 text-center" for="inputrRegname">작성자</div>
-												<div class="col-md-10">${list[0].u_regname }</div>
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">작성자</div>
+												<!-- 수정자 유무 -->
+												<c:choose>									
+													<c:when test="${empty list[0].u_modifyname }"> 
+														<div id="minCenter" class="col-md-10">${list[0].u_regname }</div>
+													</c:when>										
+													<c:otherwise>
+														<div id="minCenter" class="col-md-10">${list[0].u_modifyname }</div>
+													</c:otherwise>
+												</c:choose>
 											</div>
 										</div>
 										<!-- 글내용 -->
 										<div class="mb-3">
 											
-												<div class="form-label pl-0 col-md-2 text-center" for="inputContent">내용</div>
+												<div class="form-label pl-0 col-md-2 col-2 text-center font-weight-bold" for="inputContent">내용</div>
+												<br>
 												<div class="m-3 p-3" style="border:1px dashed rgba(0,0,0,.125)">${list[0].b_content }</div>
 											
 										</div>

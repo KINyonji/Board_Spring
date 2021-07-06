@@ -15,3 +15,15 @@
 
   <!-- Template Main JS File -->
   <script src="/resources/assets/js/main.js"></script>
+  
+
+    <!-- DataTable -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css" />
+	<script  src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>
+	
+  	<!--  jquery validate --> 
+ 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+     
+
+	
