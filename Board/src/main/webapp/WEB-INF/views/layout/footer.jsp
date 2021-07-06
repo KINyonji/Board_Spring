@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+    <!-- 오른쪽하단에 ↑ 화살표-->
+  <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+  
+  <!-- 페이징 로딩 -->
+  <div id="preloader"></div>
+    
 <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
