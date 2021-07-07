@@ -5,9 +5,9 @@
   	 <!-- ======= 메인 로고 ======= -->
 	  <div style="height: 40vh">
 	    <div class="row-vh d-flex flex-column">
-		    <div class="container mt-5" data-aos="zoom-in" data-aos-delay="100">
+		    <div class="container mt-5 pt-5" data-aos="zoom-in" data-aos-delay="100">
 		      <h1>YJ's Spring</h1>
-		      <p>I'm <span class="typed" data-typed-items="Developer, Freelancer"></span></p>
+		      <p>I'm <span class="typed" data-typed-items="Developer, Person, Servant"></span></p>
 		    </div>
 	    </div>
 	  </div>
@@ -16,11 +16,11 @@
 		   <div class="row-vh d-flex flex-column">
 			   	<div class="container" data-aos="zoom-in" data-aos-delay="200">
 			     <div class="subscribe">
-			        
+			         <form action="board/list" method="Get" role="form" >
 			          <div class="subscribe-form">
-			            <input type="text" name="search-bar" id="search-bar"><input type="submit" value="Search" name="btnSearch" id="btnSearch">
+			            <input type="text" name="keyword" id="keyword"><input type="submit" value="Search">
 			          </div>
-			        
+			        </form>
 			      </div>
 			    </div>
 		   </div>
