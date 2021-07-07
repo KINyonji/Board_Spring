@@ -16,15 +16,9 @@
 		   <div class="row-vh d-flex flex-column">
 			   	<div class="container" data-aos="zoom-in" data-aos-delay="200">
 			     <div class="subscribe">
-<<<<<<< HEAD
 			         <form action="board/list" method="Get" role="form" >
 			          <div class="subscribe-form">
 			            <input type="text" name="keyword" id="keyword"><input type="submit" value="Search">
-=======
-			        <form action="forms/notify.php" method="Get" role="form" class="	">
-			          <div class="subscribe-form">
-			            <input type="text" name="search-bar"><input type="submit" value="Subscribe">
->>>>>>> parent of 132cf16 (home 검색버튼)
 			          </div>
 			        </form>
 			      </div>
