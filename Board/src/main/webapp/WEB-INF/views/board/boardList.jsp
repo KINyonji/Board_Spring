@@ -30,8 +30,6 @@
 			          <h2>Tech</h2>
 			        </div>
 			        
-					
-					<%-- <form id="frm-example" action="delete" method="get"> --%>
 					<div>
 						<!-- DataTales -->
 						<table id="boardList" class="table table-bordered table-hover"  style='width:100%; display:inline-block'>
@@ -46,9 +44,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${list}" var="l">
+							
+							 	<c:forEach items="${list}" var="l">
 									<tr>
-										<td class="text-center">${l.b_id }</td>
+										<td class="text-center"></td>
 										<td class="text-center pointer" onclick="selectByB_ID(${l.b_id })" style="">${l.b_id }</td>
 										<td class="pointer" onclick="selectByB_ID(${l.b_id })" >${l.b_title }</td>
 										<!-- 수정날짜 유무 -->
@@ -72,7 +71,9 @@
 										
 										<th>${l.b_viewcnt }</th>
 									</tr>
-								</c:forEach>
+								</c:forEach> 
+								
+								
 							</tbody>
 						</table>
 					</div>
