@@ -75,16 +75,18 @@
 										<!-- 작성자 -->
 										<div class="mb-3">
 											<div class="row">
-												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">작성자</div>
-												<!-- 수정자 유무 -->
-												<c:choose>									
-													<c:when test="${empty list[0].u_modifyname }"> 
-														<div id="minCenter" class="col-md-10">${list[0].u_regname }</div>
-													</c:when>										
-													<c:otherwise>
-														<div id="minCenter" class="col-md-10">${list[0].u_modifyname }</div>
-													</c:otherwise>
-												</c:choose>
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">등록자</div>
+												<div id="minCenter" class="col-md-4">${list[0].u_regname }</div>
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">등록날짜</div>
+												<div id="minCenter" class="col-md-4">${list[0].b_regdate }</div>
+											</div>
+										</div>
+										<div class="mb-3">
+											<div class="row">
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">수정자</div>
+												<div id="minCenter" class="col-md-4">${list[0].u_modifyname }</div>
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">수정날짜</div>
+												<div id="minCenter" class="col-md-4">${list[0].b_modifydate }</div>
 											</div>
 										</div>
 										<!-- 글내용 -->
@@ -104,7 +106,7 @@
 					<br>
 					<div class="btnDivCenter">
 						<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="location.href='update?b_id=${list[0].b_id}'">수정하기</button>
-						<button type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="chkDelete(${list[0].b_id})">삭제하기</button>
+						<%-- <button type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="chkDelete(${list[0].b_id})">삭제하기</button> --%>
 					</div>
 			</div>
 		</div>

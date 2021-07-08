@@ -70,7 +70,7 @@
 											</c:otherwise>
 										</c:choose>
 										
-										<th>${l.b_delete_ny }</th>
+										<th>${l.b_viewcnt }</th>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -97,6 +97,12 @@
   <%@ include file = "/WEB-INF/views/layout/script.jsp"%>
 
 	<script type="text/javascript">
+	
+	//홈화면 검색 키워드\r\n");
+  		window.onload = function () {
+  			 $('.dataTables_filter input').val("${param.keyword}").keyup();
+  		};
+	
 		//해당컬럼을 눌렀을때 상세보기 페이지로 이동
 		function selectByB_ID(b_id) {
 			location.href = "view?b_id=" + b_id;
@@ -104,7 +110,7 @@
 		
 		function checkDel() {
 
-			var deleteCk = confirm("정맣 삭제하시겠습니까?");
+			var deleteCk = confirm("정말 삭제하시겠습니까?");
 			
 			if(deleteCk){
 				 var checkboxArray = new Array(); //체크박스값을 넣을 배열생성
@@ -136,6 +142,7 @@
 		             });
 	             }
 			}else{
+				//삭제확인창 취소했을때
 				  return;
 			}
 		}

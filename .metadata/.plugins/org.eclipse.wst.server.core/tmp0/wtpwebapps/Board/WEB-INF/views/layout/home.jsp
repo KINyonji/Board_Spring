@@ -16,11 +16,11 @@
 		   <div class="row-vh d-flex flex-column">
 			   	<div class="container" data-aos="zoom-in" data-aos-delay="200">
 			     <div class="subscribe">
-			        
+			        <form action="board/list" method="Get" role="form" >
 			          <div class="subscribe-form">
-			            <input type="text" name="search-bar" id="search-bar"><input type="submit" value="Search" name="btnSearch" id="btnSearch">
+			            <input type="text" name="keyword" id="keyword"><input type="submit" value="Search">
 			          </div>
-			        
+			        </form>
 			      </div>
 			    </div>
 		   </div>
