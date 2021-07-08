@@ -97,11 +97,4 @@ public class BoardController {
         boardService.deleteByBid(result);        
         return null;
 	}
-	
-	//메인화면 검색 
-	@GetMapping(value = "/list")
-	public String keyword(Model model) {
-		return "board/boardList";
-	}
-
 }
