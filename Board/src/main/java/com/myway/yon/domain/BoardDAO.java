@@ -25,7 +25,9 @@ public interface BoardDAO {
 	int update(int b_id, @Param("a")BoardDTO dto);
 
 	//글 삭제
-//	int deleteByBid(int b_id);
-	int deleteByBid(Map<String, Object> result);
+	int deleteByBid(int b_id);
+	
+	//체크박스 글 삭제
+	int deleteByBidCk(Map<String, Object> result);
 
 }

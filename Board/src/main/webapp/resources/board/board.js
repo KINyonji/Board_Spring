@@ -26,7 +26,8 @@ var lang_kor = {
     };
 
 $(document).ready(function() {
-
+	
+	
 
 /*--------------------------------------------------------------
 					게시판 목록 DataTable & 체크박스
@@ -56,12 +57,14 @@ $(document).ready(function() {
 		]
 	});
 
+	
 
 	/*----------------------- 전체체크 ------------------------------*/
 	
 	// id가 select-all을 클릭했을 때, checkbox type의 input의 속성을 checked가 되게 한다.
 	$('#select-all').on('click', function() {
-
+		
+	
 		// Check/uncheck all checkboxes in the table
 		/* search: 'applied' 라고 설정하면 필터링된 데이터만 사용하구요. 
 		page: 'current' 라고 설정하면 현재 페이지의 데이터만 사용하는 등의 옵션 */

@@ -1,3 +1,6 @@
 #Tomcat publish data
-#Thu Jul 08 09:10:19 KST 2021
+#Thu Jul 08 09:31:30 KST 2021
+=\=\=\=\=\=\=
+>>>>>>>=743d4188c370fc825af31f90b0d6c9dbe234553d
 org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\UMC\\.m2\\repository\\org\\springframework\\spring-web\\5.2.15.RELEASE\\spring-web-5.2.15.RELEASE.jar=WEB-INF/lib/spring-web-5.2.15.RELEASE.jar
+<<<<<<<=HEAD

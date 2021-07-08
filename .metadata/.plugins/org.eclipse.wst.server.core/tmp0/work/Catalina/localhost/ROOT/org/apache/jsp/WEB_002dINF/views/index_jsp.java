@@ -166,6 +166,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  \r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
       out.write("\r\n");
@@ -206,9 +207,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  	 <!-- ======= 메인 로고 ======= -->\r\n");
       out.write("	  <div style=\"height: 40vh\">\r\n");
       out.write("	    <div class=\"row-vh d-flex flex-column\">\r\n");
-      out.write("		    <div class=\"container mt-5\" data-aos=\"zoom-in\" data-aos-delay=\"100\">\r\n");
+      out.write("		    <div class=\"container mt-5 pt-5\" data-aos=\"zoom-in\" data-aos-delay=\"100\">\r\n");
       out.write("		      <h1>YJ's Spring</h1>\r\n");
-      out.write("		      <p>I'm <span class=\"typed\" data-typed-items=\"Developer, Freelancer\"></span></p>\r\n");
+      out.write("		      <p>I'm <span class=\"typed\" data-typed-items=\"Developer, Person, Servant\"></span></p>\r\n");
       out.write("		    </div>\r\n");
       out.write("	    </div>\r\n");
       out.write("	  </div>\r\n");
@@ -227,7 +228,12 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("		   </div>\r\n");
       out.write("	   </div> \r\n");
       out.write("  </section><!-- End home -->\r\n");
-      out.write("  ");
+      out.write("  \r\n");
+      out.write("  <!-- 오른쪽하단에 ↑ 화살표-->\r\n");
+      out.write("  <a href=\"#\" class=\"back-to-top\"><i class=\"bx bx-up-arrow-alt\"></i></a>\r\n");
+      out.write("  \r\n");
+      out.write("  <!-- 페이징 로딩 -->\r\n");
+      out.write("  <div id=\"preloader\"></div>");
       out.write("\r\n");
       out.write("\r\n");
       out.write("	<!-- ======= content Section ======= -->\r\n");
@@ -236,14 +242,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("	<!-- ======= Footer ======= -->\r\n");
       out.write("	");
       out.write("\r\n");
-      out.write("    \r\n");
-      out.write("    \r\n");
-      out.write("    <!-- 오른쪽하단에 ↑ 화살표-->\r\n");
-      out.write("  <a href=\"#\" class=\"back-to-top\"><i class=\"bx bx-up-arrow-alt\"></i></a>\r\n");
-      out.write("  \r\n");
-      out.write("  <!-- 페이징 로딩 -->\r\n");
-      out.write("  <div id=\"preloader\"></div>\r\n");
-      out.write("    \r\n");
       out.write("<!-- ======= Footer ======= -->\r\n");
       out.write("  <footer id=\"footer\">\r\n");
       out.write("    <div class=\"container\">\r\n");

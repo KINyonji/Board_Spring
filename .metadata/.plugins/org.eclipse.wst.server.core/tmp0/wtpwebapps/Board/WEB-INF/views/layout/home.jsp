@@ -5,9 +5,9 @@
   	 <!-- ======= 메인 로고 ======= -->
 	  <div style="height: 40vh">
 	    <div class="row-vh d-flex flex-column">
-		    <div class="container mt-5" data-aos="zoom-in" data-aos-delay="100">
+		    <div class="container mt-5 pt-5" data-aos="zoom-in" data-aos-delay="100">
 		      <h1>YJ's Spring</h1>
-		      <p>I'm <span class="typed" data-typed-items="Developer, Freelancer"></span></p>
+		      <p>I'm <span class="typed" data-typed-items="Developer, Person, Servant"></span></p>
 		    </div>
 	    </div>
 	  </div>
@@ -27,3 +27,8 @@
 	   </div> 
   </section><!-- End home -->
   
+  <!-- 오른쪽하단에 ↑ 화살표-->
+  <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+  
+  <!-- 페이징 로딩 -->
+  <div id="preloader"></div>

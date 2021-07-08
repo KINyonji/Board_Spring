@@ -102,7 +102,7 @@
   		window.onload = function () {
   			 $('.dataTables_filter input').val("${param.keyword}").keyup();
   		};
-	
+
 		//해당컬럼을 눌렀을때 상세보기 페이지로 이동
 		function selectByB_ID(b_id) {
 			location.href = "view?b_id=" + b_id;

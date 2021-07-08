@@ -263,14 +263,6 @@ public final class boardList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <!-- ======= Footer ======= -->\r\n");
       out.write("  ");
       out.write("\r\n");
-      out.write("    \r\n");
-      out.write("    \r\n");
-      out.write("    <!-- 오른쪽하단에 ↑ 화살표-->\r\n");
-      out.write("  <a href=\"#\" class=\"back-to-top\"><i class=\"bx bx-up-arrow-alt\"></i></a>\r\n");
-      out.write("  \r\n");
-      out.write("  <!-- 페이징 로딩 -->\r\n");
-      out.write("  <div id=\"preloader\"></div>\r\n");
-      out.write("    \r\n");
       out.write("<!-- ======= Footer ======= -->\r\n");
       out.write("  <footer id=\"footer\">\r\n");
       out.write("    <div class=\"container\">\r\n");
