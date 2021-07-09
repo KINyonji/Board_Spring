@@ -44,7 +44,7 @@
 								</tr>
 							</thead>
 							<tbody>
-							<%-- 
+							
 							 	<c:forEach items="${list}" var="l">
 									<tr>
 										<td class="text-center"></td>
@@ -71,7 +71,7 @@
 										
 										<th>${l.b_viewcnt }</th>
 									</tr>
-								</c:forEach>  --%>
+								</c:forEach> 
 								
 								
 							</tbody>
@@ -126,6 +126,7 @@
 	             if(checkboxArray.length == 0){
 	            	 alert("선택된 글이 없습니다.");
 	             }else{
+	            	 console.log("JSON.stringify(pdata):"+JSON.stringify(objParams))
 		             //ajax 호출
 		             $.ajax({
 		                 url         :   "/board/delete",

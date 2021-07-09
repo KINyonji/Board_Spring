@@ -11,12 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myway.yon.domain.BoardDTO;
+import com.myway.yon.domain.DataTablesDTO;
 import com.myway.yon.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -45,18 +48,18 @@ public class BoardController {
 	//ajax로 게시판 목록 조회
 	@RequestMapping(value = "/listAjax")
 	@ResponseBody 
-	public Object getBoardList(){
-			  
+	public Object getBoardList(@RequestBody DataTablesDTO dataTablesDTO){
+		
+		System.out.println("dataTablesDTO :"+dataTablesDTO);
+		
 		  Map<String, Object> mp = new HashMap<String, Object>();
 		  //반드시 "data" 라는 이름으로 오브젝트를 넘겨야 한다
 		  mp.put("data", boardService.listAll());
-
+		 
 		  System.out.println("mp :"+mp);
 		  return mp;
 	}
-	
-
-	
+		
 	//글쓰기
 	@RequestMapping(value = "/write")
 	public String boardWrite() {

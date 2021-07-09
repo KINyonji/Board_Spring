@@ -40,9 +40,9 @@ $(document).ready(function() {
 		pagingType : "full_numbers", //'First', 'Previous', 'Next', 'Last' buttons
 		responsive: true, //반응형
         autoWidth: false, //자동 컬럼 폭을 계산
-        processing: true, //서버와 통신 시 응답을 받기 전이라는 ui를 띄울 것인지 여부
         ordering: true, //정렬기능
-        //serverSide: true, //server와 통신여부
+        processing: true, //서버와 통신 시 응답을 받기 전이라는 ui를 띄울 것인지 여부
+        serverSide: true, //server와 통신여부
         searching: false, //검색기능
 		language : lang_kor, //글씨 바꾸기
 		/*stateSave: true, 상태 저장하기 */
@@ -50,7 +50,10 @@ $(document).ready(function() {
 			/* "/example" 로 ajax 요청을 하여 dataSrc를 받아옵니다. 그리고 이를 columns으로 넣는 간단한 코드입니다.	*/
             url:"/board/listAjax",
             type: "POST",
-            data:  JSON.stringify(),
+            data :  function(pdata){
+				JSON.stringify(pdata);
+				console.log("JSON.stringify(pdata):"+JSON.stringify(pdata))
+			},
   			contentType:"application/json; charset=UTF-8",
             dataType: "JSON",
     	    error:function(request,status,error){
@@ -71,18 +74,18 @@ $(document).ready(function() {
 				width: '5%',
 				searchable: false, //검색
 				orderable: false, //컬럼정렬
-				className: 'dt-body-center',//dt-body-center: 가운데로 정렬하기
+				className: 'text-center' ,//text-center: 가운데로 정렬하기
 				render: function(data, type, full, meta) {
 					return '<input type="checkbox" name="b_id" value="' + data + '" style="cursor:pointer">';
 				}
 			},
 			/* width: 컬럼에따라 크기 조정/ hidden-xs:좁아지면 숨기기 */
-			{ targets: [1], width: '5%', },
-			{ targets: [2], width: '50%', },
+			{ targets: [1], width: '5%', className: 'text-center'},
+			{ targets: [2], width: '50%'},
 			{ 
 				targets: [3], 
 				width: '20%', 
-				className: 'hidden-xs',
+				className: 'hidden-xs text-center',
 				/*render: function(data, type, full, meta) {
 					if('B_MODIFYDATE'.length>0){ 
                        return '<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${l.b_regdate }"/>'
@@ -91,7 +94,7 @@ $(document).ready(function() {
 				}	*/
 			},
 			{ targets: [4], width: '10%', },
-			{ targets: [5], width: '10%', className: 'hidden-xs'}
+			{ targets: [5], width: '10%', className: 'hidden-xs text-center'}
 		]
 	});
 

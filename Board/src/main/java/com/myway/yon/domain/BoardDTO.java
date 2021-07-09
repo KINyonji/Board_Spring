@@ -5,12 +5,14 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardDTO {
+public class BoardDTO extends DataTablesDTO{
 	
 	private int b_id;
 	private String b_title;
