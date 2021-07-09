@@ -45,6 +45,20 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+	@RequestMapping(path = "/ApplicationName/Data/Person", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public List<BoardDTO> getPersonData() {
+	    System.out.println("I was called!");
+
+	    SearchCriteria searchCriteria = new SearchCriteria();
+	    searchCriteria.setOrderByString("name");
+	    searchCriteria.setUsePaging(false);
+	    searchCriteria.setFIRST_NUMBER(null);
+	    searchCriteria.setLAST_NUMBER(null);
+
+	    return boardService.getPeople(searchCriteria); //returns an ArrayList<Person>
+	}
+	
 	//글쓰기
 	@RequestMapping(value = "/write")
 	public String boardWrite() {

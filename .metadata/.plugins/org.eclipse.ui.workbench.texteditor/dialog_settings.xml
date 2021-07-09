@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="href"/>
+		<item key="selection" value="data"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="data"/>
 			<item value="href"/>
 			<item value="src"/>
 			<item value="code.jquery.com/"/>
@@ -22,7 +23,6 @@
 			<item value="&#x09;/**"/>
 			<item value="sorting_1"/>
 			<item value="table"/>
-			<item value="dataTable"/>
 		</list>
 		<list key="replacehistory">
 			<item value="t/header_sidebar2.jsp&quot;%&gt;"/>
@@ -43,10 +43,10 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1466"/>
-		<item key="DIALOG_Y_ORIGIN" value="142"/>
+		<item key="DIALOG_X_ORIGIN" value="157"/>
+		<item key="DIALOG_Y_ORIGIN" value="125"/>
 		<item key="DIALOG_WIDTH" value="340"/>
-		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_HEIGHT" value="459"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">

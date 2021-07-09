@@ -45,14 +45,12 @@ $(document).ready(function() {
         //serverSide: true, //server와 통신여부
         searching: false, //검색기능
 		language : lang_kor, //글씨 바꾸기
-		/*stateSave: true, 상태 저장하기 
+		/*stateSave: true, 상태 저장하기 */
 		ajax : {
-            url:"/getUserList.do",
-            type:"POST",
-            data: function (d) {
-                d.userStatCd = "NR";
-            }
-         },*/
+            url:"/list",
+            type:"Get",
+            dataSrc :''
+         },
 		columns : [ // 테이블에 맵핑할 리턴 파라미터명 순서
             {data: "B_ID"},
             {data: "B_ID"},
