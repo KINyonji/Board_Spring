@@ -30,8 +30,6 @@
 			          <h2>Tech</h2>
 			        </div>
 			        
-					
-					<%-- <form id="frm-example" action="delete" method="get"> --%>
 					<div>
 						<!-- DataTales -->
 						<table id="boardList" class="table table-bordered table-hover"  style='width:100%; display:inline-block'>
@@ -46,9 +44,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${list}" var="l">
+							
+							 	<c:forEach items="${list}" var="l">
 									<tr>
-										<td class="text-center">${l.b_id }</td>
+										<td class="text-center"></td>
 										<td class="text-center pointer" onclick="selectByB_ID(${l.b_id })" style="">${l.b_id }</td>
 										<td class="pointer" onclick="selectByB_ID(${l.b_id })" >${l.b_title }</td>
 										<!-- 수정날짜 유무 -->
@@ -70,9 +69,11 @@
 											</c:otherwise>
 										</c:choose>
 										
-										<th>${l.b_delete_ny }</th>
+										<th>${l.b_viewcnt }</th>
 									</tr>
-								</c:forEach>
+								</c:forEach> 
+								
+								
 							</tbody>
 						</table>
 					</div>
@@ -98,11 +99,10 @@
 
 	<script type="text/javascript">
 	
-		//홈화면 검색 키워드
-		window.onload = function () {
-			$('.dataTables_filter input').val('${param.keyword}').keyup();
-		}	
-		
+	//홈화면 검색 키워드\r\n");
+  		window.onload = function () {
+  			 $('.dataTables_filter input').val("${param.keyword}").keyup();
+  		};
 		//해당컬럼을 눌렀을때 상세보기 페이지로 이동
 		function selectByB_ID(b_id) {
 			location.href = "view?b_id=" + b_id;
@@ -110,7 +110,7 @@
 		
 		function checkDel() {
 
-			var deleteCk = confirm("정맣 삭제하시겠습니까?");
+			var deleteCk = confirm("정말 삭제하시겠습니까?");
 			
 			if(deleteCk){
 				 var checkboxArray = new Array(); //체크박스값을 넣을 배열생성

@@ -21,16 +21,6 @@
 	        B_DELETE_NY = 'N'	
 		ORDER BY
 			B_REGDATE DESC
-		AND
-			<if test="sSortCol != null">
-                   order by ${sSortCol}  
-            </if>
-            <if test="sSortCol != null and sSortDir_0 != null">
-                   ${sSortDir_0}  
-            </if>
-            <if test="iDisplayStart != null and iDisplayLength != null">
-                LIMIT ${iDisplayStart} , ${iDisplayLength}
-            </if>
 	</select>
 	
 	<!-- 글작성 insert(DTO) 메소드 -->

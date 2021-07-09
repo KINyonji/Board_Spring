@@ -44,7 +44,7 @@
 								</tr>
 							</thead>
 							<tbody>
-							
+							<%-- 
 							 	<c:forEach items="${list}" var="l">
 									<tr>
 										<td class="text-center"></td>
@@ -71,7 +71,7 @@
 										
 										<th>${l.b_viewcnt }</th>
 									</tr>
-								</c:forEach> 
+								</c:forEach>  --%>
 								
 								
 							</tbody>

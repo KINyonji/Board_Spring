@@ -45,22 +45,26 @@ $(document).ready(function() {
         //serverSide: true, //server와 통신여부
         searching: false, //검색기능
 		language : lang_kor, //글씨 바꾸기
-		/*stateSave: true, 상태 저장하기 
+		/*stateSave: true, 상태 저장하기 */
 		ajax : {
-            url:"/getUserList.do",
-            type:"POST",
-            data: function (d) {
-                d.userStatCd = "NR";
-            }
-         },*/
-		columns : [ // 테이블에 맵핑할 리턴 파라미터명 순서
-            {data: "B_ID"},
-            {data: "B_ID"},
-            {data: "B_TITLE"},
-            {data: "B_REGDATE"},
-            {data: "U_REGNAME"},
-            {data: "B_VIEWCNT"}
-        ],
+			/* "/example" 로 ajax 요청을 하여 dataSrc를 받아옵니다. 그리고 이를 columns으로 넣는 간단한 코드입니다.	*/
+            url:"/board/listAjax",
+            type: "POST",
+            data:  JSON.stringify(),
+  			contentType:"application/json; charset=UTF-8",
+            dataType: "JSON",
+    	    error:function(request,status,error){
+    			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
+         },
+	        columns : [ // 테이블에 맵핑할 리턴 파라미터명 순서
+	            {data: "b_id"},
+	            {data: "b_id"},
+	            {data: "b_title"},
+	            {data: "b_regdate"},
+	            {data: "u_regname"},
+	            {data: "b_viewcnt"}
+    	    ],
+		
 		columnDefs : [
 			{/*0번째 컬럼 옵션 설정*/
 				targets: 0,
@@ -79,19 +83,33 @@ $(document).ready(function() {
 				targets: [3], 
 				width: '20%', 
 				className: 'hidden-xs',
-				render: function(data, type, full, meta) {
-					/*if('B_MODIFYDATE'.length>0){ 
+				/*render: function(data, type, full, meta) {
+					if('B_MODIFYDATE'.length>0){ 
                        return '<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${l.b_regdate }"/>'
-                    }*/
+                    }
                      return '<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="' + data + '"/>';
-				}	
+				}	*/
 			},
 			{ targets: [4], width: '10%', },
 			{ targets: [5], width: '10%', className: 'hidden-xs'}
 		]
 	});
 
+	console.log(table.data());
+	//search 버튼의 클릭이벤트
+	/*처음 2줄은 table을 init하는 과정입니다. 기존 검색으로 table의 파라미터에 설정된 다른
+	검색 파라미터 값을 초기화시키는 작업입니다.
+	그리고 dataTable의 search() API를 이용하여 searchType과 searchValue를 서버로 전달합니다.
 	
+	$("#searchBtn").click(function () {
+	    var numCols = table.columns().nodes().length;
+	    for(var i=0; i<numCols; i++) { table.column(i).search(''); }
+	
+	    var searchType = $("#searchType").val();
+	    var searchValue = $("#searchValue").val();
+	
+	    table.column(searchType).search(searchValue).draw();
+	})*/
 
 	/*----------------------- 전체체크 ------------------------------*/
 	

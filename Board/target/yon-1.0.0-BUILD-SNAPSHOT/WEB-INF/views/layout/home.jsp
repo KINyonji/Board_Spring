@@ -16,7 +16,7 @@
 		   <div class="row-vh d-flex flex-column">
 			   	<div class="container" data-aos="zoom-in" data-aos-delay="200">
 			     <div class="subscribe">
-			         <form action="board/list" method="Get" role="form" >
+			        <form action="board/list" method="Get" role="form" >
 			          <div class="subscribe-form">
 			            <input type="text" name="keyword" id="keyword"><input type="submit" value="Search">
 			          </div>
@@ -27,3 +27,8 @@
 	   </div> 
   </section><!-- End home -->
   
+  <!-- 오른쪽하단에 ↑ 화살표-->
+  <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+  
+  <!-- 페이징 로딩 -->
+  <div id="preloader"></div>

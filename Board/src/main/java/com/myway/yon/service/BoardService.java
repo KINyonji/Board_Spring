@@ -45,6 +45,8 @@ public class BoardService {
 	//게시판 리스트
 	public List<BoardDTO> listAll() {
 		dao = sqlSession.getMapper(BoardDAO.class);
+		
+		System.out.println("리스트>> "+dao.listAll().size());
 		return dao.listAll();
 		
 	};
