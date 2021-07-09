@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="data"/>
+		<item key="selection" value="jackson-core"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="jackson-core"/>
+			<item value="jackson"/>
+			<item value="table"/>
 			<item value="data"/>
 			<item value="href"/>
 			<item value="src"/>
@@ -20,9 +23,6 @@
 			<item value="entries"/>
 			<item value="}else{"/>
 			<item value="submitContents"/>
-			<item value="&#x09;/**"/>
-			<item value="sorting_1"/>
-			<item value="table"/>
 		</list>
 		<list key="replacehistory">
 			<item value="t/header_sidebar2.jsp&quot;%&gt;"/>
