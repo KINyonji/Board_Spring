@@ -7,21 +7,47 @@
 	<!-- 게시판 목록 -->
 	<select id="listAll" resultType="com.myway.yon.domain.BoardDTO">
 		SELECT
-			B_ID B_ID,
-			B_TITLE B_TITLE,
-			U_REGNAME U_REGNAME,
-			U_MODIFYNAME U_MODIFYNAME,
-			B_REGDATE B_REGDATE,
-			B_MODIFYDATE B_MODIFYDATE,
-			B_VIEWCNT B_VIEWCNT,
-			B_DELETE_NY B_DELETE_NY
-		FROM
+			B_ID,
+			B_TITLE,
+			U_REGNAME,
+			U_MODIFYNAME,
+			B_REGDATE,
+			B_MODIFYDATE,
+			B_VIEWCNT,
+			B_DELETE_NY
+		FROM (
+				SELECT
+					B_ID,
+					B_TITLE,
+					U_REGNAME,
+					U_MODIFYNAME,
+					B_REGDATE,
+					B_MODIFYDATE,
+					B_VIEWCNT,
+					B_DELETE_NY,
+					ROW_NUMBER() OVER(ORDER BY B_REGDATE DESC) AS RNUM
+				FROM BOARD
+							)
 			BOARD
 		WHERE
-	        B_DELETE_NY = 'N'	
-		ORDER BY
+	        B_DELETE_NY = 'N'
+	        AND
+	        RNUM BETWEEN #{startList} AND #{listSize}
+       	ORDER BY
 			B_REGDATE DESC
+		
 	</select>
+	
+	<!-- 게시물 총 갯수 -->
+	<select id="listCount" resultType="int">
+		SELECT COUNT(B_ID)
+		  FROM BOARD
+		 WHERE 
+		 	B_ID > 0
+		 AND
+ 			B_DELETE_NY = 'N'
+	</select>
+	
 	
 	<!-- 글작성 insert(DTO) 메소드 -->
 	<insert id="insert" flushCache="true" parameterType="com.myway.yon.domain.BoardDTO">

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myway.yon.domain.BoardDTO;
+import com.myway.yon.domain.PaginationDTO;
 import com.myway.yon.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -39,9 +40,29 @@ public class BoardController {
 	
 	//게시판 목록 조회
 	@GetMapping(value = "/list")
-	public String boardList(Model model) {
-		model.addAttribute("list", boardService.listAll());
-		System.out.println("boardService.listAll() :"+boardService.listAll());
+	public String boardList(Model model, 
+			@RequestParam(required = false, defaultValue = "1") int page
+			, @RequestParam(required = false, defaultValue = "1") int range) {
+			
+		int listCnt = boardService.listCount();
+
+		//Pagination 객체생성
+
+		PaginationDTO pagination = new PaginationDTO();
+		pagination.pageInfo(page, range, listCnt);
+		
+		System.out.println("page :"+pagination.getPage());
+		System.out.println("range :"+pagination.getRange());
+		System.out.println("listCnt :"+pagination.getListCnt());
+		System.out.println("startPage :"+pagination.getStartPage());
+		System.out.println("startList :"+pagination.getStartList());
+		System.out.println("endPage :"+pagination.getEndPage());
+		
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("list", boardService.listAll(pagination));
+		
+		System.out.println("boardService.listAll(pagination) :"+boardService.listAll(pagination));
+		
 		return "board/boardList";
 	}
 	

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.myway.yon.domain.BoardDAO;
 import com.myway.yon.domain.BoardDTO;
+import com.myway.yon.domain.PaginationDTO;
 
 @Service //비지니스 로직이나 repository layer 호출하는 함수
 public class BoardService {
@@ -43,10 +44,21 @@ public class BoardService {
 	}
 	
 	//게시판 리스트
-	public List<BoardDTO> listAll() {
+	public List<BoardDTO> listAll(PaginationDTO pagination) {
 		dao = sqlSession.getMapper(BoardDAO.class);
-		return dao.listAll();
 		
+		System.out.println("<<<<<<<<<<<<<<<<<<<서비스 Lsit >>>>>>>>>>>>>>>>");
+		System.out.println("pagination :"+ pagination);
+		System.out.println("dao.listAll(pagination) : "+dao.listAll(pagination));
+		
+		return dao.listAll(pagination);
+		
+	};
+	
+	//게시물 총 갯수
+	public int listCount() {
+		dao = sqlSession.getMapper(BoardDAO.class);
+		return dao.listCount();
 	};
 
 	//글 작성
