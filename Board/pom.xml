@@ -212,7 +212,7 @@
 		</dependency>
 		
 		<!-- 객체를 json형태로 변환 할 수 있는 jackson 라이브러리 -->
-		<!--  Jackson 2.0 --> 
+		<!--  Jackson 2.0  -->
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-core</artifactId>

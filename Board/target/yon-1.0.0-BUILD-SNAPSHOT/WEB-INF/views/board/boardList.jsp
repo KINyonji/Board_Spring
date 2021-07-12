@@ -47,8 +47,8 @@
 							
 							 	<c:forEach items="${list}" var="l">
 									<tr>
-										<td class="text-center"></td>
-										<td class="text-center pointer" onclick="selectByB_ID(${l.b_id })" style="">${l.b_id }</td>
+										<td></td>
+										<td class=" pointer" onclick="selectByB_ID(${l.b_id })" style="">${l.b_id }</td>
 										<td class="pointer" onclick="selectByB_ID(${l.b_id })" >${l.b_title }</td>
 										<!-- 수정날짜 유무 -->
 										<c:choose>
@@ -126,6 +126,7 @@
 	             if(checkboxArray.length == 0){
 	            	 alert("선택된 글이 없습니다.");
 	             }else{
+	            	 console.log("JSON.stringify(pdata):"+JSON.stringify(objParams))
 		             //ajax 호출
 		             $.ajax({
 		                 url         :   "/board/delete",

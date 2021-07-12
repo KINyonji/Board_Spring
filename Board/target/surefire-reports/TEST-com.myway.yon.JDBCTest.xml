@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="com.myway.yon.JDBCTest" time="1.5" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="com.myway.yon.JDBCTest" time="1.654" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_291\jre\bin"/>
@@ -27,7 +27,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 10"/>
-    <property name="classworlds.conf" value="C:\Study\SpringBoardProj\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1833824820508950453.tmp"/>
+    <property name="classworlds.conf" value="C:\Study\SpringBoardProj\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf7968874191405640693.tmp"/>
     <property name="jansi.force" value="true"/>
     <property name="sun.jnu.encoding" value="MS949"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_291\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Dev/spring-tool-suite-4-4.11.0.RELEASE-e4.20.0-win32.win32.x86_64.self-extracting (1)/sts-4.11.0.RELEASE//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205/jre/bin/server;C:/Dev/spring-tool-suite-4-4.11.0.RELEASE-e4.20.0-win32.win32.x86_64.self-extracting (1)/sts-4.11.0.RELEASE//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205/jre/bin;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Apache Software Foundation\Tomcat 8.5bin;C:\Users\UMC\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Bandizip\;C:\Program Files\Java\jdk1.8.0_291\bin;C:\Users\UMC\AppData\Local\GitHubDesktop\bin;C:\Dev\spring-tool-suite-4-4.11.0.RELEASE-e4.20.0-win32.win32.x86_64.self-extracting (1)\sts-4.11.0.RELEASE;;."/>
@@ -64,5 +64,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.myway.yon.JDBCTest" name="testConnection" time="1.5"/>
+  <testcase classname="com.myway.yon.JDBCTest" name="testConnection" time="1.654"/>
 </testsuite>

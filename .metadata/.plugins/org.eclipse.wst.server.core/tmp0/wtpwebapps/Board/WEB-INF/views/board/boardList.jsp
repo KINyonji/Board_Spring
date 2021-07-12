@@ -30,6 +30,8 @@
 			          <h2>Tech</h2>
 			        </div>
 			        
+					
+					<%-- <form id="frm-example" action="delete" method="get"> --%>
 					<div>
 						<!-- DataTales -->
 						<table id="boardList" class="table table-bordered table-hover"  style='width:100%; display:inline-block'>
@@ -44,12 +46,11 @@
 								</tr>
 							</thead>
 							<tbody>
-							
-							 	<c:forEach items="${list}" var="l">
+								<c:forEach items="${list}" var="l">
 									<tr>
-										<td class="text-center"></td>
-										<td class="text-center pointer" onclick="selectByB_ID(${l.b_id })" style="">${l.b_id }</td>
-										<td class="pointer" onclick="selectByB_ID(${l.b_id })" >${l.b_title }</td>
+										<td>${l.b_id }</td>
+										<td onclick="selectByB_ID(${l.b_id })" style="">${l.b_id }</td>
+										<td onclick="selectByB_ID(${l.b_id })" >${l.b_title }</td>
 										<!-- 수정날짜 유무 -->
 										<c:choose>
 											<c:when test="${empty l.b_modifydate }">
@@ -71,9 +72,7 @@
 										
 										<th>${l.b_viewcnt }</th>
 									</tr>
-								</c:forEach> 
-								
-								
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -109,7 +108,6 @@
 		}
 		
 		function checkDel() {
-
 			var deleteCk = confirm("정말 삭제하시겠습니까?");
 			
 			if(deleteCk){
@@ -126,7 +124,6 @@
 	             if(checkboxArray.length == 0){
 	            	 alert("선택된 글이 없습니다.");
 	             }else{
-	            	 console.log("JSON.stringify(pdata):"+JSON.stringify(objParams))
 		             //ajax 호출
 		             $.ajax({
 		                 url         :   "/board/delete",
