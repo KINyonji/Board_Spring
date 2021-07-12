@@ -51,17 +51,8 @@ public class BoardController {
 		PaginationDTO pagination = new PaginationDTO();
 		pagination.pageInfo(page, range, listCnt);
 		
-		System.out.println("page :"+pagination.getPage());
-		System.out.println("range :"+pagination.getRange());
-		System.out.println("listCnt :"+pagination.getListCnt());
-		System.out.println("startPage :"+pagination.getStartPage());
-		System.out.println("startList :"+pagination.getStartList());
-		System.out.println("endPage :"+pagination.getEndPage());
-		
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("list", boardService.listAll(pagination));
-		
-		System.out.println("boardService.listAll(pagination) :"+boardService.listAll(pagination));
 		
 		return "board/boardList";
 	}

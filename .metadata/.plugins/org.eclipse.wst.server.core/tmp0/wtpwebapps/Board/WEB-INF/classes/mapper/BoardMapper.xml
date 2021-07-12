@@ -7,6 +7,7 @@
 	<!-- 게시판 목록 -->
 	<select id="listAll" resultType="com.myway.yon.domain.BoardDTO">
 		SELECT
+			RNUM,
 			B_ID,
 			B_TITLE,
 			U_REGNAME,
@@ -25,16 +26,14 @@
 					B_MODIFYDATE,
 					B_VIEWCNT,
 					B_DELETE_NY,
-					ROW_NUMBER() OVER(ORDER BY B_REGDATE DESC) AS RNUM
-				FROM BOARD
-							)
+					ROW_NUMBER() OVER(ORDER BY B_REGDATE desc) as rnum
+				FROM board
+				WHERE
+    				 B_DELETE_NY = 'N'
+				)
 			BOARD
 		WHERE
-	        B_DELETE_NY = 'N'
-	        AND
-	        RNUM BETWEEN #{startList} AND #{listSize}
-       	ORDER BY
-			B_REGDATE DESC
+	        rnum BETWEEN #{startList} AND #{endList}
 		
 	</select>
 	
@@ -42,10 +41,7 @@
 	<select id="listCount" resultType="int">
 		SELECT COUNT(B_ID)
 		  FROM BOARD
-		 WHERE 
-		 	B_ID > 0
-		 AND
- 			B_DELETE_NY = 'N'
+		 WHERE B_ID > 0 AND B_DELETE_NY = 'N'
 	</select>
 	
 	

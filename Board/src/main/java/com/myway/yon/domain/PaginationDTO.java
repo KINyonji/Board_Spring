@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PaginationDTO {
 	
-	private int listSize = 11;                //초기값으로 목록개수를 10으로 셋팅
+	private int listSize = 10;                //초기값으로 목록개수를 10으로 셋팅
 
 	private int rangeSize = 3;            //초기값으로 페이지범위를 10으로 셋팅
 
@@ -24,6 +24,8 @@ public class PaginationDTO {
 	private int startPage;
 
 	private int startList;
+
+	private int endList;
 
 	private int endPage;
 
@@ -47,7 +49,10 @@ public class PaginationDTO {
 		this.endPage = range * rangeSize;
 
 		//게시판 시작번호
-		this.startList = (page - 1) * listSize;
+		this.startList = ((page - 1) * listSize)+1;
+		
+		//게시판 끝 번호
+		this.endList = (startList-1) + listSize;
 
 		//이전 버튼 상태
 		/*

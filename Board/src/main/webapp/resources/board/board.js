@@ -34,7 +34,7 @@ $(document).ready(function() {
 --------------------------------------------------------------*/
 	var table = $('#boardList').DataTable({
 		aaSorting : [], /*초기화 시 정렬 비활성화시키기*/
-		
+		paging : false,
 		language : lang_kor, /*글씨 바꾸기*/
 		/*stateSave: true, 상태 저장하기 */
 		columnDefs : [

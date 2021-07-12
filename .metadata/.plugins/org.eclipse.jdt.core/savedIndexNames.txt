@@ -36,7 +36,6 @@ INDEX VERSION 1.131+C:\Study\SpringBoardProj\.metadata\.plugins\org.eclipse.jdt.
 3857711160.index
 2881456635.index
 360381531.index
-2503711345.index
 2246405947.index
 2528464922.index
 1951323596.index
