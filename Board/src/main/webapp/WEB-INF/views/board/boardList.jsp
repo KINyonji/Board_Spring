@@ -80,7 +80,7 @@
 						<div id="paginationBox">
 							<ul class="pagination">
 								<c:if test="${pagination.prev}">					
-									<li class="page-item">
+									<li class=" ">
 										<a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">
 											이전
 										</a>

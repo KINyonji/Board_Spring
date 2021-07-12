@@ -45,4 +45,9 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="com.myway.yon.domain.DataTablesDTO"/>
+    <fullyQualifiedTypeName name="com.myway.yon.domain.Criteria"/>
+    <fullyQualifiedTypeName name="com.myway.yon.domain.PageMakerDTO"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.reflection.SystemMetaObject"/>
+    <fullyQualifiedTypeName name="java.io.Console"/>
+    <fullyQualifiedTypeName name="com.myway.yon.domain.PaginationDTO"/>
 </qualifiedTypeNameHistroy>

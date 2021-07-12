@@ -54,6 +54,8 @@ public class BoardController {
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("list", boardService.listAll(pagination));
 		
+		System.out.println("rnum: "+ pagination.getRange());
+		
 		return "board/boardList";
 	}
 	
