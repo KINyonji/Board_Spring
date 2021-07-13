@@ -10,10 +10,10 @@ import org.mybatis.spring.annotation.MapperScan;
 public interface BoardDAO {
 
 	//게시물 목록 조회
-	List<BoardDTO> listAll(PaginationDTO pagination);
+	List<BoardDTO> listAll(SearchCriteria scri);
 	
 	//게시물 총 갯수
-	public int listCount();
+	public int listCount(SearchCriteria scri);
 
 	//글쓰기
 	int insert(BoardDTO dto);

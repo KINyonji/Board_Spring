@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.myway.yon.domain.BoardDAO;
 import com.myway.yon.domain.BoardDTO;
 import com.myway.yon.domain.PaginationDTO;
+import com.myway.yon.domain.SearchCriteria;
 
 @Service //비지니스 로직이나 repository layer 호출하는 함수
 public class BoardService {
@@ -44,21 +45,20 @@ public class BoardService {
 	}
 	
 	//게시판 리스트
-	public List<BoardDTO> listAll(PaginationDTO pagination) {
+	public List<BoardDTO> listAll(SearchCriteria scri) {
 		dao = sqlSession.getMapper(BoardDAO.class);
 		
-		System.out.println("<<<<<<<<<<<<<<<<<<<서비스 Lsit >>>>>>>>>>>>>>>>");
-		System.out.println("pagination :"+ pagination);
-		System.out.println("dao.listAll(pagination) : "+dao.listAll(pagination));
+		System.out.println("서비스의 scri :"+ scri);
+		System.out.println("서비스의 dao.listAll(scri) : "+dao.listAll(scri));
 		
-		return dao.listAll(pagination);
+		return dao.listAll(scri);
 		
 	};
 	
 	//게시물 총 갯수
-	public int listCount() {
+	public int listCount(SearchCriteria scri) {
 		dao = sqlSession.getMapper(BoardDAO.class);
-		return dao.listCount();
+		return dao.listCount(scri);
 	};
 
 	//글 작성

@@ -30,19 +30,36 @@
 				FROM board
 				WHERE
     				 B_DELETE_NY = 'N'
+    				 <include refid="search"></include>
 				)
 			BOARD
 		WHERE
-	        rnum BETWEEN #{startList} AND #{endList}
+	        rnum BETWEEN #{rowStart} AND #{rowEnd} 
 		
 	</select>
 	
 	<!-- 게시물 총 갯수 -->
-	<select id="listCount" resultType="int">
-		SELECT COUNT(B_ID)
-		  FROM BOARD
-		 WHERE B_ID > 0 AND B_DELETE_NY = 'N'
+	<select id="listCount" parameterType="com.myway.yon.domain.SearchCriteria" resultType="int">
+		SELECT 
+			COUNT(B_ID)
+		  FROM 
+		  	BOARD
+		 WHERE 
+		 	B_ID > 0 
+		 	
+		 	<include refid="search"></include>	
+		 AND 
+		 	B_DELETE_NY = 'N'
 	</select>
+	
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'n'.toString()">AND (B_TITLE LIKE '%' || #{keyword} || '%') or (U_REGNAME LIKE '%' || #{keyword} || '%')</if>
+			<if test="searchType == 't'.toString()">AND B_TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND U_REGNAME LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
 	
 	
 	<!-- 글작성 insert(DTO) 메소드 -->

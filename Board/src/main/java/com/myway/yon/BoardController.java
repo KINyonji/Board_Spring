@@ -12,14 +12,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myway.yon.domain.BoardDTO;
+import com.myway.yon.domain.PageMaker;
 import com.myway.yon.domain.PaginationDTO;
+import com.myway.yon.domain.SearchCriteria;
 import com.myway.yon.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,24 +42,15 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 	
-	//게시판 목록 조회
-	@GetMapping(value = "/list")
-	public String boardList(Model model, 
-			@RequestParam(required = false, defaultValue = "1") int page
-			, @RequestParam(required = false, defaultValue = "1") int range) {
-			
-		int listCnt = boardService.listCount();
+	// 게시판 목록 조회
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String table(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(boardService.listCount(scri));
 
-		//Pagination 객체생성
-
-		PaginationDTO pagination = new PaginationDTO();
-		pagination.pageInfo(page, range, listCnt);
-		
-		model.addAttribute("pagination", pagination);
-		model.addAttribute("list", boardService.listAll(pagination));
-		
-		System.out.println("rnum: "+ pagination.getRange());
-		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("list", boardService.listAll(scri));
 		return "board/boardList";
 	}
 	
@@ -74,28 +69,41 @@ public class BoardController {
 	
 	//글 상세보기
 	@RequestMapping(value = "/view")
-	public String boardView(int b_id, Model model) {
+	public String boardView(int b_id, Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		model.addAttribute("list", boardService.viewByBid(b_id));
+		model.addAttribute("scri", scri);
 		return "board/boardView";
 	}
 	
 	//글 수정하기
 	@GetMapping(value = "/update")
-	public String boardUpdate(int b_id, Model model) {
+	public String boardUpdate(int b_id, Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		model.addAttribute("list", boardService.selectByBid(b_id));
+		System.out.println(boardService.selectByBid(b_id));
+		model.addAttribute("scri", scri);
 		return "board/boardUpdate";
 	}
 	
 	//글 수정하기 확인
 	@PostMapping(value = "/updateOk")
-	public String boardUpdateOk(BoardDTO dto, Model model) {
+	public String boardUpdateOk(BoardDTO dto, Model model, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) {
 		model.addAttribute("result", boardService.update(dto));
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		
+		/*
+		 * return "redirect:/board/view?b_id=" + dto.getB_id() + "&page="+
+		 * scri.getPage() +"&perPageNum="+ scri.getPerPageNum() +"&searchType="+
+		 * scri.getSearchType() +"&keyword=" + scri.getKeyword();
+		 */
 		return "board/boardUpdateOk";
 	}
 	
 	//글 삭제하기
 	@RequestMapping(value = "/deleteOk")
-	public String boardDelete( int b_id, Model model) {    
+	public String boardDelete( int b_id, Model model, @ModelAttribute("scri") SearchCriteria scri) {    
 		System.out.println(b_id);
 		model.addAttribute("result", boardService.deleteByBid(b_id));
 		return "board/boardDeleteOk";

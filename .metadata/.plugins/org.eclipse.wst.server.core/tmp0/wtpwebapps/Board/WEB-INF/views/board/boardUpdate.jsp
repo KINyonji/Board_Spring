@@ -49,7 +49,7 @@
 								<h5 class="card-title mb-0">WRITE</h5>
 							</div>
 							<div style="float: right">
-								<button type="button" class="btn btn-outline-success btn-xs btn-radius" onclick="history.back()">←</button>
+								<button type="button" class="btn btn-outline-success btn-xs btn-radius" onclick="back()">←</button>
 							</div>
 						</div>
 						<div class="card-body">
@@ -87,7 +87,6 @@
 										</div>
 									</div>
 								</div>
-								<input type="hidden" name="b_id" value="${list[0].b_id}">
 								<div class="btnDivCenter">
 									<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="submitContents()">수정하기</button>
 								</div>
@@ -109,7 +108,7 @@
   <!-- Vendor JS Files -->
   <%@ include file = "/WEB-INF/views/layout/script.jsp"%>
 
-	<!-- 네이버 스마트 에디터 smarteditor2 -->
+	<!-------------------------------- 네이버 스마트 에디터 smarteditor2 ------------------------------->
 	<script type="text/javascript">
 		var oEditors = [];
 
@@ -160,6 +159,7 @@
 			// 에디터의 내용에 대한 유효성 검증
 			if(content == "" || content == null || content == '&nbsp;' || content == '<br>' || content == '<br/>' || content == '<p>&nbsp;</p>' || content == '<p><br></p>') { 
 					alert("글 내용을 작성해주세요."); 
+					
 					oEditors.getById["ir1"].exec("FOCUS"); //포커싱 
 					return false; 				
 			}
@@ -167,7 +167,18 @@
 	            elClickedObj.submit();
 	        } catch(e) {}
 		}
-		 <!-- 네이버 스마트 에디터 smarteditor2 END-->	
+		 <!---------------------------- 네이버 스마트 에디터 smarteditor2 END ------------------------------->	
+		 
+		 <!---------------------------- 뒤로가기 ------------------------------->	
+		 function back(){
+				event.preventDefault();
+				location.href = "/board/view?b_id=${param.b_id}"
+					   + "&page=${param.page}"
+					   + "&perPageNum=${param.perPageNum}"
+					   + "&searchType=${param.searchType}"
+					   + "&keyword=${param.keyword}";
+			}
+		 <!---------------------------- 뒤로가기 END ------------------------------->	
 	</script>
 	
 	<script  src="/resources/js/validator.js"></script> 

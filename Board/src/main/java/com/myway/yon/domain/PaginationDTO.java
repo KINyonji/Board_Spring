@@ -1,5 +1,11 @@
 package com.myway.yon.domain;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +38,8 @@ public class PaginationDTO {
 	private boolean prev;
 
 	private boolean next;
+	
+	private SearchCriteria sCri;
 	
 	public void pageInfo(int page, int range, int listCnt) {
 
@@ -70,6 +78,41 @@ public class PaginationDTO {
 			this.next = false;
 		}
 
+	}
+	
+	public String makeQuery(int page) {
+		UriComponents uriComponents =
+		UriComponentsBuilder.newInstance()
+						    .queryParam("page", page)
+							.queryParam("listSize", listSize)
+							.build();
+		   
+		return uriComponents.toUriString();
+	}
+	
+	public String makeSearch(int page)
+	{
+	  
+	 UriComponents uriComponents =
+	            UriComponentsBuilder.newInstance()
+	            .queryParam("page", page)
+	            .queryParam("listSize", listSize)
+	            .queryParam("searchType", ((SearchCriteria)sCri).getSearchType())
+	            .queryParam("keyword", encoding(((SearchCriteria)sCri).getKeyword()))
+	            .build(); 
+	    return uriComponents.toUriString();  
+	}
+
+	private String encoding(String keyword) {
+		if(keyword == null || keyword.trim().length() == 0) { 
+			return "";
+		}
+		 
+		try {
+			return URLEncoder.encode(keyword, "UTF-8");
+		} catch(UnsupportedEncodingException e) { 
+			return ""; 
+		}
 	}
 
 }

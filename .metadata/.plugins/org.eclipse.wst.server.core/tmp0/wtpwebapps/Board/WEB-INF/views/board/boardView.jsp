@@ -32,6 +32,16 @@
 				location.href = 'deleteOk?b_id=' + b_id;
 			}
 		}
+		
+		<!---------------------------- 뒤로가기 ------------------------------->	
+		 function back(){
+				event.preventDefault();
+				location.href = "/board/list?page=${param.page}"
+					   + "&perPageNum=${param.perPageNum}"
+					   + "&searchType=${param.searchType}"
+					   + "&keyword=${param.keyword}";
+			}
+		 <!---------------------------- 뒤로가기 END ------------------------------->	
 	</script>
 </head>
 
@@ -58,11 +68,11 @@
 								<h5 class="card-title mb-0">READ</h5>
 							</div>
 							<div style="float: right">
-								<button type="button" class="btn btn-outline-success btn-xs btn-radius" onclick="history.back()">←</button>
+								<button type="button" class="btn btn-outline-success btn-xs btn-radius" onclick="back()">←</button>
 							</div>
 						</div>
 						<div class="card-body">
-							<form name="frm" action="writeOk" method="post" onsubmit="">
+							<form name="frm" action="update" method="get">
 								<div class="row">
 									<div class="col-md-12">
 										<!-- 글제목 -->
@@ -100,14 +110,21 @@
 									</div>
 								</div>
 
-							</form>
+							
 						</div>
 					</div>
 					<br>
+					
+					<input type="hidden" name="b_id" value="${list[0].b_id}">
+					<input type="hidden" id="page" name="page" value="${scri.page}"> 
+					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
+					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}">
 					<div class="btnDivCenter">
-						<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="location.href='update?b_id=${list[0].b_id}'">수정하기</button>
+						<button type="submit" class="btn btn-outline-warning btn-sm btn-radius">수정하기</button>
 						<%-- <button type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="chkDelete(${list[0].b_id})">삭제하기</button> --%>
 					</div>
+					</form>
 			</div>
 		</div>
 		</div>

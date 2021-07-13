@@ -44,18 +44,15 @@
 						</select>
 						</span> 
 						<span style="display: inline-block; width: 200px; height: 36px;">
-							<input class="form-control navbar-left list-group" style="width: 200px; height: 36px;" type="search" placeholder="검색어" name="keyword" id="keywordInput" value="${scri.keyword}" />
+							<input class="form-control navbar-left list-group pl-2" style="width: 200px; height: 36px;" type="search" placeholder="검색어" name="keyword" id="keywordInput" value="${scri.keyword}" />
 						</span> 
+						
 						<span style="display: inline-block; width: 60px; height: 36px;">
 							<button style="width: 60px; height: 34px;" id="searchBtn" type="button" class="btnColorBorder pl-2">검색</button>
 						</span>
 
 						<script>
-     						 $(function(){
-     						   $('#searchBtn').click(function() {
-      						    self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-     						   });
-    						  });   
+     						 
    						
  						</script>
 					</div>
@@ -109,30 +106,30 @@
 						<!--------------------------- 페이징 ----------------------------------->
 						<div id="paginationBox">
 							<ul class="pagination">
-								<c:if test="${pagination.prev}">					
+								<c:if test="${pageMaker.prev}">					
 									<li class="page-item pageLi">
-										<a class="page-link btnColorBorder" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">
+										<a class="page-link btnColorBorder select" href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">
 											이전
 										</a>
 									</li>					
 								</c:if>				
-								<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">					
+								<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">					
 									<li class="page-item pageLi" <c:out value="${pagination.page == idx ? 'active' : ''}"/>>
-										<a class="page-link btnColorBorder" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+										<a class="page-link btnColorBorder select" href="list${pageMaker.makeSearch(idx)}">
 											 ${idx} 
 										 </a>
 								 	</li>					
 								</c:forEach>				
-								<c:if test="${pagination.next}">					
+								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">				
 									<li class="page-item pageLi">
-										<a class="page-link btnColorBorder" href="#" onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')" >
+										<a class="page-link btnColorBorder select" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">
 											다음
 										</a>
 									</li>				
 								</c:if>					
 							</ul>					
-						</div>
-					<!--------------------------- 페이징 END ----------------------------------->
+						</div>						
+						<!--------------------------- 페이징 END ----------------------------------->
 						
 					</div>
 					<br>
@@ -155,17 +152,24 @@
   <!-- Vendor JS Files -->
   <%@ include file = "/WEB-INF/views/layout/script.jsp"%>
 
+
+
+
 	<script type="text/javascript">
 	
-	//홈화면 검색 키워드\r\n");
+		//홈화면 검색 키워드);
   		window.onload = function () {
   			 $('.dataTables_filter input').val("${param.keyword}").keyup();
   		};
+  		
 		//해당컬럼을 눌렀을때 상세보기 페이지로 이동
 		function selectByB_ID(b_id) {
-			location.href = "view?b_id=" + b_id;
+			location.href = "view?b_id=" + b_id + "&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}";
 		}
 		
+		/*--------------------------------------------------------------
+				체크박스 삭제 
+		--------------------------------------------------------------*/
 		function checkDel() {
 			var deleteCk = confirm("정말 삭제하시겠습니까?");
 			
@@ -205,71 +209,11 @@
 		}
 		
 		/*--------------------------------------------------------------
-									페이징 
+									검색 
 		--------------------------------------------------------------*/
-		//이전 버튼 이벤트
-		
-		function fn_prev(page, range, rangeSize) {
-		
-		var page = ((range - 2) * rangeSize) + 1;
-		
-		var range = range - 1;
-		
-		
-		
-		var url = "${pageContext.request.contextPath}/board/list";
-		
-		url = url + "?page=" + page;
-		
-		url = url + "&range=" + range;
-		
-		
-		
-		location.href = url;
-		
-		}
-		
-		
-		
-		//페이지 번호 클릭
-		
-		function fn_pagination(page, range, rangeSize, searchType, keyword) {
-		
-		var url = "${pageContext.request.contextPath}/board/list";
-		
-		url = url + "?page=" + page;
-		
-		url = url + "&range=" + range;
-		
-		
-		
-		location.href = url;	
-		
-		}
-		
-		
-		
-		//다음 버튼 이벤트
-		
-		function fn_next(page, range, rangeSize) {
-		
-		var page = parseInt((range * rangeSize)) + 1;
-		
-		var range = parseInt(range) + 1;
-		
-		
-		
-		var url = "${pageContext.request.contextPath}/board/list";
-		
-		url = url + "?page=" + page;
-		
-		url = url + "&range=" + range;
-		
-		
-		
-		location.href = url;
-		
-		}
+		 $('#searchBtn').click(function() {
+		  	  self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+		   });
 		
 	</script>
 	
