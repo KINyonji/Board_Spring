@@ -33,8 +33,10 @@ $(document).ready(function() {
 					게시판 목록 DataTable & 체크박스
 --------------------------------------------------------------*/
 	var table = $('#boardList').DataTable({
+		dom: 'it',
 		aaSorting : [], /*초기화 시 정렬 비활성화시키기*/
 		paging : false,
+		searching: false,
 		language : lang_kor, /*글씨 바꾸기*/
 		/*stateSave: true, 상태 저장하기 */
 		columnDefs : [
@@ -50,8 +52,8 @@ $(document).ready(function() {
 			},
 			/* width: 컬럼에따라 크기 조정/ hidden-xs:좁아지면 숨기기 */
 			{ targets: [1], width: '5%', className: 'text-center pointer'},
-			{ targets: [2], width: '50%', className: 'pointer'},
-			{ targets: [3], width: '20%', className: 'hidden-xs text-center'},
+			{ targets: [2], width: '55%', className: 'pointer'},
+			{ targets: [3], width: '15%', className: 'hidden-xs text-center'},
 			{ targets: [4], width: '10%', },
 			{ targets: [5], width: '10%', className: 'hidden-xs text-center'}
 		]

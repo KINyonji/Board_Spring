@@ -29,8 +29,38 @@
 			        <div class="content-title">
 			          <h2>Tech</h2>
 			        </div>
-			        
 					
+					<!--------------------------- 검색 ----------------------------------->
+					<div class="search" style="float: right;">
+						<span style="display: inline-block; width: 100px; height: 35px;">
+							<select style="width: 100px; height: 35px;"
+							class="form-control navbar-left list-group" name="searchType">
+								<option value="n"
+									<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>전체</option>
+								<option value="t"
+									<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+								<option value="w"
+									<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+						</select>
+						</span> 
+						<span style="display: inline-block; width: 200px; height: 36px;">
+							<input class="form-control navbar-left list-group" style="width: 200px; height: 36px;" type="search" placeholder="검색어" name="keyword" id="keywordInput" value="${scri.keyword}" />
+						</span> 
+						<span style="display: inline-block; width: 60px; height: 36px;">
+							<button style="width: 60px; height: 34px;" id="searchBtn" type="button" class="btnColorBorder pl-2">검색</button>
+						</span>
+
+						<script>
+     						 $(function(){
+     						   $('#searchBtn').click(function() {
+      						    self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+     						   });
+    						  });   
+   						
+ 						</script>
+					</div>
+					<!--------------------------- 검색 END ----------------------------------->		
+								
 					<%-- <form id="frm-example" action="delete" method="get"> --%>
 					<div>
 						<!-- DataTales -->
@@ -49,8 +79,8 @@
 								<c:forEach items="${list}" var="l">
 									<tr>
 										<td>${l.b_id }</td>
-										<td onclick="selectByB_ID(${l.b_id })" style="">${l.b_id }</td>
-										<td onclick="selectByB_ID(${l.b_id })" >${l.b_title }</td>
+										<td onclick="selectByB_ID(${l.b_id })" >${l.b_id }</td>
+										<td onclick="selectByB_ID(${l.b_id })" ><div class="text-ellipsis"><p>${l.b_title }</p></div></td>
 										<!-- 수정날짜 유무 -->
 										<c:choose>
 											<c:when test="${empty l.b_modifydate }">
@@ -80,22 +110,22 @@
 						<div id="paginationBox">
 							<ul class="pagination">
 								<c:if test="${pagination.prev}">					
-									<li class=" ">
-										<a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">
+									<li class="page-item pageLi">
+										<a class="page-link btnColorBorder" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">
 											이전
 										</a>
 									</li>					
 								</c:if>				
 								<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">					
-									<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
-										<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+									<li class="page-item pageLi" <c:out value="${pagination.page == idx ? 'active' : ''}"/>>
+										<a class="page-link btnColorBorder" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
 											 ${idx} 
 										 </a>
 								 	</li>					
 								</c:forEach>				
 								<c:if test="${pagination.next}">					
-									<li class="page-item">
-										<a class="page-link" href="#" onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')" >
+									<li class="page-item pageLi">
+										<a class="page-link btnColorBorder" href="#" onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')" >
 											다음
 										</a>
 									</li>				

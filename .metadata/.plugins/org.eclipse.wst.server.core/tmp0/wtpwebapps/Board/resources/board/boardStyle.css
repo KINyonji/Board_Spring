@@ -46,11 +46,65 @@
 
 }
 
-li {list-style: none; float: left; padding: 6px;}
+/*--------------------------------------------------------------
+					페이징 버튼 가로 정렬
+--------------------------------------------------------------*/
+li .pageLi {list-style: none; float: left; padding: 6px;}
 
 
+/*--------------------------------------------------------------
+					게시판 제목 ... 으로 보이게 하기
+--------------------------------------------------------------*/
+.text-ellipsis {
+
+	display: table;
+
+	table-layout: fixed;
+
+	width: 100%;
+
+	white-space: nowrap;
+
+}
+
+.text-ellipsis > * {
+
+	display: table-cell;
+
+	overflow: hidden;
+
+	text-overflow: ellipsis;
+
+}
 
 
+/*--------------------------------------------------------------
+					게시판 버튼 커스텀
+--------------------------------------------------------------*/
+.btnColorBorder {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    line-height: 1.25;
+    color: rgb(223 135 27);
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.btnColorBorder:hover {
+   
+    color: rgb(223 135 27);
+    background-color: #fff;
+
+}
+
+.btnColorBorder:hover {
+    z-index: 2;
+    color: rgb(223 135 27);
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: 1px solid #dee2e6;
+  }
 
 
 
