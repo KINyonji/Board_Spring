@@ -5,7 +5,7 @@
 <c:choose>
 	<c:when test="${result == 0 }">
 		<script>
-			alert("등록 실패!");
+			console.log("등록 실패!");
 			history.back();  // 브라우저가 직전에 기억하는 이전 페이지로..
 		</script>
 	</c:when>

@@ -36,8 +36,6 @@
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="javax.swing.Spring"/>
-    <fullyQualifiedTypeName name="com.myway.yon.domain.BoardDTO"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
     <fullyQualifiedTypeName name="lombok.Builder"/>
     <fullyQualifiedTypeName name="lombok.experimental.SuperBuilder"/>
     <fullyQualifiedTypeName name="lombok.EqualsAndHashCode"/>
@@ -50,4 +48,14 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.reflection.SystemMetaObject"/>
     <fullyQualifiedTypeName name="java.io.Console"/>
     <fullyQualifiedTypeName name="com.myway.yon.domain.PaginationDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
+    <fullyQualifiedTypeName name="org.springframework.web.util.UriComponents"/>
+    <fullyQualifiedTypeName name="org.springframework.web.util.UriComponentsBuilder"/>
+    <fullyQualifiedTypeName name="java.net.URLEncoder"/>
+    <fullyQualifiedTypeName name="java.io.UnsupportedEncodingException"/>
+    <fullyQualifiedTypeName name="com.myway.yon.domain.SearchCriteria"/>
+    <fullyQualifiedTypeName name="com.myway.yon.domain.PageMaker"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
+    <fullyQualifiedTypeName name="com.myway.yon.domain.BoardDTO"/>
+    <fullyQualifiedTypeName name="java.lang.ClassCircularityError"/>
 </qualifiedTypeNameHistroy>

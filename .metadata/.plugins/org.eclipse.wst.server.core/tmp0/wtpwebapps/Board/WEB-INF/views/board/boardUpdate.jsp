@@ -9,7 +9,7 @@
 <c:choose>
 	<c:when test="${empty list || fn:length(list) == 0 }">
 		<script>
-			alert("해당 정보가 삭제되거나 없습니다");
+		Swal.fire("해당 정보가 삭제되거나 없습니다","","warning"); 
 			history.back();
 		</script>
 	</c:when>
@@ -60,7 +60,7 @@
 										<div class="mb-3">
 											<label class="form-label" for="inputTitle">제목</label>
 											<input type="text" name="b_title" class="form-control" id="inputTitle"
-												placeholder="제목" value="${list[0].b_title}">
+												placeholder="제목" maxlength='50' value="${list[0].b_title}">
 										</div>
 										<!-- 작성자 -->
 										<div class="mb-3">
@@ -83,10 +83,15 @@
 											
 											<!-- 네이버 스마트 에디터 smarteditor2 -->	
 											<textarea name="b_content" id="ir1" rows="10" cols="100" style="width:100%; min-width:260px; display:none;" >${list[0].b_content}</textarea>
-											
+											<p class="count">글자수 [&nbsp<span>0</span>&nbsp]</p>
 										</div>
 									</div>
 								</div>
+									<input type="hidden" name="b_id" value="${list[0].b_id}">
+									<input type="hidden" id="page" name="page" value="${scri.page}"> 
+									<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
+									<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+									<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}">
 								<div class="btnDivCenter">
 									<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="submitContents()">수정하기</button>
 								</div>
@@ -146,7 +151,7 @@
 
 		function showHTML() {
 			var sHTML = oEditors.getById["ir1"].getIR();
-			alert(sHTML);
+			Swal.fire(sHTML,"","info"); 
 		}
 
 		//내용 submit이 될때
@@ -158,8 +163,7 @@
 			var content = document.getElementById("ir1").value;
 			// 에디터의 내용에 대한 유효성 검증
 			if(content == "" || content == null || content == '&nbsp;' || content == '<br>' || content == '<br/>' || content == '<p>&nbsp;</p>' || content == '<p><br></p>') { 
-					alert("글 내용을 작성해주세요."); 
-					
+				Swal.fire("본문을 작성해주세요.","","warning"); 
 					oEditors.getById["ir1"].exec("FOCUS"); //포커싱 
 					return false; 				
 			}
@@ -168,6 +172,29 @@
 	        } catch(e) {}
 		}
 		 <!---------------------------- 네이버 스마트 에디터 smarteditor2 END ------------------------------->	
+		 
+		 
+		 <!---------------------------- 에디터에 글자를 쳤을 때 글자 수 표출되는 이벤트 ------------------------------->	
+			 //기존에 가지고있는 글자수 param으로 받아와서 나타내기
+		 	 window.onload = function(){
+				 document.querySelector(".count span").innerHTML = "${param.contentLength}"; 
+				 console.log("${param.contentLength}")
+			 };
+			 
+			// setTimeout 을 안하면 iframe이 만들어지기 전에 이벤트가 등록되어 영역을 찾지 못한다 
+			setTimeout(function() { 
+				var ctntarea = document.querySelector("iframe").contentWindow.document.querySelector("iframe").contentWindow.document.querySelector(".se2_inputarea"); 
+				ctntarea.addEventListener("keyup", function(e) { 
+					var text = this.innerHTML; 
+					text = text.replace(/<br>/ig, ""); // br 제거 
+					text = text.replace(/&nbsp;/ig, "");// 공백 제거 
+					text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, ""); // html 제거 
+					
+					var len = text.length; 
+					document.querySelector(".count span").innerHTML = len; 
+					
+					}); 
+				}, 1000) 
 		 
 		 <!---------------------------- 뒤로가기 ------------------------------->	
 		 function back(){

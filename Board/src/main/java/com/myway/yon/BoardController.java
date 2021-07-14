@@ -51,6 +51,7 @@ public class BoardController {
 
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("list", boardService.listAll(scri));
+		model.addAttribute("page",scri.getPage());
 		return "board/boardList";
 	}
 	
@@ -79,25 +80,14 @@ public class BoardController {
 	@GetMapping(value = "/update")
 	public String boardUpdate(int b_id, Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		model.addAttribute("list", boardService.selectByBid(b_id));
-		System.out.println(boardService.selectByBid(b_id));
 		model.addAttribute("scri", scri);
 		return "board/boardUpdate";
 	}
 	
 	//글 수정하기 확인
 	@PostMapping(value = "/updateOk")
-	public String boardUpdateOk(BoardDTO dto, Model model, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) {
+	public String boardUpdateOk(BoardDTO dto, Model model) {
 		model.addAttribute("result", boardService.update(dto));
-		rttr.addAttribute("page", scri.getPage());
-		rttr.addAttribute("perPageNum", scri.getPerPageNum());
-		rttr.addAttribute("searchType", scri.getSearchType());
-		rttr.addAttribute("keyword", scri.getKeyword());
-		
-		/*
-		 * return "redirect:/board/view?b_id=" + dto.getB_id() + "&page="+
-		 * scri.getPage() +"&perPageNum="+ scri.getPerPageNum() +"&searchType="+
-		 * scri.getSearchType() +"&keyword=" + scri.getKeyword();
-		 */
 		return "board/boardUpdateOk";
 	}
 	

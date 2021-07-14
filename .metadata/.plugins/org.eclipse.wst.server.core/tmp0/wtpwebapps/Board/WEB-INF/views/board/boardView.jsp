@@ -9,7 +9,7 @@
 <c:choose>
 	<c:when test="${empty list || fn:length(list) == 0 }">
 		<script>
-			alert("해당 정보가 삭제되거나 없습니다.");
+			Swal.fire("해당 정보가 삭제되거나 없습니다","","warning"); 
 			history.back();
 		</script>
 	</c:when>
@@ -42,6 +42,17 @@
 					   + "&keyword=${param.keyword}";
 			}
 		 <!---------------------------- 뒤로가기 END ------------------------------->	
+		 
+		 <!---------------------------- 글내용 길이 가져오기 ------------------------------->	
+		 window.onload = function(){
+			 var text =  "${list[0].b_content }"; 
+				text = text.replace(/<br>/ig, ""); // br 제거 
+				text = text.replace(/&nbsp;/ig, "");// 공백 제거 
+				text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, ""); // html 제거 
+				var len = text.length;
+				$('input[name=contentLength]').attr('value',len);
+			};
+		 
 	</script>
 </head>
 
@@ -114,8 +125,8 @@
 						</div>
 					</div>
 					<br>
-					
 					<input type="hidden" name="b_id" value="${list[0].b_id}">
+					<input type="hidden" id="contentLength" name="contentLength" value="">
 					<input type="hidden" id="page" name="page" value="${scri.page}"> 
 					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
 					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 

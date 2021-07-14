@@ -8,9 +8,6 @@
 <html lang="kr">
 <head>
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
-	
-
-
 </head>
 
 <body>
@@ -29,32 +26,30 @@
 			        <div class="content-title">
 			          <h2>Tech</h2>
 			        </div>
-					
-					<!--------------------------- 검색 ----------------------------------->
-					<div class="search" style="float: right;">
-						<span style="display: inline-block; width: 100px; height: 35px;">
-							<select style="width: 100px; height: 35px;"
-							class="form-control navbar-left list-group" name="searchType">
-								<option value="n"
-									<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>전체</option>
+			        
+			       
+			        <div class="search" style="float: right;">
+			       		 <!--------------------------- 검색초기화 & 전체보기ㅏ ----------------------------------->
+				        <span  style="display: inline-block; height: 35px;">
+				        	<button type="button" class="btnColorBorder" onclick="initializeBtn()">초기화</button>
+				        </span>
+						<!--------------------------- 검색 ----------------------------------->
+						<span style="display: inline-block; width: 120px; height: 35px;">
+							<select style="width: 100%; height: 35px;" class="form-control navbar-left list-group" name="searchType">
 								<option value="t"
 									<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
 								<option value="w"
 									<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-						</select>
+								<option value="tw"
+									<c:out value="${scri.searchType eq 'tw' ? 'selected' : ''}"/>>제목+작성자</option>
+							</select>
 						</span> 
-						<span style="display: inline-block; width: 200px; height: 36px;">
-							<input class="form-control navbar-left list-group pl-2" style="width: 200px; height: 36px;" type="search" placeholder="검색어" name="keyword" id="keywordInput" value="${scri.keyword}" />
+						<span style="display: inline-block; width: 230px; height: 36px;">
+							<input class="form-control navbar-left list-group pl-2" style="width: 100%; height: 36px;" type="search" placeholder="검색어" name="keyword" id="keywordInput" value="${scri.keyword}" onkeyup="enterkey()" />
 						</span> 
-						
 						<span style="display: inline-block; width: 60px; height: 36px;">
-							<button style="width: 60px; height: 34px;" id="searchBtn" type="button" class="btnColorBorder pl-2">검색</button>
+							<button id="searchBtn" type="button" class="btnColorBorder pl-2">검색</button>
 						</span>
-
-						<script>
-     						 
-   						
- 						</script>
 					</div>
 					<!--------------------------- 검색 END ----------------------------------->		
 								
@@ -104,6 +99,9 @@
 						</table>
 						
 						<!--------------------------- 페이징 ----------------------------------->
+						
+						<ul id="pagination" class="pagination-sm"></ul>
+						
 						<div id="paginationBox">
 							<ul class="pagination">
 								<c:if test="${pageMaker.prev}">					
@@ -114,8 +112,9 @@
 									</li>					
 								</c:if>				
 								<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">					
-									<li class="page-item pageLi" <c:out value="${pagination.page == idx ? 'active' : ''}"/>>
-										<a class="page-link btnColorBorder select" href="list${pageMaker.makeSearch(idx)}">
+								<!-- ${pageMaker.cri.page == idx ? 'active' : '' }" 는 pageMaker의 cri의 변수인 page의 값이 idx와 같다는 조건이 참일때 active를 나타낸다는 뜻 -->
+									<li class="page-item pageLi ${pageMaker.cri.page == idx ? 'active' : '' }" >
+										<a class="page-link btnColorBorder select " href="list${pageMaker.makeSearch(idx)}">
 											 ${idx} 
 										 </a>
 								 	</li>					
@@ -129,13 +128,14 @@
 								</c:if>					
 							</ul>					
 						</div>						
+						
 						<!--------------------------- 페이징 END ----------------------------------->
 						
 					</div>
 					<br>
 					<div class="btnDivRight">
 						<!-- 새글쓰기 버튼 -->
-						<button  type="button" class="btn btn-outline-success btn-sm btn-radius writeBtn" onclick="location.href = 'write'">새글쓰기</button>
+						<button  type="button" class="btn btn-outline-success btn-sm btn-radius writeBtn" onclick="writeBtn()">새글쓰기</button>
 						<!-- 전체/선택 삭제하기 버튼 -->			
 						<button  type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="checkDel()">삭제하기</button>
 					</div>
@@ -162,59 +162,123 @@
   			 $('.dataTables_filter input').val("${param.keyword}").keyup();
   		};
   		
+  		//새글쓰기 버튼을 눌렀을때 페이징값과 검색 값 가지고 페이지로 이동
+  		function writeBtn() {
+			location.href = "write?page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}";
+		}
+  		
 		//해당컬럼을 눌렀을때 상세보기 페이지로 이동
 		function selectByB_ID(b_id) {
 			location.href = "view?b_id=" + b_id + "&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}";
 		}
 		
 		/*--------------------------------------------------------------
-				체크박스 삭제 
+								체크박스 삭제 
 		--------------------------------------------------------------*/
+		
+		
 		function checkDel() {
-			var deleteCk = confirm("정말 삭제하시겠습니까?");
 			
-			if(deleteCk){
-				 var checkboxArray = new Array(); //체크박스값을 넣을 배열생성
-	             
-	             $('input[name="b_id"]:checked').each(function(i){//체크된 리스트 배열에 넣기
-	            	 checkboxArray.push($(this).val());
-	             });
-	             
-	             var objParams = {
-	                     "checkboxList" : checkboxArray        //체크된 배열 저장
-	                 };
-	
-	             if(checkboxArray.length == 0){
-	            	 alert("선택된 글이 없습니다.");
-	             }else{
-		             //ajax 호출
-		             $.ajax({
-		                 url         :   "/board/delete",
-		                 type        :   'post',
-		                 data        :   objParams,
-		                 success     :   function(res){
-								location.href = "list";
-		                 }
-		                 ,error:function(request,status,error){
-		                	 	alert("삭제 실패");
-		                	 	console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			                	history.back();
-			              }
-		             });
-	             }
-			}else{
-				//삭제확인창 취소했을때 
-				  return;
-			}
+			Swal.fire({
+				  title: '정말 삭제하시겠습니까?',
+				  icon: 'question',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '삭제하기',
+				  cancelButtonText: '취소'
+				}).then((deleteCk) => {
+					if(deleteCk.isConfirmed){
+						 var checkboxArray = new Array(); //체크박스값을 넣을 배열생성
+			             
+			             $('input[name="b_id"]:checked').each(function(i){//체크된 리스트 배열에 넣기
+			            	 checkboxArray.push($(this).val());
+			             });
+			             
+			             var objParams = {
+			                     "checkboxList" : checkboxArray        //체크된 배열 저장
+			                 };
+			
+			             if(checkboxArray.length == 0){
+			            	 Swal.fire("선택된 글이 없습니다.","","warning"); 
+			             }else{
+				             //ajax 호출
+				             $.ajax({
+				                 url         :   "/board/delete",
+				                 type        :   'post',
+				                 data        :   objParams,
+				                 success     :   function(res){
+				                	 Swal.fire("글이 삭제되었습니다.","","success"); 
+				                	 	
+				                	 	var param = "${param.page}";
+				                	 	if( param > 0){
+				                	 		location.href = "list?"
+											+ "&page=${param.page}"
+										    + "&perPageNum=${param.perPageNum}"
+										    + "&searchType=${param.searchType}"
+										    + "&keyword=${param.keyword}";
+				                	 	}else{
+				                	 		location.href = "list?"
+												+ "&page=1"
+											    + "&perPageNum=10"
+											    + "&searchType=${param.searchType}"
+											    + "&keyword=${param.keyword}";
+				                	 	}
+				                 }
+				                 ,error:function(request,status,error){
+				                	 Swal.fire("삭제에 실패했습니다.","","warning"); 
+				                	 	console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					                	history.back();
+					              }
+				             });
+			             }
+					}
+				})
+		} 
+		
+		<!-------------------- 초기화 -------------------------->	
+		function initializeBtn() {
+			location = "list";
 		}
 		
-		/*--------------------------------------------------------------
-									검색 
-		--------------------------------------------------------------*/
+		 <!-------------------- 검색 -------------------------->	
+		
+		 //검객 엔터
+		 function enterkey() {
+             if (window.event.keyCode == 13) {
+             if($('#keywordInput').val() == ''){
+            	 Swal.fire("검색어를 입력해주세요","","warning")
+               }
+               else{
+             	 self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+            	}
+       		}
+
+		//검색버튼						
 		 $('#searchBtn').click(function() {
+			 var inputSearch = $("#keywordInput").val();
+			 if(inputSearch ==''){
+				Swal.fire("검색어를 입력해주세요.","","warning"); 
+			 }
 		  	  self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 		   });
-		
+		 }
+		 
+		 <!-------------------- 페이징 누르면 색 넣기 ---------------------->	
+		 /* <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">					
+			<li class="page-item pageLi" <c:out value="${pagination.page == idx ? 'active' : ''}"/>>
+				<a class="page-link btnColorBorder select " href="list${pageMaker.makeSearch(idx)}">
+					 ${idx} 
+				 </a>
+		 	</li>					
+		</c:forEach>		 */
+		 
+		/*  $('#pageActive').click(function() {
+			 var paramPage = "${scri.page}";
+			 var pageNum = ${idx};
+			 
+		 } */
+		 
 	</script>
 	
 	
