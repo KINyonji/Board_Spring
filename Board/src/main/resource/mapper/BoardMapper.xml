@@ -3,9 +3,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.myway.yon.domain.BoardDAO">
+<mapper namespace="com.myway.yon.domain.board.BoardDAO">
 	<!-- 게시판 목록 -->
-	<select id="listAll" resultType="com.myway.yon.domain.BoardDTO">
+	<select id="listAll" resultType="com.myway.yon.domain.board.BoardDTO">
 		SELECT
 			RNUM,
 			B_ID,
@@ -39,7 +39,7 @@
 	</select>
 	
 	<!-- 게시물 총 갯수 -->
-	<select id="listCount" parameterType="com.myway.yon.domain.SearchCriteria" resultType="int">
+	<select id="listCount" parameterType="com.myway.yon.domain.board.SearchCriteria" resultType="int">
 		SELECT 
 			COUNT(B_ID)
 		  FROM 
@@ -63,7 +63,7 @@
 	
 	
 	<!-- 글작성 insert(DTO) 메소드 -->
-	<insert id="insert" flushCache="true" parameterType="com.myway.yon.domain.BoardDTO">
+	<insert id="insert" flushCache="true" parameterType="com.myway.yon.domain.board.BoardDTO">
 		<!-- 오라클은 Auto_Increment 기능이 없다. 그렇기에 자동으로 인덱스값을 증가시켜주기 위해서는 시퀀스를 생성해서 사용해야한다. -->
 		<!-- Sequence SELECT MAX(no)+1 FROM BOARD로 먼저 수행한 후에 결과값을 b_id에 받아서 INSERT 문장에 추가-->
 		<selectKey keyProperty="b_id" resultType="int" order="BEFORE">
@@ -77,7 +77,7 @@
 	</insert>
 	
 	<!-- 글 상세보기 view -->
-	<select id="selectByBid" resultType="com.myway.yon.domain.BoardDTO">
+	<select id="selectByBid" resultType="com.myway.yon.domain.board.BoardDTO">
 		SELECT 
 			B_ID B_ID,
 			B_TITLE B_TITLE,

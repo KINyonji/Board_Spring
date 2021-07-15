@@ -1,4 +1,4 @@
-package com.myway.yon.domain;
+package com.myway.yon.domain.board;
 
 import java.util.List;
 import java.util.Map;

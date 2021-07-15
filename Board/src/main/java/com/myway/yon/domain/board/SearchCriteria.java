@@ -1,4 +1,4 @@
-package com.myway.yon.domain;
+package com.myway.yon.domain.board;
 
 public class SearchCriteria extends Criteria {
 

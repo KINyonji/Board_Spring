@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,12 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.myway.yon.domain.BoardDTO;
-import com.myway.yon.domain.PageMaker;
-import com.myway.yon.domain.PaginationDTO;
-import com.myway.yon.domain.SearchCriteria;
+import com.myway.yon.domain.board.BoardDTO;
+import com.myway.yon.domain.board.PageMaker;
+import com.myway.yon.domain.board.SearchCriteria;
 import com.myway.yon.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -94,7 +91,6 @@ public class BoardController {
 	//글 삭제하기
 	@RequestMapping(value = "/deleteOk")
 	public String boardDelete( int b_id, Model model, @ModelAttribute("scri") SearchCriteria scri) {    
-		System.out.println(b_id);
 		model.addAttribute("result", boardService.deleteByBid(b_id));
 		return "board/boardDeleteOk";
 	}
@@ -103,7 +99,6 @@ public class BoardController {
 	@PostMapping(value = "/delete")
 	@ResponseBody
 	public Object boardDeleteCk( @RequestParam(value="checkboxList[]") List<Integer> checkboxList, Model model, BoardDTO dto) {
-        
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("checkboxList", checkboxList);      
         boardService.deleteByBid(result);        
