@@ -2,17 +2,30 @@
 
 #dropdownItem{
 	padding:0em;
-	width: 100%;
+	width: 100px;
 	border-radius: 20px;
 	margin-left: 10px;
 	padding-left: 10px;
+	overflow: visible;
 }
 
 #dropdownItem:hover{
 	background-color: white;
-	color:  rgb(75, 104, 23);
+	color:  rgb(107, 143, 33);
+	font-weight: 500;
+	text-shadow: 0px 0px 5px rgb(145, 199, 44);
 }
 
+@media (min-width: 992px){
+#dropdownItem{
+	padding:0em;
+	width: 100px;
+	border-radius: 20px;
+	margin-left: 10px;
+	padding-left: 10px;
+	overflow: visible;
+}
+}
 /*--------------------------------------------------------------
 							회원가입
 --------------------------------------------------------------*/

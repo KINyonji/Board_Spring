@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="deleteCk"/>
+		<item key="selection" value="hover"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="hover"/>
+			<item value="testimonials-carousel"/>
+			<item value="aos_init"/>
+			<item value="row"/>
+			<item value="footer"/>
+			<item value="formCon"/>
+			<item value="main-panel"/>
+			<item value="main-header"/>
+			<item value="wrapper"/>
 			<item value="swal"/>
 			<item value="deleteCk"/>
 			<item value="last-child{margin-bottom:45px}.swal-footer{text-align:"/>
 			<item value="searchBtn"/>
 			<item value="checkDel"/>
 			<item value="submitContents"/>
-			<item value="selectByB_ID"/>
-			<item value="makeQuery"/>
-			<item value="pageMaker"/>
-			<item value="keywordInput"/>
-			<item value="listSize"/>
-			<item value="RN"/>
-			<item value="pageSize"/>
-			<item value="jackson-core"/>
-			<item value="jackson"/>
 		</list>
 		<list key="replacehistory">
 			<item value="t/header_sidebar2.jsp&quot;%&gt;"/>
@@ -43,10 +43,10 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="157"/>
-		<item key="DIALOG_Y_ORIGIN" value="125"/>
+		<item key="DIALOG_X_ORIGIN" value="134"/>
+		<item key="DIALOG_Y_ORIGIN" value="282"/>
 		<item key="DIALOG_WIDTH" value="393"/>
-		<item key="DIALOG_HEIGHT" value="523"/>
+		<item key="DIALOG_HEIGHT" value="525"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
