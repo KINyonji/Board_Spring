@@ -12,11 +12,11 @@
                 required : true,
                 rangelength : [1,100]
             },
-            u_regname: {
+            u_regID: {
                 required : true,
                 rangelength : [1,6]
             },
-            u_modifyname: {
+            u_modifyID: {
 				required : true,
                 rangelength : [1,6]
 			}
@@ -29,11 +29,11 @@
                 rangelength : "제목은 {0}글자에서 {1}자까지 입력 가능합니다",
                 maxlength : "50글자까지 입력 가능합니다."
             },
-            u_regname: {
+            u_regID: {
                 required : "작성자를 입력해주세요",
                 rangelength : "작성자는 {0}글자에서 {1}자까지 입력 가능합니다"
             },
-            u_modifyname: {
+            u_modifyID: {
                 required : "작성자를 입력해주세요",
                 rangelength : "작성자는 {0}글자에서 {1}자까지 입력 가능합니다"
             }

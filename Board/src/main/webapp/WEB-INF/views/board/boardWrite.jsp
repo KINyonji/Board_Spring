@@ -53,7 +53,7 @@
 										<!-- 작성자 -->
 										<div class="mb-3">
 											<label class="form-label" for="inputrRegname">작성자</label>
-											<input type="text" name="u_regname" class="form-control" id="inputrRegname"
+											<input type="text" name="u_regID" class="form-control" id="inputrRegname"
 												placeholder="작성자" required>
 										</div>
 										<!-- 글내용 -->
@@ -162,7 +162,7 @@
 
 	</script>
 
-	<script  src="/resources/js/validator.js"></script> 
+	<script  src="/resources/js/boardValidator.js"></script> 
 	
 </body>
 

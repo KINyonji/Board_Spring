@@ -7,14 +7,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myway.yon.domain.board.BoardDAO;
-import com.myway.yon.domain.board.BoardDTO;
-import com.myway.yon.domain.board.SearchCriteria;
+import com.myway.yon.domain.user.UserDAO;
+import com.myway.yon.domain.user.UserDTO;
 
 @Service //비지니스 로직이나 repository layer 호출하는 함수
-public class MemberService {
+public class UserService {
 	
-	BoardDAO dao;
+	UserDAO dao;
 	
 	/*Mybatis를 이용하여 DAO를 구현하려면 SqlSession 객체가 필요하다.
 	 * SqlSession를 생성하기 위해 SqlSessionFactory를 사용한다. 세션을 한번 생성하면 매핑구문을 실행하거나 커밋 또는
@@ -35,17 +34,16 @@ public class MemberService {
 		this.sqlSession = sqlSession;
 	}
 	
-	public MemberService() {
+	public UserService() {
 		super();
-		System.out.println("MemberService() 생성");
+		System.out.println("UserService() 생성");
 	}
 	
-	//게시판 리스트
-	public List<BoardDTO> listAll(SearchCriteria scri) {
-		dao = sqlSession.getMapper(BoardDAO.class);
-		return dao.listAll(scri);
-		
-	};
+	//로그인
+	public int login(UserDTO dto) {
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		return dao.login(dto);  // 1개짜리 List
+	}
 	
 
 }

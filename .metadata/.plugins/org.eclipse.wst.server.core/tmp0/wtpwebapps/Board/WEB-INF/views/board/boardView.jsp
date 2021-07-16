@@ -97,7 +97,7 @@
 										<div class="mb-3">
 											<div class="row">
 												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">등록자</div>
-												<div id="minCenter" class="col-md-4">${list[0].u_regname }</div>
+												<div id="minCenter" class="col-md-4">${list[0].u_regID }</div>
 												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">등록날짜</div>
 												<div id="minCenter" class="col-md-4">${list[0].b_regdate }</div>
 											</div>
@@ -105,7 +105,7 @@
 										<div class="mb-3">
 											<div class="row">
 												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">수정자</div>
-												<div id="minCenter" class="col-md-4">${list[0].u_modifyname }</div>
+												<div id="minCenter" class="col-md-4">${list[0].u_modifyID }</div>
 												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">수정날짜</div>
 												<div id="minCenter" class="col-md-4">${list[0].b_modifydate }</div>
 											</div>

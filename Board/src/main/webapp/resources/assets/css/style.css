@@ -191,6 +191,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* 메뉴에 hover할때, active 될때 */
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
   color: #fff;
   background: rgb(145, 199, 44);
@@ -540,4 +541,39 @@ h1, h2, h3, h4, h5, h6 {
 
 #footer .credits {
   font-size: 13px;
+}
+
+/*--------------------------------------------------------------
+#dropdownItem sideNav의 유저 드롭메뉴
+--------------------------------------------------------------*/
+
+#dropdownItem{
+	padding:0em;
+	width: 100px;
+	border-radius: 20px;
+	margin-left: 10px;
+	padding-left: 10px;
+	overflow: visible;
+}
+
+#dropdownItem:hover{
+	background-color: white;
+	color:  rgb(107, 143, 33);
+	font-weight: 500;
+	text-shadow: 0px 0px 5px rgb(145, 199, 44);
+}
+
+@media (min-width: 992px){
+#dropdownItem{
+	padding:0em;
+	width: 120px;
+	border-radius: 20px;
+	margin-left: 10px;
+	padding-left: 10px;
+	overflow: visible;
+}
+}
+#dropdownMenu {
+	background-color: transparent ;
+	border: none;
 }

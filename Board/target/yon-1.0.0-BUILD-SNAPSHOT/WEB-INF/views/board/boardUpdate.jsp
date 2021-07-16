@@ -67,13 +67,13 @@
 											<label class="form-label" for="inputrRegname">작성자</label>
 											<!-- 수정자 유무 -->
 												<c:choose>									
-													<c:when test="${empty list[0].u_modifyname }"> 
-														<input type="text" name="u_modifyname" class="form-control" id="inputrRegname"
-												placeholder="작성자" value="${list[0].u_regname}">
+													<c:when test="${empty list[0].u_modifyID }"> 
+														<input type="text" name="u_modifyID" class="form-control" id="inputrRegname"
+												placeholder="작성자" value="${list[0].u_regID}">
 													</c:when>										
 													<c:otherwise>
-														<input type="text" name="u_modifyname" class="form-control" id="inputrRegname"
-												placeholder="작성자" value="${list[0].u_modifyname}">
+														<input type="text" name="u_modifyID" class="form-control" id="inputrRegname"
+												placeholder="작성자" value="${list[0].u_modifyID}">
 													</c:otherwise>
 												</c:choose>
 										</div>

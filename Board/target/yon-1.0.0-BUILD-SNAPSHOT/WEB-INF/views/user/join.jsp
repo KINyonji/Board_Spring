@@ -10,7 +10,7 @@
 <html lang="kr">
 <head>
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
-  	<link href="/resources/member/memberStyle.css" rel="stylesheet">
+  	<link href="/resources/user/userStyle.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
   <!-- ======= content Section ======= -->
 	<main id="main">
 		<div id="content">
-			<div id="member" class="member">
+			<div id="user" class="user">
 				<div class="container" data-aos="fade-up">
 					<div class="content-title">
 						<h2>회원가입</h2>

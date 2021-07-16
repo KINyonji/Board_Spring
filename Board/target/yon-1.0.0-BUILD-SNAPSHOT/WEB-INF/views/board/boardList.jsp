@@ -84,11 +84,11 @@
 										</c:choose>
 										<!-- 수정자 유무 -->
 										<c:choose>									
-											<c:when test="${empty l.u_modifyname }"> 
-												<td>${l.u_regname }</td>
+											<c:when test="${empty l.u_modifyID }"> 
+												<td>${l.u_regID }</td>
 											</c:when>										
 											<c:otherwise>
-												<td>${l.u_modifyname }</td>
+												<td>${l.u_modifyID }</td>
 											</c:otherwise>
 										</c:choose>
 										

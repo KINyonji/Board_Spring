@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="hover"/>
+		<item key="selection" value="member"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="member"/>
+			<item value="home"/>
 			<item value="hover"/>
 			<item value="testimonials-carousel"/>
 			<item value="aos_init"/>
@@ -21,10 +23,9 @@
 			<item value="deleteCk"/>
 			<item value="last-child{margin-bottom:45px}.swal-footer{text-align:"/>
 			<item value="searchBtn"/>
-			<item value="checkDel"/>
-			<item value="submitContents"/>
 		</list>
 		<list key="replacehistory">
+			<item value="user"/>
 			<item value="t/header_sidebar2.jsp&quot;%&gt;"/>
 			<item value="/WEB-INF/views"/>
 			<item value="b_content"/>
@@ -34,7 +35,6 @@
 			<item value="#home .subscribe"/>
 			<item value="rgb(145, 199, 44)"/>
 			<item value="home"/>
-			<item value="user"/>
 			<item value="QnA"/>
 			<item value="User"/>
 			<item value="&quot;/resources/asset"/>
@@ -43,11 +43,11 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="134"/>
-		<item key="DIALOG_Y_ORIGIN" value="282"/>
-		<item key="DIALOG_WIDTH" value="393"/>
-		<item key="DIALOG_HEIGHT" value="525"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_X_ORIGIN" value="1340"/>
+		<item key="DIALOG_Y_ORIGIN" value="207"/>
+		<item key="DIALOG_WIDTH" value="340"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="692"/>

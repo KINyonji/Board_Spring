@@ -10,26 +10,26 @@
 			RNUM,
 			B_ID,
 			B_TITLE,
-			U_REGNAME,
-			U_MODIFYNAME,
+			U_REGID,
+			U_MODIFYID,
 			B_REGDATE,
 			B_MODIFYDATE,
 			B_VIEWCNT,
-			B_DELETE_NY
+			B_DELETEYN
 		FROM (
 				SELECT
 					B_ID,
 					B_TITLE,
-					U_REGNAME,
-					U_MODIFYNAME,
+					U_REGID,
+					U_MODIFYID,
 					B_REGDATE,
 					B_MODIFYDATE,
 					B_VIEWCNT,
-					B_DELETE_NY,
+					B_DELETEYN,
 					ROW_NUMBER() OVER(ORDER BY B_REGDATE desc) as rnum
 				FROM board
 				WHERE
-    				 B_DELETE_NY = 'N'
+    				 B_DELETEYN = 'N'
     				 <include refid="search"></include>
 				)
 			BOARD
@@ -49,15 +49,15 @@
 		 	
 		 	<include refid="search"></include>	
 		 AND 
-		 	B_DELETE_NY = 'N'
+		 	B_DELETEYN = 'N'
 	</select>
 	
 	
 	<sql id="search">
 		<if test="searchType != null">
-			<if test="searchType == 'tw'.toString()">AND (B_TITLE LIKE '%' || #{keyword} || '%') or (U_REGNAME LIKE '%' || #{keyword} || '%')</if>
+			<if test="searchType == 'tw'.toString()">AND (B_TITLE LIKE '%' || #{keyword} || '%') or (U_REGID LIKE '%' || #{keyword} || '%')</if>
 			<if test="searchType == 't'.toString()">AND B_TITLE LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'w'.toString()">AND U_REGNAME LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND U_REGID LIKE '%' || #{keyword} || '%'</if>
 		</if>
 	</sql>
 	
@@ -66,14 +66,15 @@
 	<insert id="insert" flushCache="true" parameterType="com.myway.yon.domain.board.BoardDTO">
 		<!-- 오라클은 Auto_Increment 기능이 없다. 그렇기에 자동으로 인덱스값을 증가시켜주기 위해서는 시퀀스를 생성해서 사용해야한다. -->
 		<!-- Sequence SELECT MAX(no)+1 FROM BOARD로 먼저 수행한 후에 결과값을 b_id에 받아서 INSERT 문장에 추가-->
+		<!-- NVL(컬럼,0) 컬럼의 값이 NULL일경우 0으로 치환 -->
 		<selectKey keyProperty="b_id" resultType="int" order="BEFORE">
-    		  SELECT MAX(b_id)+1 FROM BOARD
+    		  SELECT NVL(MAX(b_id) ,0)+1 FROM BOARD
    		 </selectKey>
 		
 		INSERT INTO BOARD
-			(B_ID, B_TITLE, b_content, u_regname, B_REGDATE)
+			(B_ID, B_TITLE, b_content, u_regID, B_REGDATE)
 		VALUES
-			(#{b_id}, #{b_title}, #{b_content}, #{u_regname}, SYSDATE)
+			(#{b_id}, #{b_title}, #{b_content}, #{u_regID}, SYSDATE)
 	</insert>
 	
 	<!-- 글 상세보기 view -->
@@ -82,12 +83,12 @@
 			B_ID B_ID,
 			B_TITLE B_TITLE,
 			B_CONTENT B_CONTENT,
-			U_REGNAME U_REGNAME,
-			U_MODIFYNAME U_MODIFYNAME,
+			U_REGID U_REGID,
+			U_MODIFYID U_MODIFYID,
 			B_REGDATE B_REGDATE,
 			B_MODIFYDATE B_MODIFYDATE,
 			B_VIEWCNT B_VIEWCNT,
-			B_DELETE_NY B_DELETE_NY
+			B_DELETEYN B_DELETEYN
 		FROM
 			BOARD
 		WHERE 
@@ -109,20 +110,20 @@
 		UPDATE 
 			BOARD 
 		SET 
-			B_TITLE = #{a.b_title}, 
-			B_CONTENT = #{a.b_content},
-			U_MODIFYNAME = #{a.u_modifyname},
+			B_TITLE = #{b_title}, 
+			B_CONTENT = #{b_content},
+			U_MODIFYID = #{u_modifyID},
 			B_MODIFYDATE = SYSDATE
 		WHERE 
 			B_ID = #{param1}
 	</update>
 	
-	<!-- 글 삭제하기 → B_DELETE_NY를 Y로 수정하기 -->
+	<!-- 글 삭제하기 → B_DELETEYN를 Y로 수정하기 -->
 	<update id="deleteByBid" flushCache="true">
 		UPDATE 
 			BOARD 
 		SET 
-			B_DELETE_NY = 'Y'
+			B_DELETEYN = 'Y'
 		WHERE 
 			B_ID = #{param1}
 	</update>
@@ -140,7 +141,7 @@
 		UPDATE 
 			BOARD 
 		SET 
-			B_DELETE_NY = 'Y'
+			B_DELETEYN = 'Y'
 		WHERE 
 			B_ID 
 		IN
