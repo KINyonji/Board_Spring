@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
-    <fullyQualifiedTypeName name="com.myway.yon.dao.BoardDao"/>
-    <fullyQualifiedTypeName name="oracle.sql.CLOB"/>
-    <fullyQualifiedTypeName name="java.security.Timestamp"/>
-    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
@@ -48,7 +41,6 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.reflection.SystemMetaObject"/>
     <fullyQualifiedTypeName name="java.io.Console"/>
     <fullyQualifiedTypeName name="com.myway.yon.domain.PaginationDTO"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
     <fullyQualifiedTypeName name="org.springframework.web.util.UriComponents"/>
     <fullyQualifiedTypeName name="org.springframework.web.util.UriComponentsBuilder"/>
     <fullyQualifiedTypeName name="java.net.URLEncoder"/>
@@ -59,4 +51,13 @@
     <fullyQualifiedTypeName name="com.myway.yon.domain.BoardDTO"/>
     <fullyQualifiedTypeName name="java.lang.ClassCircularityError"/>
     <fullyQualifiedTypeName name="com.myway.yon.domain.board.BoardDAO"/>
+    <fullyQualifiedTypeName name="com.myway.yon.service.UserService"/>
+    <fullyQualifiedTypeName name="com.myway.yon.domain.user.UserDAO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
+    <fullyQualifiedTypeName name="com.myway.yon.domain.user.LoginDTO"/>
+    <fullyQualifiedTypeName name="com.myway.yon.domain.user.UserDTO"/>
+    <fullyQualifiedTypeName name="sun.security.krb5.KrbCryptoException"/>
 </qualifiedTypeNameHistroy>

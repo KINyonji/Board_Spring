@@ -13,6 +13,14 @@
          WHERE U_ID = #{u_id}
            AND U_PW = #{u_pw}
     </select>
+    
+    <select id="login1" resultMap="userDTOResultMap">
+        SELECT 
+         	*
+          FROM 
+          	USERTABLE
+         WHERE U_ID = #{u_id}
+    </select>
 
 </mapper>    
 

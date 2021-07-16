@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="member"/>
+		<item key="selection" value="pw_input"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="pw_input"/>
+			<item value="hover"/>
+			<item value="ㅙㅍㄷㄱ"/>
 			<item value="member"/>
 			<item value="home"/>
-			<item value="hover"/>
 			<item value="testimonials-carousel"/>
 			<item value="aos_init"/>
 			<item value="row"/>
@@ -21,8 +23,6 @@
 			<item value="wrapper"/>
 			<item value="swal"/>
 			<item value="deleteCk"/>
-			<item value="last-child{margin-bottom:45px}.swal-footer{text-align:"/>
-			<item value="searchBtn"/>
 		</list>
 		<list key="replacehistory">
 			<item value="user"/>
@@ -43,8 +43,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1340"/>
-		<item key="DIALOG_Y_ORIGIN" value="207"/>
+		<item key="DIALOG_X_ORIGIN" value="1172"/>
+		<item key="DIALOG_Y_ORIGIN" value="317"/>
 		<item key="DIALOG_WIDTH" value="340"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

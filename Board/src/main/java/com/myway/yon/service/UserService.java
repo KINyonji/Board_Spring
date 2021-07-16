@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.myway.yon.domain.user.LoginDTO;
 import com.myway.yon.domain.user.UserDAO;
 import com.myway.yon.domain.user.UserDTO;
 
@@ -42,7 +43,13 @@ public class UserService {
 	//로그인
 	public int login(UserDTO dto) {
 		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
-		return dao.login(dto);  // 1개짜리 List
+		return dao.login(dto);  
+	}
+	
+	//로그인
+	public UserDTO login1(LoginDTO loginDTO) throws Exception {
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		return dao.login1(loginDTO);  
 	}
 	
 

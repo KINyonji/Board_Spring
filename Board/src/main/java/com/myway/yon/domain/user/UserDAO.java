@@ -6,7 +6,8 @@ import org.mybatis.spring.annotation.MapperScan;
 public interface UserDAO {
 
 	int login(UserDTO dto);
-
 	
+	UserDTO login1(LoginDTO loginDTO) throws Exception;
+
 
 }
