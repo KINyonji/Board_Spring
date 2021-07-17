@@ -162,7 +162,7 @@
 
 	</script>
 
-	<script  src="/resources/js/validator.js"></script> 
+	<script  src="/resources/js/boardValidator.js"></script> 
 	
 </body>
 

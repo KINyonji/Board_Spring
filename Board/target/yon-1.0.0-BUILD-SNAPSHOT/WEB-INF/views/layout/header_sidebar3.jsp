@@ -11,11 +11,11 @@
 		   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
 		   		<i class="bx bx-user"></i>
 		   </a>
-		   <div class="dropdown-menu dropdown-menu-right ml-1">
-		     <a id="dropdownItem" class="dropdown-item" href="<%=request.getContextPath()%>/user/login">로그인</a>
-		     <a id="dropdownItem" class="dropdown-item" href="<%=request.getContextPath()%>/user/join">회원가입</a>
-		     <a id="dropdownItem" class="dropdown-item" href="<%=request.getContextPath()%>/user/logout">로그아웃</a>
-		     <a id="dropdownItem" class="dropdown-item" href="<%=request.getContextPath()%>/user/">내 정보 수정</a>
+		   <div id="dropdownMenu" class="dropdown-menu dropdown-menu-right ml-1">
+		     <a id="dropdownItem" class="dropdown-item dropdownA" href="<%=request.getContextPath()%>/user/login">로그인</a>
+		     <a id="dropdownItem" class="dropdown-item dropdownA" href="<%=request.getContextPath()%>/user/join">회원가입</a>
+		     <a id="dropdownItem" class="dropdown-item dropdownA" href="<%=request.getContextPath()%>/user/logout">로그아웃</a>
+		     <a id="dropdownItem" class="dropdown-item dropdownA" href="<%=request.getContextPath()%>/user/">내 정보 수정</a>
 		   </div>
 		 </li>
       </ul>
