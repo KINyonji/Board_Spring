@@ -264,6 +264,20 @@
 		   });
 		 }
 		 
+		 <!-------------------- 페이징 누르면 색 넣기 ---------------------->	
+		 /* <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">					
+			<li class="page-item pageLi" <c:out value="${pagination.page == idx ? 'active' : ''}"/>>
+				<a class="page-link btnColorBorder select " href="list${pageMaker.makeSearch(idx)}">
+					 ${idx} 
+				 </a>
+		 	</li>					
+		</c:forEach>		 */
+		 
+		/*  $('#pageActive').click(function() {
+			 var paramPage = "${scri.page}";
+			 var pageNum = ${idx};
+			 
+		 } */
 		 
 	</script>
 	

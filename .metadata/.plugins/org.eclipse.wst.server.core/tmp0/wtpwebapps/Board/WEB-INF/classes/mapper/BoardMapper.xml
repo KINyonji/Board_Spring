@@ -34,7 +34,8 @@
 				)
 			BOARD
 		WHERE
-	        rnum BETWEEN #{rowStart} AND #{rowEnd} 	
+	        rnum BETWEEN #{rowStart} AND #{rowEnd} 
+		
 	</select>
 	
 	<!-- 게시물 총 갯수 -->

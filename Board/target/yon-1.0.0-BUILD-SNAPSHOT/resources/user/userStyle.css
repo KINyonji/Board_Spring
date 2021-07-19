@@ -142,7 +142,7 @@ input, select {
     font-size: larger;
 }
 
-#id_pw_input input[type=text], input[type=password] {
+#email_pw_input input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -159,7 +159,7 @@ input, select {
     vertical-align: -4px;
 }
 
-#id_pw_input button {
+#email_pw_input button {
     width: 100%;
     background-color: #FFAD46;
     color: white;
@@ -170,7 +170,7 @@ input, select {
     padding: 14px 20px;
 }
 
-#id_pw_input button:hover {
+#email_pw_input button:hover {
     background-image: linear-gradient(
         rgba(200, 200, 200, 0.2),
         rgba(200, 200, 200, 0.2)

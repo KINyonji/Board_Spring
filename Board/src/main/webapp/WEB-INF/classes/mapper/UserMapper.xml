@@ -5,22 +5,13 @@
 
 <mapper namespace="com.myway.yon.domain.user.UserDAO">
 	
-	 <select id="login" resultType="INT">
-        SELECT 
-         	COUNT(*)
-          FROM 
-          	USERTABLE
-         WHERE U_ID = #{u_id}
-           AND U_PW = #{u_pw}
+	 <select id="Login" parameterType="UserDTO" resultType="Int">
+        SELECT COUNT(*)
+          FROM USER
+         WHERE ID = #{u_id}
+           AND PASSWORD = #{u_pw}
     </select>
-    
-  <!--  <select id="login1" resultMap="userDTOResultMap">-->
-      <!--  SELECT 
-         	*
-          FROM 
-          	USERTABLE
-         WHERE U_ID = #{u_id}-->
-    <!--</select>-->
 
 </mapper>    
+
 
