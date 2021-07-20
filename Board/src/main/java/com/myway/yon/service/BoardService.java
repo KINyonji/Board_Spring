@@ -76,7 +76,7 @@ public class BoardService {
 	//글 수정하기
 	public int update(BoardDTO dto) {
 		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
-		return dao.update(dto.getB_id(),dto);
+		return dao.update(dto);
 	};
 
 
@@ -90,5 +90,13 @@ public class BoardService {
 		dao = sqlSession.getMapper(BoardDAO.class);
 		return dao.deleteByBidCk(result);
 	}
+	
+	//회원 탈퇴시 게시물 삭제
+	public int deleteBoard(String u_seq){
+		System.out.println("보트 서비스 :" + u_seq);
+		dao = sqlSession.getMapper(BoardDAO.class);
+		return dao.deleteBoard(u_seq);
+	}
+	
 
 }

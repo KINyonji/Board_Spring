@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
  
 <c:choose>
@@ -69,11 +68,11 @@
 												<c:choose>									
 													<c:when test="${empty list[0].u_modifyID }"> 
 														<input type="text" name="u_modifyID" class="form-control" id="inputrRegname"
-												placeholder="작성자" value="${list[0].u_regID}">
+												placeholder="작성자" value="${seq}">
 													</c:when>										
 													<c:otherwise>
 														<input type="text" name="u_modifyID" class="form-control" id="inputrRegname"
-												placeholder="작성자" value="${list[0].u_modifyID}">
+												placeholder="작성자" value="${seq}">
 													</c:otherwise>
 												</c:choose>
 										</div>
@@ -92,9 +91,9 @@
 									<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
 									<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
 									<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}">
-								<div class="btnDivCenter">
-									<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="submitContents()">수정하기</button>
-								</div>
+									<div class="btnDivCenter">
+										<button type="button" class="btn btn-outline-warning btn-sm btn-radius" onclick="submitContents()">수정하기</button>
+									</div>
 							</form>
 						</div>
 					</div>

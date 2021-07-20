@@ -66,8 +66,9 @@
 	<insert id="insert" flushCache="true" parameterType="com.myway.yon.domain.board.BoardDTO">
 		<!-- 오라클은 Auto_Increment 기능이 없다. 그렇기에 자동으로 인덱스값을 증가시켜주기 위해서는 시퀀스를 생성해서 사용해야한다. -->
 		<!-- Sequence SELECT MAX(no)+1 FROM BOARD로 먼저 수행한 후에 결과값을 b_id에 받아서 INSERT 문장에 추가-->
+		<!-- NVL(컬럼,0) 컬럼의 값이 NULL일경우 0으로 치환 -->
 		<selectKey keyProperty="b_id" resultType="int" order="BEFORE">
-    		  SELECT MAX(b_id)+1 FROM BOARD
+    		  SELECT NVL(MAX(b_id) ,0)+1 FROM BOARD
    		 </selectKey>
 		
 		INSERT INTO BOARD
@@ -109,9 +110,9 @@
 		UPDATE 
 			BOARD 
 		SET 
-			B_TITLE = #{a.b_title}, 
-			B_CONTENT = #{a.b_content},
-			U_MODIFYID = #{a.u_modifyID},
+			B_TITLE = #{b_title}, 
+			B_CONTENT = #{b_content},
+			U_MODIFYID = #{u_modifyID},
 			B_MODIFYDATE = SYSDATE
 		WHERE 
 			B_ID = #{param1}

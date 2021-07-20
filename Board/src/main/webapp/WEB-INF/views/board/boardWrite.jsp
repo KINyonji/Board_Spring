@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -41,35 +41,45 @@
 							</div>
 						</div>
 						<div class="card-body">
-							<form name="frm" id="writeForm" action="writeOk" method="post" onsubmit="">
-								<div class="row">
-									<div class="col-md-12">
-										<!-- 글제목 -->
-										<div class="mb-3">
-											<label class="form-label" for="inputTitle">제목 <span style="color: gray;">(50글자까지)</span></label>
-											<input type="text" name="b_title" class="form-control" id="inputTitle"
-												placeholder="제목" maxlength='50' required>
-										</div>
-										<!-- 작성자 -->
-										<div class="mb-3">
-											<label class="form-label" for="inputrRegname">작성자</label>
-											<input type="text" name="u_regID" class="form-control" id="inputrRegname"
-												placeholder="작성자" required>
-										</div>
-										<!-- 글내용 -->
-										<div class="mb-3">
-											<label class="form-label" for="inputContent">내용</label>
-											
-											<!-- 네이버 스마트 에디터 smarteditor2 -->	
-											<textarea name="b_content" id="ir1" rows="10" cols="50" style="width:100%; min-width:260px; display:none;" maxlength='50' required></textarea>
-											<p class="count">글자수 [&nbsp<span>0</span>&nbsp]</p>
+						<c:choose>
+							<c:when test="${loginCheck == true }">
+								<!-- 로그인했을때 글쓰기 화면 보이기 -->
+								<form name="frm" id="writeForm" action="writeOk" method="post" onsubmit="">
+									<div class="row">
+										<div class="col-md-12">
+											<!-- 글제목 -->
+											<div class="mb-3">
+												<label class="form-label" for="inputTitle">제목 <span style="color: gray;">(50글자까지)</span></label>
+												<input type="text" name="b_title" class="form-control" id="inputTitle"
+													placeholder="제목" maxlength='50' required>
+											</div>
+											<!-- 작성자 -->
+											<div class="mb-3">
+												<label class="form-label" for="inputrRegname">작성자</label>
+												<input type="text" name="u_regID" class="form-control" id="inputrRegname"
+													placeholder="작성자" value="${seq }">
+											</div>
+											<!-- 글내용 -->
+											<div class="mb-3">
+												<label class="form-label" for="inputContent">내용</label>
+												
+												<!-- 네이버 스마트 에디터 smarteditor2 -->	
+												<textarea name="b_content" id="ir1" rows="10" cols="50" style="width:100%; min-width:260px; display:none;" maxlength='50' required></textarea>
+												<p class="count">글자수 [&nbsp<span>0</span>&nbsp]</p>
+											</div>
 										</div>
 									</div>
+									<div class="btnDivCenter">
+										<button type="button" class="btn btn-outline-primary btn-sm btn-radius" onclick="submitContents()">등록하기</button>
+									</div>
+								</form>
+							</c:when>
+							<c:otherwise>
+								<div>
+									<a href="<%=request.getContextPath()%>/user/login">로그인</a> 후 글을 작성할 수 있습니다. 
 								</div>
-								<div class="btnDivCenter">
-									<button type="button" class="btn btn-outline-primary btn-sm btn-radius" onclick="submitContents()">등록하기</button>
-								</div>
-							</form>
+							</c:otherwise>
+						</c:choose>
 						</div>
 					</div>
 

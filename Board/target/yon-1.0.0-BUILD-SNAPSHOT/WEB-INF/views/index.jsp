@@ -3,7 +3,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
+<% 
+response.setHeader("Pragma","no-cache"); 
+response.setDateHeader("Expires",0); 
+response.setHeader("Cache-Control", "no-cache");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>

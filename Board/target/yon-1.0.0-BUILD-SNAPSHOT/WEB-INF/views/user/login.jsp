@@ -4,13 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
+
+
     
 <!DOCTYPE html>
 <html lang="kr">
 <head>
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
   	<link href="/resources/user/userStyle.css" rel="stylesheet">
+  	
+  		<!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  	
 </head>
 
 <body>
@@ -35,33 +40,42 @@
 						    </div>
 					    </div>
 					  </div>-->
-					<!------- 회원가입 from ------->
+					<!------- 로그인 from ------->
 					
 					<div id="logincontainer">
 						<div class="loginFrm">
 							<h1>로그인</h1>
 							<hr>
-			
-							<form>
-								<div id="email_pw_input">
-									<input type="text" placeholder="아이디" name="userEmail"
-										id="userEmail" required> <input type="password"
-										placeholder="비밀번호" name="pw" id="pw" required>
-				
-									<button type="button" id="loginBtn"  onmouseover="this.style.cursor='pointer'">로그인</button>
-								</div>
-								<!-- <div id="loginbottom">
-									<label> <input type="checkbox" name="remember"> 아이디
-										기억하기
-									</label> 
-								</div> -->
-								<hr>
-								<div>
-									<b>계정이 없으세요?</b> <span id="join" class="ml-2"><a
-										href="join">회원가입</a></span>
-								</div>
-							</form>
-				
+						<c:choose>
+							<c:when test="${empty id}">
+								<form id="loginForm" action="loginOk" method="post">
+									<div id="id_pw_input">
+										<input type="text" placeholder="아이디" name="u_id" id="u_id" maxlength='15' minlength='3' required> 
+										<input type="password" placeholder="비밀번호" name="u_pw" id="u_pw" maxlength='20' minlength='5' required>
+										<button type="submit" id="loginBtn"  onmouseover="this.style.cursor='pointer'">로그인</button>
+									</div>
+									<!-- <div id="loginbottom">
+										<label> <input type="checkbox" name="remember"> 아이디
+											기억하기
+										</label> 
+									</div> -->
+									<hr>
+									<div>
+										<b>계정이 없으세요?</b> 
+										<span id="join" class="ml-2">
+											<a href="join">회원가입</a>
+										</span>
+									</div>
+								</form>
+							</c:when>
+							
+							<c:otherwise>
+								<script>
+									Swal.fire("로그인 되어있습니다.","","warning"); 
+								</script>
+								ID : ${id }로 로그인 증
+							</c:otherwise>
+						</c:choose>	
 						</div>
 					</div>
 					<!------- 회원가입 from END ------->					
@@ -82,7 +96,7 @@
   <!-- Vendor JS Files -->
   <%@ include file = "/WEB-INF/views/layout/script.jsp"%>
   
-
+	<script  src="/resources/js/loginValidator.js"></script> 	
 
 </body>
 </html>

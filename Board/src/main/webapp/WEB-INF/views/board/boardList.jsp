@@ -3,10 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
+
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
 </head>
 
@@ -70,7 +74,15 @@
 							<tbody>
 								<c:forEach items="${list}" var="l">
 									<tr>
-										<td>${l.b_id }</td>
+										<!-- b_id와 세션의 값이 같을때 -->
+										<c:if test="${l.u_regID == seq }">
+											<td>${l.b_id }</td>
+										</c:if>
+										<!-- b_id와 세션의 값이 다를때 -->
+										<c:if test="${l.u_regID != seq }">
+											<td>${l.b_id }" disabled="disabled </td>
+										</c:if>
+									
 										<td onclick="selectByB_ID(${l.b_id })" >${l.b_id }</td>
 										<td onclick="selectByB_ID(${l.b_id })" ><div class="text-ellipsis"><p>${l.b_title }</p></div></td>
 										<!-- 수정날짜 유무 -->
@@ -136,8 +148,12 @@
 					<div class="btnDivRight">
 						<!-- 새글쓰기 버튼 -->
 						<button  type="button" class="btn btn-outline-success btn-sm btn-radius writeBtn" onclick="writeBtn()">새글쓰기</button>
+						<c:choose>
+						<c:when test="${loginCheck == true }">
 						<!-- 전체/선택 삭제하기 버튼 -->			
 						<button  type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="checkDel()">삭제하기</button>
+						</c:when>
+						</c:choose>
 					</div>
 					
 		    	</div>
@@ -243,7 +259,7 @@
 		
 		 <!-------------------- 검색 -------------------------->	
 		
-		 //검객 엔터
+		 //검색 엔터
 		 function enterkey() {
              if (window.event.keyCode == 13) {
              if($('#keywordInput').val() == ''){

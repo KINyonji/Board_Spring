@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
+
     
 <c:choose>
 	<c:when test="${empty list || fn:length(list) == 0 }">
@@ -131,10 +131,14 @@
 					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
 					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
 					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}">
-					<div class="btnDivCenter">
-						<button type="submit" class="btn btn-outline-warning btn-sm btn-radius">수정하기</button>
-						<%-- <button type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="chkDelete(${list[0].b_id})">삭제하기</button> --%>
-					</div>
+					<c:choose>
+						<c:when test="${seq == list[0].u_regID || list[0].u_modifyID }">	
+							<div class="btnDivCenter">
+								<button type="submit" class="btn btn-outline-warning btn-sm btn-radius">수정하기</button>
+								<%-- <button type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="chkDelete(${list[0].b_id})">삭제하기</button> --%>
+							</div>
+						</c:when>
+					</c:choose>	
 					</form>
 			</div>
 		</div>

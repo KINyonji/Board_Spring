@@ -25,12 +25,15 @@ public interface BoardDAO {
 	int incViewCnt(int b_id);
 
 	//글 수정
-	int update(int b_id, @Param("a")BoardDTO dto);
+	int update(@Param("a")BoardDTO dto);
 
 	//글 삭제
 	int deleteByBid(int b_id);
 	
 	//체크박스 글 삭제
 	int deleteByBidCk(Map<String, Object> result);
+
+	//회원탈퇴시 게시글 삭제
+	int deleteBoard(String u_seq);
 
 }

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- ======= home Section ======= -->
   <section id="home" class="">
   	 <!-- ======= 메인 로고 ======= -->
@@ -25,6 +29,9 @@
 			    </div>
 		   </div>
 	   </div> 
+	   <div>
+세션 아이디:	   	 ${id}
+	   </div>
   </section><!-- End home -->
   
   <!-- 오른쪽하단에 ↑ 화살표-->

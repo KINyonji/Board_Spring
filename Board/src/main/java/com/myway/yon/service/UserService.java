@@ -1,13 +1,14 @@
 package com.myway.yon.service;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
-import com.myway.yon.domain.user.LoginDTO;
+import com.myway.yon.domain.board.BoardDTO;
 import com.myway.yon.domain.user.UserDAO;
 import com.myway.yon.domain.user.UserDTO;
 
@@ -40,17 +41,71 @@ public class UserService {
 		System.out.println("UserService() 생성");
 	}
 	
-	//로그인
+	//회원가입 + 비밀번호 암호화
+	public int join(UserDTO dto) {
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		// spring util에 있는 DigestUtils 오픈소스를 사용해서 md5로 암호화하기
+		String pw = dto.getU_pw();
+		dto.setU_pw(DigestUtils.md5DigestAsHex(pw.getBytes()));
+		
+		return dao.join(dto);  
+	}
+	
+	//아이디 중복체크
+	public int idCheck(String u_id) {
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		return dao.idCheck(u_id);  
+	}
+	
+	//아이디 중복체크
+	public int nicknameCheck(String u_nickname) {
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		return dao.nicknameCheck(u_nickname);  
+	}
+	
+	//로그인 + 비밀번호 암호화
 	public int login(UserDTO dto) {
 		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		// spring util에 있는 DigestUtils 오픈소스를 사용해서 md5로 암호화하기		
+		 String pw = dto.getU_pw();
+		 dto.setU_pw(DigestUtils.md5DigestAsHex(pw.getBytes()));
+		 
 		return dao.login(dto);  
 	}
 	
-	//로그인
-	public UserDTO login1(LoginDTO loginDTO) throws Exception {
+	//아이디 중복체크
+	public HashMap<String, Object> sessionVal(UserDTO dto) {
 		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
-		return dao.login1(loginDTO);  
-	}
+		return dao.sessionVal(dto);  
+	}	
 	
+	//내 정보 수정 비번 확인
+//	public int pwchk(String u_pw) {
+//		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+//		return dao.pwchk(u_pw);  
+//	}
+	
+	//회원정보 수정 + 비번 암호화
+	public int userUpdate(UserDTO dto) {
+		System.out.println("사ㅓ비스의 nickmame: "+dto.getU_nickname());
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		 String pw = dto.getU_pw();
+		 dto.setU_pw(DigestUtils.md5DigestAsHex(pw.getBytes()));
+		 
+		return dao.userUpdate(dto);  
+	}
+
+	public int deleteByUseq(String u_seq) {
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		return dao.deleteByUseq(u_seq);  
+	}
+
+	
+	public List<UserDTO> selectByUid(Integer u_seq) {
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		return dao.selectByUid(u_seq);
+	}
+
+
 
 }

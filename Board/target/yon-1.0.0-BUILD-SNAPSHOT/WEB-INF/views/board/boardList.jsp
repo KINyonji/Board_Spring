@@ -3,10 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
+
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
 	<%@ include file="/WEB-INF/views/layout/head.jsp"%>
 </head>
 
@@ -136,8 +140,12 @@
 					<div class="btnDivRight">
 						<!-- 새글쓰기 버튼 -->
 						<button  type="button" class="btn btn-outline-success btn-sm btn-radius writeBtn" onclick="writeBtn()">새글쓰기</button>
+						<c:choose>
+						<c:when test="${loginCheck == true }">
 						<!-- 전체/선택 삭제하기 버튼 -->			
 						<button  type="button" class="btn btn-outline-danger btn-sm btn-radius" onclick="checkDel()">삭제하기</button>
+						</c:when>
+						</c:choose>
 					</div>
 					
 		    	</div>
@@ -243,7 +251,7 @@
 		
 		 <!-------------------- 검색 -------------------------->	
 		
-		 //검객 엔터
+		 //검색 엔터
 		 function enterkey() {
              if (window.event.keyCode == 13) {
              if($('#keywordInput').val() == ''){
@@ -264,20 +272,6 @@
 		   });
 		 }
 		 
-		 <!-------------------- 페이징 누르면 색 넣기 ---------------------->	
-		 /* <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">					
-			<li class="page-item pageLi" <c:out value="${pagination.page == idx ? 'active' : ''}"/>>
-				<a class="page-link btnColorBorder select " href="list${pageMaker.makeSearch(idx)}">
-					 ${idx} 
-				 </a>
-		 	</li>					
-		</c:forEach>		 */
-		 
-		/*  $('#pageActive').click(function() {
-			 var paramPage = "${scri.page}";
-			 var pageNum = ${idx};
-			 
-		 } */
 		 
 	</script>
 	
