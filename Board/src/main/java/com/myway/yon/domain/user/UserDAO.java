@@ -36,6 +36,10 @@ public interface UserDAO {
 	//내정보 삭제
 	int deleteByUseq(String u_seq);
 
+	//내 정보 수정에 정보 표시
 	List<UserDTO> selectByUid(Integer u_seq);
+
+	//홈화면 닉네임 표시
+	String selectNN(int seq);
 
 }

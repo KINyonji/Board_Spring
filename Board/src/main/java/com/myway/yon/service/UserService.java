@@ -87,7 +87,6 @@ public class UserService {
 	
 	//회원정보 수정 + 비번 암호화
 	public int userUpdate(UserDTO dto) {
-		System.out.println("사ㅓ비스의 nickmame: "+dto.getU_nickname());
 		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
 		 String pw = dto.getU_pw();
 		 dto.setU_pw(DigestUtils.md5DigestAsHex(pw.getBytes()));
@@ -104,6 +103,13 @@ public class UserService {
 	public List<UserDTO> selectByUid(Integer u_seq) {
 		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
 		return dao.selectByUid(u_seq);
+	}
+
+	//홈화면 닉네임 표시
+	public String selectNN(int seq) {
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+		System.out.println("dao.selectNN(seq): "+dao.selectNN(seq));
+		return dao.selectNN(seq);
 	}
 
 

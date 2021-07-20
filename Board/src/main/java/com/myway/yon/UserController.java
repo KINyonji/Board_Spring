@@ -84,7 +84,6 @@ public class UserController {
 	// 로그인 Ok + 세션
 	@PostMapping(value = "/loginOk")
 	public String loginOk(UserDTO dto ,Model model, HttpSession session) {
-		System.out.println(dto);
 	  if(userService.login(dto) == 1){ //로그인 성공시 1, 실패시 0 을 반환한다
 		  	//세션에 키,값 넣기
             session.setAttribute("loginCheck",true);         
@@ -95,10 +94,7 @@ public class UserController {
             HashMap<String, Object> map =  userService.sessionVal(dto);
            
             session.setAttribute("seq",Integer.parseInt(String.valueOf( map.get("U_SEQ"))));
-			session.setAttribute("nickname",(String) map.get("U_NICKNAME"));
-			
-			System.out.println("(String) map.get(\"U_NICKNAME\") : "+(String) map.get("U_NICKNAME"));
-			
+		
             return "user/loginOk";
         }else{
         	model.addAttribute("result", 0);  
