@@ -10,7 +10,15 @@
 	  <div style="height: 40vh">
 	    <div class="row-vh d-flex flex-column">
 		    <div class="container mt-5 pt-5" data-aos="zoom-in" data-aos-delay="100">
-		      <h1>YJ's Spring</h1>
+		    <c:choose>
+				<c:when test="${empty nickname}">
+					<h1>YJ's Spring</h1>
+				</c:when>
+				<c:otherwise>
+					<h1>${nickname }'s Spring</h1>
+				</c:otherwise>
+			</c:choose>
+		      
 		      <p>I'm <span class="typed" data-typed-items="Developer, Person, Servant"></span></p>
 		    </div>
 	    </div>
@@ -20,17 +28,17 @@
 		   <div class="row-vh d-flex flex-column">
 			   	<div class="container" data-aos="zoom-in" data-aos-delay="200">
 			     <div class="subscribe">
-			        <form action="board/list" method="Get" role="form" >
+			       
 			          <div class="subscribe-form">
-			            <input type="text" name="keyword" id="keyword"><input type="submit" value="Search">
+			            <input type="text" name="keyword" id="keyword"><input onclick="search()" type="submit" value="Search">
 			          </div>
-			        </form>
+			        
 			      </div>
 			    </div>
 		   </div>
 	   </div> 
 	   <div>
-세션 아이디:	   	 ${id}
+
 	   </div>
   </section><!-- End home -->
   
@@ -39,3 +47,11 @@
   
   <!-- 페이징 로딩 -->
   <div id="preloader"></div>
+  
+  <script type="text/javascript">
+	  function search() {
+		  var keyword = $('#keyword').val();
+		  console.log(keyword);
+			location.href = "board/list?page=1&perPageNum=10&searchType=tw&keyword="+keyword;
+		}
+  </script>

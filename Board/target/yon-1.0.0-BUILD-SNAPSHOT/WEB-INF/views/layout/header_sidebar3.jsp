@@ -8,7 +8,7 @@
         <li class=" nav-home"><a href="<%=request.getContextPath()%>/index"><i class="bx bx-home"></i> <span>Home</span></a></li>
         <li class="nav-board"><a href="<%=request.getContextPath()%>/board/list"><i class="bx bx-conversation"></i> <span>QnA</span></a></li>
 		<li class="nav-item dropdown active">
-		   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+		   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="<%=request.getContextPath()%>/user#" role="button" aria-haspopup="true" aria-expanded="false">
 		   		<i class="bx bx-user"></i>
 		   </a>
 		   <div id="dropdownMenu" class="dropdown-menu dropdown-menu-right ml-1">

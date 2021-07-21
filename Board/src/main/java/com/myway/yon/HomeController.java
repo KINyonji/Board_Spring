@@ -34,9 +34,13 @@ public class HomeController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(HttpSession session, Model model) {
 		
-		int seq = (Integer)session.getAttribute("seq");
+		System.out.println("loginCheck: "+session.getAttribute("loginCheck"));
 		
-		model.addAttribute("nickname", userService.selectNN(seq)); 
+		if(session.getAttribute("loginCheck") != null) {
+		 int seq = (Integer)session.getAttribute("seq");
+		 
+		 model.addAttribute("nickname", userService.selectNN(seq));
+		}
 		
 		return "index";
 	}

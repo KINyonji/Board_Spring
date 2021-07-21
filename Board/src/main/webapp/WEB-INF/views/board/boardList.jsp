@@ -52,7 +52,7 @@
 							<input class="form-control navbar-left list-group pl-2" style="width: 100%; height: 36px;" type="search" placeholder="검색어" name="keyword" id="keywordInput" value="${scri.keyword}" onkeyup="enterkey()" />
 						</span> 
 						<span style="display: inline-block; width: 60px; height: 36px;">
-							<button id="searchBtn" type="button" class="btnColorBorder pl-2">검색</button>
+							<button id="searchBtn" type="button" class="btnColorBorder pl-2" onclick="searchBtn()">검색</button>
 						</span>
 					</div>
 					<!--------------------------- 검색 END ----------------------------------->		
@@ -63,7 +63,9 @@
 						<table id="boardList" class="table table-bordered table-hover"  style='width:100%; display:inline-block'>
 							<thead>
 								<tr>
-									<th class="text-center"><input name="select_all" id="select-all" type="checkbox" /></th>
+									<th class="text-center">
+										<input name="select_all" id="select-all" type="checkbox" /> 
+									</th>
 									<th class="text-center">No</th>
 									<th class="text-center">제목</th>
 									<th class="text-center">날짜</th>
@@ -74,15 +76,16 @@
 							<tbody>
 								<c:forEach items="${list}" var="l">
 									<tr>
-										<!-- b_id와 세션의 값이 같을때 -->
-										<c:if test="${l.u_regID == seq }">
-											<td>${l.b_id }</td>
-										</c:if>
-										<!-- b_id와 세션의 값이 다를때 -->
-										<c:if test="${l.u_regID != seq }">
-											<td>${l.b_id }" disabled="disabled </td>
-										</c:if>
-									
+										<td>
+											<!-- b_id와 세션의 값이 같을때 -->
+											<c:if test="${l.u_regID == seq }">
+												<input type="checkbox" name="b_id" value="${l.b_id }" style="cursor:pointer">
+											</c:if>
+											<!-- b_id와 세션의 값이 다를때 -->
+											<c:if test="${l.u_regID != seq }">
+												<label style="color: gray;">-</label>
+											</c:if>
+										</td>
 										<td onclick="selectByB_ID(${l.b_id })" >${l.b_id }</td>
 										<td onclick="selectByB_ID(${l.b_id })" ><div class="text-ellipsis"><p>${l.b_title }</p></div></td>
 										<!-- 수정날짜 유무 -->
@@ -269,15 +272,15 @@
              	 self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
             	}
        		}
-
+		 }
 		//검색버튼						
-		 $('#searchBtn').click(function() {
+		 function searchBtn() { 
 			 var inputSearch = $("#keywordInput").val();
 			 if(inputSearch ==''){
 				Swal.fire("검색어를 입력해주세요.","","warning"); 
+			 }else{
+			 	  self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 			 }
-		  	  self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-		   });
 		 }
 		 
 		 

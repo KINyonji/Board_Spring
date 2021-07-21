@@ -55,8 +55,8 @@
 											</div>
 											<!-- 작성자 -->
 											<div class="mb-3">
-												<label class="form-label" for="inputrRegname">작성자</label>
-												<input type="text" name="u_regID" class="form-control" id="inputrRegname"
+												<!-- <label class="form-label" for="inputrRegname">작성자</label> -->
+												<input type="hidden" name="u_regID" class="form-control" id="inputrRegname"
 													placeholder="작성자" value="${seq }">
 											</div>
 											<!-- 글내용 -->

@@ -58,7 +58,7 @@ response.setHeader("Cache-Control", "no-cache");
 					<!------- 회원수정 from ------->
 					
 					<div id="formCon">
-                        <form id="updateForm" action="userUpdateOk" method="Post" onsubmit="">
+                        <form id="updateForm" action="userUpdateOk" method="Post" onsubmit="return falseChk()">
                             
                                     <table class="table ">
                                          <tr>
@@ -82,7 +82,7 @@ response.setHeader("Cache-Control", "no-cache");
                                             <td>
                                                 <input class="formChk" type="password" id="pwChk" name="pwChk" placeholder="비밀번호 확인" maxlength='20'>
                                                 <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
-                                                <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+                                                
                                             </td>
                                             <td></td>
                                         </tr>
@@ -104,11 +104,11 @@ response.setHeader("Cache-Control", "no-cache");
                                             <td></td>
                                         </tr>
                                         
-                                       <%--  <tr>
+                                         <tr>
                                         	<td>성별</td>
                                         	
                                         	<c:choose>
-												<c:when test="${(list[0].u_genderMF) == 'M'}">
+												<c:when test="${(list[0].u_genderMF).equals(M)}">
 													<td>
 		                                                <div class="custom-control custom-radio custom-control-inline">
 		                                                    <input type="radio" class="custom-control-input" id="male" name="u_genderMF" value="M" checked >
@@ -136,7 +136,7 @@ response.setHeader("Cache-Control", "no-cache");
                                               	</c:otherwise>
 											</c:choose>
                                               <td></td> 
-                                        </tr> --%>
+                                        </tr> 
                                         
                                         <tr>
                                             <td>닉네임</td>

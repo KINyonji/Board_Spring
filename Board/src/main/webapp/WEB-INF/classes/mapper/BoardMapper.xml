@@ -106,16 +106,16 @@
 	</update>
 	
 	<!-- 글 수정하기 -->
-	<update id="update" flushCache="true">
+	<update id="update" flushCache="true"  parameterType="com.myway.yon.domain.board.BoardDTO">
 		UPDATE 
 			BOARD 
 		SET 
-			B_TITLE = #{b_title}, 
-			B_CONTENT = #{b_content},
-			U_MODIFYID = #{u_modifyID},
+			B_TITLE = #{a.b_title}, 
+			B_CONTENT = #{a.b_content},
+			U_MODIFYID = #{a.u_modifyID},
 			B_MODIFYDATE = SYSDATE
 		WHERE 
-			B_ID = #{param1}
+			B_ID = #{a.b_title}
 	</update>
 	
 	<!-- 글 삭제하기 → B_DELETEYN를 Y로 수정하기 -->
@@ -149,6 +149,13 @@
 			 #{b_id}
 			</foreach>
 	</update>
+	
+	<delete id="deleteBoard"> 
+	 	DELETE FROM 
+	 		BOARD 
+ 		WHERE 
+ 			U_REGID = #{u_seq} 
+ 	</delete>
 	
 
 </mapper>    

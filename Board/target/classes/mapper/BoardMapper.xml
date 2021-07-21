@@ -112,10 +112,10 @@
 		SET 
 			B_TITLE = #{a.b_title}, 
 			B_CONTENT = #{a.b_content},
-			U_MODIFYID = #{a.u_modifyID},
+			U_MODIFYID = NVL(#{a.u_modifyID}, 0),
 			B_MODIFYDATE = SYSDATE
 		WHERE 
-			B_ID = #{a.b_title}
+			B_ID = #{a.b_id}
 	</update>
 	
 	<!-- 글 삭제하기 → B_DELETEYN를 Y로 수정하기 -->

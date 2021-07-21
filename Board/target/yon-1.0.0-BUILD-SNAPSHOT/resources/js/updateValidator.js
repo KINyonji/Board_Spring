@@ -24,6 +24,10 @@
                 rangelength : [5,20],
                 regex :  /^[A-Za-z0-9]{5,20}$/
             },
+            pwChk : {
+				required:true, 
+				equalTo:'#u_pw'
+			},
             u_name: {
                 required : true,
                 rangelength : [2,5],
@@ -61,6 +65,10 @@
                 maxlength : "20자까지 입력 가능합니다.",
                 regex : "영문, 숫자 조합(5~20자 이내)"
             },
+            pwChk : {
+				required: "비밀번호 확인를 입력해주세요.", 
+				equalTo: "비밀번호가 일치하지 않습니다. "
+			},
             u_name: {
                 required : "이름을 입력해주세요",
                 rangelength : "이름은 {0}글자에서 {1}자까지 입력 가능합니다",

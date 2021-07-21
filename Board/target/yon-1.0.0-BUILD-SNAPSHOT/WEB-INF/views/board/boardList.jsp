@@ -74,7 +74,15 @@
 							<tbody>
 								<c:forEach items="${list}" var="l">
 									<tr>
-										<td>${l.b_id }</td>
+										<!-- b_id와 세션의 값이 같을때 -->
+										<c:if test="${l.u_regID == seq }">
+											<td>${l.b_id }</td>
+										</c:if>
+										<!-- b_id와 세션의 값이 다를때 -->
+										<c:if test="${l.u_regID != seq }">
+											<td>${l.b_id }" disabled="disabled </td>
+										</c:if>
+									
 										<td onclick="selectByB_ID(${l.b_id })" >${l.b_id }</td>
 										<td onclick="selectByB_ID(${l.b_id })" ><div class="text-ellipsis"><p>${l.b_title }</p></div></td>
 										<!-- 수정날짜 유무 -->

@@ -117,6 +117,7 @@ public class UserController {
 		
 		model.addAttribute("list", userService.selectByUid((Integer)session.getAttribute("seq")));  
 		System.out.println("list: "+userService.selectByUid((Integer)session.getAttribute("seq")));
+		System.out.println("loginCheck: "+session.getAttribute("loginCheck"));
 		return "user/userUpdate1";
 	}
 	
