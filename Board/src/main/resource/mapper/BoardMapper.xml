@@ -10,29 +10,34 @@
 			RNUM,
 			B_ID,
 			B_TITLE,
-			U_REGID,
+            U_REGID,
 			U_MODIFYID,
 			B_REGDATE,
 			B_MODIFYDATE,
 			B_VIEWCNT,
-			B_DELETEYN
+			B_DELETEYN,
+			U_NAME
 		FROM (
 				SELECT
-					B_ID,
-					B_TITLE,
-					U_REGID,
-					U_MODIFYID,
-					B_REGDATE,
-					B_MODIFYDATE,
-					B_VIEWCNT,
-					B_DELETEYN,
-					ROW_NUMBER() OVER(ORDER BY B_REGDATE desc) as rnum
-				FROM board
+					B.B_ID,
+					B.B_TITLE,
+					B.U_REGID,
+					B.U_MODIFYID,
+					B.B_REGDATE,
+					B.B_MODIFYDATE,
+					B.B_VIEWCNT,
+					B.B_DELETEYN,
+					ROW_NUMBER() OVER(ORDER BY B.B_REGDATE desc) as rnum,
+					U.U_NAME
+				FROM
+					BOARD B,
+					USERTABLE U
 				WHERE
     				 B_DELETEYN = 'N'
+    			AND
+    		    	 B.U_REGID = U.U_SEQ
     				 <include refid="search"></include>
-				)
-			BOARD
+    			)
 		WHERE
 	        rnum BETWEEN #{rowStart} AND #{rowEnd} 
 		

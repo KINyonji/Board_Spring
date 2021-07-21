@@ -1,7 +1,8 @@
 package com.myway.yon.domain.board;
 
 import java.sql.Timestamp;
-import java.util.List;
+
+import com.myway.yon.domain.user.UserDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,5 +22,8 @@ public class BoardDTO {
 	private Timestamp b_modifydate;
 	private int b_viewcnt;
 	private char b_deleteYN;
+	
+	private int RNUM;
+	private String u_name;
 
 }

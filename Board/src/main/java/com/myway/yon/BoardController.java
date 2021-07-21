@@ -49,7 +49,7 @@ public class BoardController {
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("list", boardService.listAll(scri));
 		System.out.println("boardService.listAll(scri) :"+boardService.listAll(scri));
-		
+		System.out.println();
 		model.addAttribute("page",scri.getPage());
 		return "board/boardList";
 	}

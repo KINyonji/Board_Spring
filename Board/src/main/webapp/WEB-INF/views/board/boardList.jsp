@@ -86,7 +86,7 @@
 												<label style="color: gray;">-</label>
 											</c:if>
 										</td>
-										<td onclick="selectByB_ID(${l.b_id })" >${l.b_id }</td>
+										<td onclick="selectByB_ID(${l.b_id })" >${l.RNUM }</td>
 										<td onclick="selectByB_ID(${l.b_id })" ><div class="text-ellipsis"><p>${l.b_title }</p></div></td>
 										<!-- 수정날짜 유무 -->
 										<c:choose>
@@ -100,10 +100,10 @@
 										<!-- 수정자 유무 -->
 										<c:choose>									
 											<c:when test="${empty l.u_modifyID }"> 
-												<td>${l.u_regID }</td>
+												<td>${l.u_name }</td>
 											</c:when>										
 											<c:otherwise>
-												<td>${l.u_modifyID }</td>
+												<td>${l.u_name }</td>
 											</c:otherwise>
 										</c:choose>
 										

@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="UserDTO"/>
+		<item key="selection" value="searchBtn"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="searchBtn"/>
+			<item value="enterkey"/>
+			<item value="NVL"/>
+			<item value="ORA-01722: invalid number"/>
+			<item value="log"/>
+			<item value="Log"/>
+			<item value="jstl"/>
+			<item value="mybatis"/>
+			<item value="parameterType"/>
+			<item value="selectByUid"/>
 			<item value="UserDTO"/>
 			<item value="UserDTO\"/>
-			<item value="update"/>
-			<item value="src=&quot;/resources/js/"/>
-			<item value="cancelduplicationConfirm"/>
-			<item value="birthY"/>
-			<item value="birthChk"/>
-			<item value="formChk"/>
-			<item value="member"/>
-			<item value="home"/>
-			<item value="hover"/>
-			<item value="testimonials-carousel"/>
-			<item value="aos_init"/>
-			<item value="row"/>
-			<item value="footer"/>
 		</list>
 		<list key="replacehistory">
 			<item value="user"/>
@@ -43,8 +40,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1954"/>
-		<item key="DIALOG_Y_ORIGIN" value="405"/>
+		<item key="DIALOG_X_ORIGIN" value="1001"/>
+		<item key="DIALOG_Y_ORIGIN" value="649"/>
 		<item key="DIALOG_WIDTH" value="340"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
