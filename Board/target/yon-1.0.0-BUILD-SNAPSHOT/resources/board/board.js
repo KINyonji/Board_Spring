@@ -46,9 +46,9 @@ $(document).ready(function() {
 				searchable: false, //검색
 				orderable: false, //컬럼정렬
 				className: 'text-center ',//dt-body-center: 가운데로 정렬하기
-				render: function(data, type, full, meta) {
+				/*render: function(data, type, full, meta) {
 					return '<input type="checkbox" name="b_id" value="' + $('<div/>').text(data).html() + '" style="cursor:pointer">';
-				}
+				}*/
 			},
 			/* width: 컬럼에따라 크기 조정/ hidden-xs:좁아지면 숨기기 */
 			{ targets: [1], width: '5%', className: 'text-center pointer'},

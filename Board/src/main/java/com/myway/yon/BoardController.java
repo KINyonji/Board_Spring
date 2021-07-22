@@ -1,9 +1,14 @@
 package com.myway.yon;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,8 +53,6 @@ public class BoardController {
 
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("list", boardService.listAll(scri));
-		System.out.println("boardService.listAll(scri) :"+boardService.listAll(scri));
-		System.out.println();
 		model.addAttribute("page",scri.getPage());
 		return "board/boardList";
 	}
@@ -69,9 +72,27 @@ public class BoardController {
 	
 	//글 상세보기
 	@RequestMapping(value = "/view")
-	public String boardView(int b_id, Model model, @ModelAttribute("scri") SearchCriteria scri) {
+	public String boardView(int b_id, HttpSession session, Model model, @ModelAttribute("scri") SearchCriteria scri) {
+		//게시글의 작성자를 저장할 변수 생성
+		int regID = 0;
+		
+		// 쿼리에서 불러온 List
+		List<BoardDTO> boardYrList = boardService.viewByBid(b_id);
+
+		//list에서 u_regId 값 가져오기
+		for (BoardDTO i : boardYrList) {
+			regID = Integer.parseInt(i.getU_regID());
+		}
+
+		//세션에 있는 회원의 시퀀스 값과 게시글의 작성자의 regID값이 다를때만 조회수 올라가기
+		if((Integer)session.getAttribute("seq") != null) {
+			if((Integer)session.getAttribute("seq") != regID) {
+				boardService.incViewCnt(b_id);
+			}
+		}
 		model.addAttribute("list", boardService.viewByBid(b_id));
 		model.addAttribute("scri", scri);
+		
 		return "board/boardView";
 	}
 	

@@ -39,8 +39,7 @@
     				 <include refid="search"></include>
     			)
 		WHERE
-	        rnum BETWEEN #{rowStart} AND #{rowEnd} 
-		
+	        rnum BETWEEN #{rowStart} AND #{rowEnd} 		
 	</select>
 	
 	<!-- 게시물 총 갯수 -->
@@ -84,20 +83,25 @@
 	
 	<!-- 글 상세보기 view -->
 	<select id="selectByBid" resultType="com.myway.yon.domain.board.BoardDTO">
-		SELECT 
-			B_ID B_ID,
-			B_TITLE B_TITLE,
-			B_CONTENT B_CONTENT,
-			U_REGID U_REGID,
-			U_MODIFYID U_MODIFYID,
-			B_REGDATE B_REGDATE,
-			B_MODIFYDATE B_MODIFYDATE,
-			B_VIEWCNT B_VIEWCNT,
-			B_DELETEYN B_DELETEYN
+		SELECT
+			B.B_ID,
+			B.B_TITLE,
+			B.B_CONTENT,
+			B.U_REGID,
+			B.U_MODIFYID,
+			B.B_REGDATE,
+			B.B_MODIFYDATE,
+			B.B_VIEWCNT,
+			B.B_DELETEYN,
+			U.U_NAME
 		FROM
-			BOARD
+			BOARD B,
+			USERTABLE U
+			
 		WHERE 
 			B_ID = #{b_id}
+		AND
+   		 	B.U_REGID = U.U_SEQ
 	</select>
 	
 	<!-- 조회수 증가 -->
@@ -107,7 +111,7 @@
 		SET 
 			B_VIEWCNT = B_VIEWCNT + 1 
 		WHERE 
-			B_ID = #{param1}
+			B_ID = #{b_id}
 	</update>
 	
 	<!-- 글 수정하기 -->

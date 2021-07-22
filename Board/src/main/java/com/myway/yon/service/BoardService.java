@@ -63,8 +63,13 @@ public class BoardService {
 	//글 상세보기
 	public List<BoardDTO> viewByBid(int b_id) {
 		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
-		dao.incViewCnt(b_id);
 		return dao.selectByBid(b_id);
+	}
+	
+	//조회수 올리기
+	public int incViewCnt(int b_id) {
+		dao = sqlSession.getMapper(BoardDAO.class); // MyBatis 사용
+		return dao.incViewCnt(b_id);
 	}
 	
 	//b_id에 해당하는

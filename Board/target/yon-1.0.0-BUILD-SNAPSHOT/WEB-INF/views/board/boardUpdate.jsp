@@ -63,15 +63,15 @@
 										</div>
 										<!-- 작성자 -->
 										<div class="mb-3">
-											<label class="form-label" for="inputrRegname">작성자</label>
+											<!-- <label class="form-label" for="inputrRegname">작성자</label> -->
 											<!-- 수정자 유무 -->
 												<c:choose>									
 													<c:when test="${empty list[0].u_modifyID }"> 
-														<input type="text" name="u_modifyID" class="form-control" id="inputrRegname"
+														<input type="hidden" name="u_modifyID" class="form-control" id="inputrRegname"
 												placeholder="작성자" value="${seq}">
 													</c:when>										
 													<c:otherwise>
-														<input type="text" name="u_modifyID" class="form-control" id="inputrRegname"
+														<input type="hidden" name="u_modifyID" class="form-control" id="inputrRegname"
 												placeholder="작성자" value="${seq}">
 													</c:otherwise>
 												</c:choose>

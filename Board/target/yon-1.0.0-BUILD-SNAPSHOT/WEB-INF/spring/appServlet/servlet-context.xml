@@ -28,7 +28,7 @@ DispatcherServlet과 관련된 설정을 해야함을 알 수 있습니다.-->
 	</beans:bean>
 	
 	<!-- base-package 이하에 있는 클래스들만 스캔하여 그 중에서 @Controller 가 붙은 클래스만 컨트롤러 클래스로 인식 -->
-	<context:component-scan base-package="com.myway.yon.*" />
+	<context:component-scan base-package="com.myway.yon" />
 	
 	
 
