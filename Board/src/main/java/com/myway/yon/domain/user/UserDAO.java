@@ -27,8 +27,8 @@ public interface UserDAO {
 	//회원가입
 	HashMap<String, Object> sessionVal(UserDTO dto);
 	
-	//내 정보 수정 비번 확인
-//	int pwchk(String u_pw);
+	//회원 수정 전 비밀번호 확인
+	int pwchk(@Param("u_pw")String u_pw, @Param("u_seq")int u_seq);
 	
 	//내 정보 수정 
 	int userUpdate(@Param("u")UserDTO dto);

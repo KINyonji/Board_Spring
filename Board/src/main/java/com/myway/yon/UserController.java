@@ -110,15 +110,26 @@ public class UserController {
 		return "index";
 	}
 	
+	//내 정보 수정 전 비밀번호 확인
+	@GetMapping(value = "/user")
+	public String user(String u_pw, HttpSession session, Model model) {
+		return "user/user";
+	}
+	
+	//내 정보 수정 전 비밀번호 확인
+	@PostMapping(value = "/pwchk")
+	public String pwchk(String u_pw, HttpSession session, Model model) {		
+		int u_seq = (Integer)session.getAttribute("seq");
+		//내 정보 수정 성공시 1, 실패시 0 을 반환한다
+		model.addAttribute("result", userService.pwchk(u_pw, u_seq));  
+		return "user/userOk";
+	}
 	
 	//내 정보 수정 화면
-	@GetMapping(value = "/userUpdate1")
-	public String pwchk(HttpSession session, Model model) {
-		
+	@GetMapping(value = "/userUpdate")
+	public String userUpdate(HttpSession session, Model model) {		
 		model.addAttribute("list", userService.selectByUid((Integer)session.getAttribute("seq")));  
-		System.out.println("list: "+userService.selectByUid((Integer)session.getAttribute("seq")));
-		System.out.println("loginCheck: "+session.getAttribute("loginCheck"));
-		return "user/userUpdate1";
+		return "user/userUpdate";
 	}
 	
 	//내 정보 수정

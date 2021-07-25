@@ -57,7 +57,9 @@
 										<div class="mb-3">
 											<div class="row">
 												<div class="form-label col-md-5 text-center font-weight-bold" for="inputTitle">비밀번호 확인</div>
-												<div id="minCenter" class="col-md-7 minCenterc">${list[0].b_title }</div>
+												<div id="minCenter" class="col-md-7 minCenterc">
+													<input type="password" placeholder="비밀번호" name="u_pw" id="u_pw" maxlength='20' minlength='5' required>
+												</div>
 											</div>
 										</div>
 										

@@ -34,8 +34,6 @@ public class HomeController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(HttpSession session, Model model) {
 		
-		System.out.println("loginCheck: "+session.getAttribute("loginCheck"));
-		
 		if(session.getAttribute("loginCheck") != null) {
 		 int seq = (Integer)session.getAttribute("seq");
 		 

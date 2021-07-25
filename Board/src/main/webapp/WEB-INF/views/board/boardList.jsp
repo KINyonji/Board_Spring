@@ -33,10 +33,7 @@
 			        
 			       
 			        <div class="search" style="float: right;">
-			       		 <!--------------------------- 검색초기화 & 전체보기ㅏ ----------------------------------->
-				        <span  style="display: inline-block; height: 35px;">
-				        	<button type="button" class="btnColorBorder" onclick="initializeBtn()">초기화</button>
-				        </span>
+			       		 
 						<!--------------------------- 검색 ----------------------------------->
 						<span style="display: inline-block; width: 120px; height: 35px;">
 							<select style="width: 100%; height: 35px;" class="form-control navbar-left list-group" name="searchType">
@@ -266,7 +263,7 @@
 		 function enterkey() {
              if (window.event.keyCode == 13) {
              if($('#keywordInput').val() == ''){
-            	 Swal.fire("검색어를 입력해주세요","","warning")
+            	 self.location = "list" + '${pageMaker.makeQuery(1)}';
                }
                else{
              	 self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
@@ -277,7 +274,7 @@
 		 function searchBtn() { 
 			 var inputSearch = $("#keywordInput").val();
 			 if(inputSearch ==''){
-				Swal.fire("검색어를 입력해주세요.","","warning"); 
+				 self.location = "list" + '${pageMaker.makeQuery(1)}';
 			 }else{
 			 	  self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
 			 }

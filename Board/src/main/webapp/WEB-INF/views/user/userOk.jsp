@@ -15,9 +15,9 @@
     
 <c:choose>
 	<c:when test="${result == 0 }">
-		<!-- 회원수정 실패 -->
+		<!-- 로그인 실패 -->
 		<script>
-			Swal.fire("회원수정에 실패했습니다.","","warning"); 
+			Swal.fire("비밀번호 확인에 실패했습니다. \n 다시 입력해주세요","","warning"); 
 			//시간 지연 함수 setTimeout()
 			setTimeout(function() {
 				history.back();  // 브라우저가 직전에 기억하는 이전 페이지로..
@@ -26,7 +26,7 @@
 		</script>
 	</c:when>
 	<c:otherwise>
-		<!-- 회원수정 성공 -->
+		<!-- 로그인 성공 -->
 		<script>
 			location.href = "userUpdate";
 		</script>

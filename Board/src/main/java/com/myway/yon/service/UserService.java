@@ -79,11 +79,14 @@ public class UserService {
 		return dao.sessionVal(dto);  
 	}	
 	
-	//내 정보 수정 비번 확인
-//	public int pwchk(String u_pw) {
-//		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
-//		return dao.pwchk(u_pw);  
-//	}
+	//내 정보 수정 비번 확인 + 비밀번호 암호화
+	public int pwchk(String u_pw, int u_seq) {
+		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
+
+		// spring util에 있는 DigestUtils 오픈소스를 사용해서 md5로 암호화하기		
+		u_pw = DigestUtils.md5DigestAsHex(u_pw.getBytes());
+		return dao.pwchk(u_pw, u_seq);
+	}
 	
 	//회원정보 수정 + 비번 암호화
 	public int userUpdate(UserDTO dto) {
@@ -111,7 +114,5 @@ public class UserService {
 		System.out.println("dao.selectNN(seq): "+dao.selectNN(seq));
 		return dao.selectNN(seq);
 	}
-
-
 
 }
