@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="if"/>
+		<item key="selection" value="html5Upload"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="html5Upload"/>
+			<item value="makePopupURL"/>
+			<item value="callFileUploader"/>
+			<item value="callFileUploader("/>
+			<item value="junit"/>
+			<item value="servlet-api"/>
+			<item value="&lt;div class=&quot;se2_text_tool husky_seditor_text_tool&quot;&gt;"/>
+			<item value="pageMaker"/>
 			<item value="if"/>
 			<item value="if("/>
 			<item value="searchBtn"/>
@@ -15,13 +23,6 @@
 			<item value="NVL"/>
 			<item value="ORA-01722: invalid number"/>
 			<item value="log"/>
-			<item value="Log"/>
-			<item value="jstl"/>
-			<item value="mybatis"/>
-			<item value="parameterType"/>
-			<item value="selectByUid"/>
-			<item value="UserDTO"/>
-			<item value="UserDTO\"/>
 		</list>
 		<list key="replacehistory">
 			<item value="user"/>
@@ -42,11 +43,11 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1001"/>
-		<item key="DIALOG_Y_ORIGIN" value="649"/>
-		<item key="DIALOG_WIDTH" value="393"/>
-		<item key="DIALOG_HEIGHT" value="523"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_X_ORIGIN" value="1601"/>
+		<item key="DIALOG_Y_ORIGIN" value="175"/>
+		<item key="DIALOG_WIDTH" value="340"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="692"/>

@@ -111,7 +111,6 @@ public class UserService {
 	//홈화면 닉네임 표시
 	public String selectNN(int seq) {
 		dao = sqlSession.getMapper(UserDAO.class); // MyBatis 사용
-		System.out.println("dao.selectNN(seq): "+dao.selectNN(seq));
 		return dao.selectNN(seq);
 	}
 
