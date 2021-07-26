@@ -51,6 +51,9 @@ public class BoardController {
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(boardService.listCount(scri));
 
+		//RNUM을 제대로 뺴주기위해 Criteria의 TotalCnt에 총갯수 넣기
+		scri.setTotalCnt(boardService.listCount(scri));
+		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("list", boardService.listAll(scri));
 		model.addAttribute("page",scri.getPage());
@@ -63,7 +66,7 @@ public class BoardController {
 		return "board/boardWrite";
 	}
 	
-	//글쓰기 확인
+	//글쓰기 확인 
 	@PostMapping(value = "/writeOk")
 	public String boardWriteOk(BoardDTO dto, Model model) {
 		model.addAttribute("result", boardService.insert(dto));

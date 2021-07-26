@@ -15,7 +15,7 @@
 		     <c:choose>
 				<c:when test="${loginCheck == true }">
 					<!-- 로그인 -->
-					<a id="dropdownItem" class="dropdown-item" href="<%=request.getContextPath()%>/user/userUpdate1">내 정보 수정</a>
+					<a id="dropdownItem" class="dropdown-item" href="<%=request.getContextPath()%>/user/user">내 정보 수정</a>
 					<a id="dropdownItem" class="dropdown-item" href="<%=request.getContextPath()%>/user/logout">로그아웃</a>
 				</c:when>
 				<c:otherwise>

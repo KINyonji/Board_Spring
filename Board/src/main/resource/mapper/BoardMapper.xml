@@ -27,7 +27,7 @@
 					B.B_MODIFYDATE,
 					B.B_VIEWCNT,
 					B.B_DELETEYN,
-					ROW_NUMBER() OVER(ORDER BY B.B_REGDATE desc) as rnum,
+					ROW_NUMBER() OVER(ORDER BY B.B_REGDATE ASC) as rnum,
 					U.U_NAME
 				FROM
 					BOARD B,
@@ -36,10 +36,11 @@
     				 B_DELETEYN = 'N'
     			AND
     		    	 B.U_REGID = U.U_SEQ
-    				 <include refid="search"></include>
+    		    <include refid="search"></include>
     			)
 		WHERE
-	        rnum BETWEEN #{rowStart} AND #{rowEnd} 		
+	        rnum BETWEEN #{rowStart} AND #{rowEnd}          
+            ORDER BY B_ID DESC   		
 	</select>
 	
 	<!-- 게시물 총 갯수 -->

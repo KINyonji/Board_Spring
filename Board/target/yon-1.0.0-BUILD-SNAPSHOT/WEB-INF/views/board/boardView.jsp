@@ -9,7 +9,7 @@
 <c:choose>
 	<c:when test="${empty list || fn:length(list) == 0 }">
 		<script>
-			Swal.fire("해당 정보가 삭제되거나 없습니다","","warning"); 
+			alert("해당 정보가 삭제되거나 없습니다"); 
 			history.back();
 		</script>
 	</c:when>
@@ -93,7 +93,7 @@
 												<div id="minCenter" class="col-md-10 minCenterc">${list[0].b_title }</div>
 											</div>
 										</div>
-										<!-- 작성자 -->
+										<!-- 작성자 
 										<div class="mb-3">
 											<div class="row">
 												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">등록자</div>
@@ -109,7 +109,17 @@
 												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">수정날짜</div>
 												<div id="minCenter" class="col-md-4">${list[0].b_modifydate }</div>
 											</div>
+										</div>-->
+										
+										<div class="mb-3">
+											<div class="row">
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">작성자</div>
+												<div id="minCenter" class="col-md-4">${list[0].u_name }</div>
+												<div class="form-label col-md-2 text-center font-weight-bold" for="inputrRegname">날짜</div>
+												<div id="minCenter" class="col-md-4"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list[0].b_regdate }"/></div>
+											</div>
 										</div>
+										
 										<!-- 글내용 -->
 										<div class="mb-3">
 											

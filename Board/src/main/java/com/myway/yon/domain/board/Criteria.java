@@ -11,6 +11,7 @@ public class Criteria {
 	private int perPageNum;
 	private int rowStart;
 	private int rowEnd;
+	private int totalCnt;//총갯수
 	
 	public Criteria() {
 		this.page = 1;
@@ -41,15 +42,17 @@ public class Criteria {
 		return this.perPageNum;
 	}
 	
+	public int getRowEnd() {
+		rowEnd = totalCnt - (perPageNum*(page-1));
+		return rowEnd;
+	}
+	
 	public int getRowStart() {
-		rowStart = ((page - 1) * perPageNum) + 1;
+		rowStart = rowEnd - perPageNum + 1;
 		return rowStart;
 	}
 	
-	public int getRowEnd() {
-		rowEnd = rowStart + perPageNum - 1;
-		return rowEnd;
-	}
+	
 
 	@Override
 	public String toString() {
